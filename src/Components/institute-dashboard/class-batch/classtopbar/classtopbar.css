@@ -1,0 +1,40 @@
+.topbar {
+  background-color: #007bff;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  position: fixed;
+  top: 80px; 
+  left: 250px;
+  width: calc(100% - 250px); 
+  z-index: 1; 
+}
+  .topbar-nav ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin: 0;
+  }
+  
+  .topbar-nav ul li {
+    display: inline;
+    padding: 0 20px;
+  }
+  
+  .topbar-nav ul li a {
+    display: inline-block;
+    width: auto;
+    margin: 0!important;
+    padding: 15px 15px 15px 15px !important;
+    font-size: 16px!important;
+    text-decoration: none;
+    line-height: 1.5;
+    color: #fff;
+}
+
+.topbar-nav ul li a:hover, 
+.topbar-nav ul li a:active {
+    background-color: #843291 !important; 
+    color: #fff !important; 
+}
+
+  

@@ -1,0 +1,103 @@
+/* Sidebar container */
+#sidebar-menu {
+  width: 250px;
+  background-color: #843291;
+  color: #ffffff;
+  height: 100vh;
+  overflow-y: auto;
+  position: fixed;
+  top: 80px; 
+  left: 0;
+  border-right: 1px solid #843291;
+  z-index: 999; 
+}
+  #sidebar-menu .menu-title {
+    padding: 10px 20px;
+    font-size: 14px;
+    font-weight: bold;
+    text-transform: uppercase;
+    color: #a5b3c4;
+    margin-bottom: 10px;
+  }
+  
+  /* Sidebar Menu List */
+  #sidebar-menu ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+  }
+  
+  #sidebar-menu ul li {
+    margin: 0;
+    padding: 0;
+  }
+  
+  #sidebar-menu ul li a {
+    display: flex;
+    align-items: center;
+    padding: 12px 20px;
+    text-decoration: none;
+    color: #ffffff;
+    font-size: 14px;
+    transition: all 0.3s ease;
+  }
+  
+  #sidebar-menu ul li a:hover {
+    background-color: #1d2939;
+    color: #ffffff;
+  }
+  
+  #sidebar-menu ul li a.active {
+    background-color: #1d2939;
+    color: #ffd700; 
+  }
+  
+  #sidebar-menu ul li a .fa-icon {
+    margin-right: 10px;
+  }
+  
+  #sidebar-menu ul li a span {
+    margin-left: 10px;
+  }
+  
+  /* Icon customization */
+  #sidebar-menu ul li a svg {
+    font-size: 16px;
+    color: #a5b3c4;
+  }
+  
+  #sidebar-menu ul li a.active svg,
+  #sidebar-menu ul li a:hover svg {
+    color: #ffd700; 
+  }
+  
+  /* Menu title styling */
+  #sidebar-menu .menu-title {
+    margin-top: 15px;
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #fff;
+    padding: 10px 20px;
+    border-bottom: 1px solid #3a4d63;
+  }
+  
+  /* Scrollbar for the sidebar */
+  #sidebar-menu {
+    scrollbar-width: none;
+    scrollbar-color: #ccc #ccc;
+  }
+  
+  #sidebar-menu::-webkit-scrollbar {
+    width: 5px;
+  }
+  
+  #sidebar-menu::-webkit-scrollbar-thumb {
+    background-color: #ccc;
+    border-radius: 3px;
+  }
+  
+  #sidebar-menu::-webkit-scrollbar-track {
+    background-color: #ccc;
+  }
+  

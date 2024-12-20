@@ -1,0 +1,158 @@
+/* Sidebar.css */
+.sidebar {
+  width: 250px;
+  background-color:#007bff; 
+  padding: 20px;
+  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+  height: 100vh;
+  overflow-y: auto;
+}
+.sidebar {
+  font-family: 'Poppins', sans-serif;
+}
+.sidebar-heading {
+  font-size: 18px;
+  font-weight: bold;
+  margin-top: 20px;
+  cursor: pointer;
+   position: relative;
+  transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.sidebar-heading:hover {
+  color: #fff; 
+  transform: scale(1.1); 
+}
+
+.toggle-icon {
+  margin-left: 10px;
+  font-size: 14px;
+  transition: transform 0.3s ease;
+}
+
+.sidebar-list {
+  list-style-type: none;
+  padding: 0;
+  margin: 10px 0 0;
+}
+
+.sidebar-list li {
+  padding: 8px 10px;
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out;
+  display: flex;
+  align-items: center;
+}
+
+.sidebar-list li:hover {
+  background-color: #f9f9f9;
+  color: #007bff;
+  border-radius: 4px;
+}
+
+.sidebar-list li a {
+  text-decoration: none;
+  color: inherit;
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.sidebar-list li a:hover {
+  color: #007bff;
+}
+
+.sidebar-list li svg {
+  margin-right: 10px;
+}
+.questionbank{
+    margin-top: 50%
+}
+.folder-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #f4f4f4;
+  color:#007bff; 
+  padding: 10px;
+  border-radius: 5px;
+  margin-bottom: 10px;
+}
+
+.folder-name {
+  font-weight: bold;
+}
+
+.new-folder-section {
+  display: flex;
+  /* justify-content: space-between; */
+  align-items: center;
+  padding: 10px;
+  /* background-color: #fff;
+  border: 1px solid #ddd; */
+  border-radius: 5px;
+  margin-bottom: 3px;
+}
+
+.new-folder-button {
+    background-color: #007bff;
+    border: none;
+    border-radius: 15%;
+    padding: 7px 23px;
+    color: #fff;
+    cursor: pointer;
+    margin-left: 11px;
+}
+
+.new-folder-button {
+  background-color: #0056b3;
+}
+
+.icon-button {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  color: #007bff;
+  font-size: 16px;
+}
+
+.icon-button:hover {
+  color: #0056b3;
+}
+.folder-edit-input {
+  padding: 5px;
+  font-size: 1rem;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  width: calc(100% - 60px); /* Adjust width for buttons */
+}
+
+.folder-edit-input:focus {
+  outline: none;
+  border-color: #007bff;
+}
+.sidebar {
+
+  overflow-y: auto;  
+  max-height: 100vh;  
+  
+ 
+  overflow-x: hidden;  
+  
+ 
+}
+
+/* Hide the scrollbar in Webkit-based browsers (Chrome, Safari, Edge) */
+.sidebar::-webkit-scrollbar {
+  display: none;
+}
+
+/* Hide the scrollbar in Firefox */
+.sidebar {
+  scrollbar-width: none;
+}
+
+/* Hide the scrollbar in Internet Explorer 10+ */
+.sidebar {
+  -ms-overflow-style: none;
+}
