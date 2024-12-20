@@ -1,5 +1,5 @@
 import React from "react";
-import { Link, useLocation,Outlet } from "react-router-dom"; 
+import { Link, useLocation } from "react-router-dom"; 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlus, faTrash, faArchive } from "@fortawesome/free-solid-svg-icons";
 import './classsidemenu.css';
@@ -48,8 +48,7 @@ const ClassSideMenu = ({ archivedCount, trashedCount }) => {
         </li>
       </ul>
 
-      {/* This is where nested routes will be rendered */}
-      <Outlet />
+      {/* <Outlet /> */}
     </div>
   );
 };

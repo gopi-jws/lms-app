@@ -14,9 +14,9 @@ function App() {
         {/* Define routes for the components */}
         <Route path="/" element={<Institute />} />  
         <Route path="/institute" element={<Institute />} /> 
-        <Route path="/class" element={<Class />} />
+        <Route path="/class/*" element={<Class />} /> 
         <Route path="/QuestionBank" element={<QuestionBank />} />
-        <Route path="/Trashed" element={<Trashed />} />
+     
        
       </Routes>
     </Router>
