@@ -1,0 +1,10 @@
+.questionbank-content {
+    margin-left: 250px;
+    padding: 1rem;
+    z-index: 20;
+ 
+    
+    /* height: calc(100vh - 5rem); */
+    position: relative;
+    box-sizing: border-box;
+}

@@ -39,10 +39,10 @@ const SidebarMenu = () => {
           </Link>
         </li>
         <li>
-          <a href="#" className="waves-effect">
+          <Link to="/Test" className="waves-effect">
             <FontAwesomeIcon icon={faUserGroup} />
             <span key="t-chat">Teachers</span>
-          </a>
+          </Link>
         </li>
 
         <li>
@@ -53,7 +53,7 @@ const SidebarMenu = () => {
         </li>
 
         <li>
-          <a href="#" className="waves-effect">
+          <a href="/test" className="waves-effect">
             <FontAwesomeIcon icon={faFolderOpen} />
             <span key="t-chat">Tests</span>
           </a>

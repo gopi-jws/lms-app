@@ -1,30 +1,48 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-import './classtopbar.css'; 
+import React from "react";
+import { Link, useLocation } from "react-router-dom";
+import "./classtopbar.css";
+import {
+  LayoutDashboard,
+  BookOpen,
+  Database,
+  GraduationCap,
+  Users,
+} from "lucide-react";
+
+// Navigation items with their respective paths and icons
+const navItems = [
+  { name: "Dashboard", href: "/", icon: LayoutDashboard },
+  { name: "Tests", href: "/tests", icon: BookOpen },
+  { name: "Question Banks", href: "/QuestionBank", icon: Database },
+  { name: "Classes", href: "/class", icon: GraduationCap },
+  { name: "Teachers", href: "/teachers", icon: Users },
+];
 
 const TopBar = () => {
+  const location = useLocation(); // Get current route path
+
   return (
-    <div className="topbar">
-      <nav className="topbar-nav">
-        <ul>
-        <li>
-            <Link to="/Institute">Dashboard</Link>
-          </li>
-          <li>
-            <Link to="/Tests">Tests</Link>
-          </li>
-          <li>
-            <Link to="/teachers">Question Banks</Link>
-          </li>
-          <li>
-            <Link to="/class" className="active">Classess</Link>
-          </li>
-          <li>
-            <Link to="/question-bank">Teachers</Link>
-          </li>
-        </ul>
-      </nav>
-    </div>
+    <header className="top-bar">
+      <div className="top-bar-container">
+        <div className="top-bar-content">
+          <nav className="nav-menu">
+            {navItems.map((item) => (
+              <Link
+                key={item.href}
+                to={item.href} // Use `to` for `Link` navigation
+                className={`nav-item ${
+                  location.pathname === item.href ? "active" : "" // Add `active` class if current route matches
+                }`}
+              >
+                <item.icon className="nav-icon" /> {/* Display icon */}
+                <span className="nav-text">{item.name}</span>{" "}
+                {/* Display name */}
+              </Link>
+            ))}
+          </nav>
+        </div>
+      </div>
+    </header>
   );
 };
 
