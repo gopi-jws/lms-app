@@ -1,0 +1,174 @@
+/* Container styling */
+.container {
+  font-family: "Poppins", sans-serif;
+  
+  padding: 20px;
+  border-radius: 5px;
+ 
+}
+
+.qs-content {
+    background-color: #ffffff;
+    padding: 40px;
+
+    border-radius: 4px;
+ 
+    margin-top: 15%;
+    font-family: 'Poppins', sans-serif;
+}
+
+.header-section {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.qs-title {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #333333; /* Darker color for better readability */
+}
+
+.qs-search {
+  padding: 8px 12px;
+  font-size: 1rem;
+  border: 1px solid #cccccc;
+  border-radius: 4px;
+  outline: none;
+  transition: border-color 0.3s ease;
+}
+
+.qs-search:focus {
+  border-color: #007bff; /* Highlighted border on focus */
+  box-shadow: 0 0 4px rgba(0, 123, 255, 0.5); /* Subtle shadow */
+}
+
+.table-container {
+  border: 1px solid #eeeeee;
+  border-radius: 8px;
+  overflow: hidden;
+  background-color: #f9f9f9;
+}
+
+.react-data-table {
+  border: none;
+  font-size: 0.9rem;
+  color: #333333;
+}
+
+.react-data-table__header {
+  background-color: #f3f3f3;
+  font-weight: bold;
+  text-align: left;
+  color: #555555;
+}
+
+.react-data-table__row {
+  transition: background-color 0.3s ease;
+}
+
+.react-data-table__row:hover {
+  background-color: #e9f7ff; /* Subtle highlight on hover */
+}
+
+.react-data-table__pagination {
+  background-color: #ffffff;
+  border-top: 1px solid #eeeeee;
+  padding: 10px;
+}
+
+.action-buttons {
+  display: flex;
+  gap: 10px; /* Spacing between action buttons */
+}
+
+.action-button {
+  background-color: #ffffff;
+  border: 1px solid #cccccc;
+  border-radius: 4px;
+  padding: 5px 8px;
+  color: #333333;
+  font-size: 0.8rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  transition: all 0.3s ease;
+}
+
+.action-button:hover {
+  /* background-color: #007bff; */
+  color: #ffffff;
+  border-color: #007bff;
+}
+
+.action-button .fa-icon {
+  font-size: 1rem;
+}
+
+/* Action buttons container */
+.action-buttons {
+  display: flex;
+  gap: 15px; /* Space between icons */
+  justify-content: flex-start; /* Align icons horizontally */
+  align-items: center;
+  flex-wrap: wrap; /* Wrap icons if needed for smaller screens */
+}
+
+/* Action icons */
+.action-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 20%;
+  background-color: #f0f0f0;
+  color: #333;
+  font-size: 1.2rem;
+  border: 1px solid #ddd;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.action-button:hover {
+  /* background-color: #007bff; */
+  color: #ffffff;
+  transform: scale(1.1); /* Slight zoom on hover */
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+}
+
+/* Specific colors for each action */
+.action-button.pdf {
+  background: linear-gradient(45deg, #d32f2fe8, #f44336);
+  color: #ffffff;
+}
+
+.action-button.folder {
+  background: #3b82f6;
+  color: #ffffff;
+}
+
+.action-button.archive {
+  background: #3b82f6;
+  color: #ffffff;
+}
+
+.action-button.edit {
+ color: #333;
+
+}
+
+.action-button.delete {
+ 
+  color: #333;
+}
+
+/* Responsive alignment for smaller screens */
+@media (max-width: 768px) {
+  .action-buttons {
+    justify-content: center;
+    flex-wrap: wrap; /* Wrap icons for smaller screens */
+  }
+}

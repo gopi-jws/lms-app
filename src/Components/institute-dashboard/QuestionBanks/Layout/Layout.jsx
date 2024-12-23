@@ -1,43 +1,23 @@
 import React from 'react';
-import { Link, Outlet } from 'react-router-dom';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faFolderOpen, faArchive, faTrash } from '@fortawesome/free-solid-svg-icons';
-
-
+import { Outlet } from 'react-router-dom';
+import TopBar from '../../class-batch/classtopbar/classtopbar';
+import Header from '../../../header/header';
+import Sidebar from '../Sidebar/Sidebar'
+import './Layout.css'
 const Layout = () => {
   return (
-    <div className="layout-container">
-      {/* Sidebar */}
-      <div className="sidebar">
-        <ul className="sidebar-list">
-          <li>
-            <Link to="/all">
-              <FontAwesomeIcon icon={faFolderOpen} className="sidebar-icon" /> All
-            </Link>
-          </li>
-          <li>
-            <Link to="/archived">
-              <FontAwesomeIcon icon={faArchive} className="sidebar-icon" /> Archived
-            </Link>
-          </li>
-          <li>
-            <Link to="/trashed">
-              <FontAwesomeIcon icon={faTrash} className="sidebar-icon" /> Trashed
-            </Link>
-          </li>
-        </ul>
-      </div>
+    <>
+      <Header />
+      <div className="questionbank-layout">
+        {/* <Sidebar className="questionbank-sidebar" /> */}
 
-      {/* Top Bar */}
-      <div className="top-bar">
-        <h2>Top Bar</h2> {/* Static top bar content */}
+        {/* Main Content Area */}
+        <div className="questionbank-content">
+          <TopBar />
+          <Outlet />
+        </div>
       </div>
-
-      {/* Dynamic Content */}
-      <div className="content-area">
-        <Outlet /> {/* The content changes dynamically based on the route */}
-      </div>
-    </div>
+    </>
   );
 };
 
