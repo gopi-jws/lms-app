@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import AddQuestionSidebar from "../AddQuestionSidebar/AddQuestionSidebar"; // Sidebar import
+import TopBar from "../../class-batch/classtopbar/classtopbar";
 
 
 const QuestionsAdd = () => {
@@ -24,8 +25,7 @@ const QuestionsAdd = () => {
  
 
       <div className="page-layout">
-        {/* Sidebar */}
-        <AddQuestionSidebar />
+    <TopBar />
 
         {/* Main Content */}
         <div className="content-area">
