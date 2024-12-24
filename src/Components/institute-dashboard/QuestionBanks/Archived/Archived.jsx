@@ -2,6 +2,7 @@ import React from "react";
 import DataTable from "react-data-table-component";
 import { FaUndo } from "react-icons/fa";
 import "./Archived.css";
+import TopBar from "../../class-batch/classtopbar/classtopbar";
 
 const Archived = () => {
   const archivedData = [
@@ -41,6 +42,7 @@ const Archived = () => {
 
   return (
     <div className="archived-page">
+      <TopBar />
       <div className="archived-title-container">
         <h2 className="archived-title">Archived Contents</h2>
       </div>

@@ -1,12 +1,13 @@
-import React from 'react';
-import { Outlet } from 'react-router-dom';
-import TopBar from '../../class-batch/classtopbar/classtopbar';
-import Header from '../../../header/header';
-import Sidebar from '../Sidebar/Sidebar'
-import './Layout.css'
+import React from "react";
+import { Outlet } from "react-router-dom";
+import TestSidebar from "../TestSidebar/TestSidebar";
+import Header from "../../../header/header";
+import "./Layout.css"; // Import the CSS for layout styling
+
+
 const Layout = () => {
   return (
-   <div className="layout-container">
+    <div className="layout-container">
       {/* Header */}
       <Header />
       {/* TopBar */}
@@ -15,7 +16,7 @@ const Layout = () => {
       {/* Main Content Area with Sidebar */}
       <div className="layout-main">
         {/* Sidebar */}
-        <Sidebar />
+        <TestSidebar />
 
         {/* Page Content */}
         <main className="layout-content">
@@ -25,6 +26,5 @@ const Layout = () => {
     </div>
   );
 };
-
 
 export default Layout;

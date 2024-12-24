@@ -1,0 +1,175 @@
+.test-index-container {
+  padding: 20px;
+}
+
+.test-index-title {
+  font-size: 2rem;
+}
+
+.test-index-description {
+  font-size: 1.2rem;
+  margin-bottom: 20px;
+}
+
+.test-index-cards {
+  display: flex;
+  gap: 20px;
+}
+
+.test-card {
+  border: 1px solid #ddd;
+  padding: 15px;
+  width: 250px;
+}
+
+.test-card-title {
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+}
+
+.test-card-description {
+  font-size: 1rem;
+}
+
+.test-action-buttons {
+  display: flex;
+  gap: 10px; /* Add spacing between buttons */
+}
+
+.test-action-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 35px;
+  height: 35px;
+  border: none;
+  border-radius: 50%;
+  background-color: #f1f3f5; /* Light gray background */
+  color: #495057; /* Neutral icon color */
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.2s;
+}
+
+.test-action-button:hover {
+  background-color: #e9ecef; /* Slightly darker gray on hover */
+  transform: translateY(-2px); /* Lift effect */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15); /* Elevated shadow */
+}
+
+.test-action-button:active {
+  transform: translateY(0); /* Reset lift on click */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Reset shadow */
+}
+
+/* Individual Button Colors */
+.test-action-button.dispatch {
+  background-color: #eaf7ff; /* Soft sky blue */
+  color: #2196f3; /* Vibrant blue icon */
+}
+
+.test-action-button.dispatch:hover {
+  background-color: #d5efff; /* Slightly darker blue */
+}
+
+.test-action-button.copy {
+  background-color: #fff7e6; /* Light pastel peach */
+  color: #ff9800; /* Orange icon */
+}
+
+.test-action-button.copy:hover {
+  background-color: #ffebcc; /* Darker peach */
+}
+
+.test-action-button.pdf {
+  background-color: #ffe6e9; /* Light blush pink */
+  color: #e53935; /* Deep red icon */
+}
+
+.test-action-button.pdf:hover {
+  background-color: #ffccd3; /* Darker blush */
+}
+
+.test-action-button.share {
+  background-color: #e6f9f3; /* Soft mint green */
+  color: #43a047; /* Green icon */
+}
+
+.test-action-button.share:hover {
+  background-color: #ccf3e6; /* Darker mint */
+}
+
+.test-action-button.archive {
+  background-color: #f3e6ff; /* Light lavender */
+  color: #8e44ad; /* Purple icon */
+}
+
+.test-action-button.archive:hover {
+  background-color: #e6ccff; /* Darker lavender */
+}
+
+.test-action-button.delete {
+  background-color: #ffeae6; /* Soft salmon pink */
+  color: #d84315; /* Deep orange icon */
+}
+
+.test-action-button.delete:hover {
+  background-color: #ffc9bb; /* Darker salmon */
+}
+
+.load-more-container {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.load-more-button {
+  padding: 10px 20px;
+  font-size: 1rem;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.load-more-button:hover {
+ 
+}
+.test-search-container {
+  display: flex;
+  align-items: center;
+  background-color: #f1f1f1; /* Light gray background */
+  border: 1px solid #ccc; /* Subtle border */
+  border-radius: 5px; /* Rounded corners */
+  padding: 8px 12px; /* Spacing inside the box */
+  width: 100%; /* Full width */
+  max-width: 400px; /* Optional: Limit max width */
+  margin: 10px auto; /* Center align in the parent container */
+  position: relative; /* For positioning the icon */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Soft shadow */
+}
+
+.test-search-input {
+  flex: 1; /* Take up available space */
+  border: none; /* Remove default border */
+  outline: none; /* Remove outline on focus */
+  background: transparent; /* Match the background */
+  font-size: 16px; /* Adjust font size */
+  color: #333; /* Dark text color */
+  padding-right: 30px; /* Space for the icon */
+}
+
+.test-search-input::placeholder {
+  color: #888; /* Subtle placeholder color */
+}
+
+.test-search-icon {
+  color: #555; /* Icon color */
+  font-size: 18px; /* Adjust icon size */
+  position: absolute; /* Position relative to the container */
+  right: 12px; /* Space from the right */
+  top: 50%; /* Center vertically */
+  transform: translateY(-50%); /* Center icon */
+  margin-right: 20px;
+  pointer-events: none; /* Icon is non-interactive */
+}

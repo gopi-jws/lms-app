@@ -13,7 +13,6 @@
 
     border-radius: 4px;
  
-    margin-top: 15%;
     font-family: 'Poppins', sans-serif;
 }
 
@@ -171,4 +170,30 @@
     justify-content: center;
     flex-wrap: wrap; /* Wrap icons for smaller screens */
   }
+}
+
+.qb-button {
+  padding: 10px 20px;
+  background-color: #007bff; /* Blue background */
+  color: white; /* Text color */
+  border: none; /* No border */
+  border-radius: 5px; /* Rounded corners */
+  font-size: 16px; /* Font size */
+  cursor: pointer; /* Pointer cursor on hover */
+  transition: background-color 0.3s, transform 0.2s; /* Smooth transition on hover */
+}
+
+.qb-button:hover {
+  background-color: #0056b3; /* Darker blue on hover */
+  transform: scale(1.05); /* Slightly larger on hover */
+}
+
+.qb-button:focus {
+  outline: none; /* Remove default focus outline */
+  box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.5); /* Add focus shadow */
+}
+
+.qb-button:active {
+  background-color: #004085; /* Even darker blue when pressed */
+  transform: scale(1); /* Remove hover scale effect */
 }
