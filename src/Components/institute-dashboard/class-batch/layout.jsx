@@ -4,6 +4,7 @@ import ClassSideMenu from "./classsidemenu/classsidemenu";
 import TopBar from "./classtopbar/classtopbar";
 import { Outlet } from "react-router-dom";
 
+
 const Layout = () => {
   return (
     <>

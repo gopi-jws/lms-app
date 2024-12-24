@@ -4,35 +4,37 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCog, faEdit, faTrashAlt } from "@fortawesome/free-solid-svg-icons";
 import { MdOutlineArchive } from "react-icons/md";
 import { format } from "date-fns";
+import { Link } from 'react-router-dom';
 import './classpage.css';
 
 const ClassPage = ({ classes, handleRename, handleSettings, handleArchive, handleTrash }) => {
-  const [isModalOpen, setIsModalOpen] = useState(false);  
-  const [newClassName, setNewClassName] = useState(""); 
-  const [editingClassId, setEditingClassId] = useState(null);  
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [newClassName, setNewClassName] = useState("");
+  const [editingClassId, setEditingClassId] = useState(null);
 
   const handleOpenRenameModal = (classId) => {
     const classToRename = classes.find((cls) => cls.id === classId);
     if (classToRename) {
-      setNewClassName(classToRename.name);  
-      setEditingClassId(classId);  
-      setIsModalOpen(true); 
+      setNewClassName(classToRename.name);
+      setEditingClassId(classId);
+      setIsModalOpen(true);
     }
   };
 
   const handleInputChange = (e) => {
-    setNewClassName(e.target.value);  
+    setNewClassName(e.target.value);
   };
 
   const handleRenameSubmit = () => {
     if (newClassName.trim()) {
-      handleRename(editingClassId, newClassName);  
-      setIsModalOpen(false);  
+      handleRename(editingClassId, newClassName);
+      setIsModalOpen(false);
     }
   };
+  
 
   return (
-    <div className="container py-5" style={{ marginLeft: '250px', width: 'calc(100% - 250px)' }}>
+    <div className="container py-5" style={{ marginLeft: '220px', width: 'calc(100% - 220px)' }}>
       <table className="table">
         <thead>
           <tr>
@@ -46,7 +48,13 @@ const ClassPage = ({ classes, handleRename, handleSettings, handleArchive, handl
         <tbody>
           {classes.map((cls) => (
             <tr key={cls.id}>
-              <td>{cls.name}</td>
+               <td>
+                {/* Use Link component to navigate to ClassDetailsPage */}
+                <Link to={`/class/classdetailpage/${cls.id}/${cls.name}`} className="text-decoration-none">
+  {cls.name}
+</Link>
+
+              </td>
               <td>{cls.strength}</td>
               <td>{cls.maximumallowed}</td>
               <td>{format(cls.expiryDate, "PP")}</td>
@@ -92,6 +100,12 @@ const ClassPage = ({ classes, handleRename, handleSettings, handleArchive, handl
           </div>
         </div>
       )}
+
+      <div className="classpage-button-container">
+        <Link to="/class/addclass" className="class-page-add-class-btn">
+          Add Class
+        </Link>
+      </div>
     </div>
   );
 };

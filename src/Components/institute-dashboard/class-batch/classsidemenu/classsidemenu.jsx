@@ -15,7 +15,7 @@ const ClassSideMenu = ({ archivedCount, trashedCount }) => {
         </li>
         <li>
           <Link
-            to="/class/new-class"  // Ensure this matches the route defined
+            to="/class/addclass"  
             className={`menu-item ${location.pathname === "/class/new-class" ? "active" : ""}`}
           >
             <FontAwesomeIcon icon={faPlus} />

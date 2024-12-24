@@ -7,7 +7,7 @@ import './trashpage.css';
 
 const TrashPage = ({ trashedClasses, handleRestore, handleTrashDelete }) => {
   return (
-    <div className="container py-5" style={{ marginLeft: '250px', width: 'calc(100% - 250px)' }}>
+    <div className="container py-5" style={{ marginLeft: '220px', width: 'calc(100% - 220px)' }}>
       {trashedClasses.length > 0 ? (
         <table className="table">
           <thead>

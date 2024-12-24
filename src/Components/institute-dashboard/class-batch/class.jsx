@@ -1,21 +1,27 @@
 import React, { useState } from "react";
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, useNavigate } from "react-router-dom";
 import ClassPage from "./classpage/classpage";
 import ArchivePage from "./archive/archivepage";
 import TrashPage from "./trashpage/trashpage";
 import Layout from "./layout";
+import AddClass from "./newclasspage/newclasspage";
+import ClassDetailsPage from "./classdetailspage/classdetailspage";
 
 // Initial class data
 const initialClasses = [
   { id: "1", name: "Mathematics", strength: 30, maximumallowed: 50, expiryDate: new Date(2024, 5, 30) },
-  { id: "2", name: "Physics", strength: 25, maximumallowed: 50, expiryDate: new Date(2024, 6, 15) },
-  { id: "3", name: "Chemistry", strength: 28, maximumallowed: 50, expiryDate: new Date(2024, 7, 1) },
+  { id: "2", name: "Physics", strength: 25, maximumallowed: 100, expiryDate: new Date(2024, 6, 15) },
+  { id: "3", name: "Chemistry", strength: 28, maximumallowed: 70, expiryDate: new Date(2024, 7, 1) },
 ];
 
 const Class = () => {
   const [classes, setClasses] = useState(initialClasses);
   const [archivedClasses, setArchivedClasses] = useState([]);
   const [trashedClasses, setTrashedClasses] = useState([]);
+
+  const handleAddClass = (newClass) => {
+    setClasses([...classes, newClass]);
+  };
 
   const handleArchive = (id) => {
     const classToArchive = classes.find((c) => c.id === id);
@@ -76,6 +82,12 @@ const Class = () => {
               handleTrash={handleTrash}
             />
           }
+        />
+        {/* Route for ClassDetailsPage with dynamic :id */}
+        <Route path="/class/classdetailpage/:id" element={<ClassDetailsPage />} />
+        <Route
+          path="AddClass"
+          element={<AddClass handleAddClass={handleAddClass} />}
         />
         <Route
           path="ArchivePage"
