@@ -1,33 +1,24 @@
-import React, { useState } from 'react';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCog, faEdit, faTrashAlt } from '@fortawesome/free-solid-svg-icons';
-import { MdOutlineArchive } from 'react-icons/md';
-import { format } from 'date-fns';
-import { Button } from 'react-bootstrap';
-import ClassSideMenu from '../classsidemenu/classsidemenu';
+import React, { useState } from "react";
+import { Button } from "react-bootstrap";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCog, faEdit, faTrashAlt } from "@fortawesome/free-solid-svg-icons";
+import { MdOutlineArchive } from "react-icons/md";
+import { format } from "date-fns";
+import { Link } from 'react-router-dom';
 import './classpage.css';
 
-const initialClasses = [
-  { id: '1', name: 'Mathematics', strength: 30, maximumallowed: 50, expiryDate: new Date(2024, 5, 30) },
-  { id: '2', name: 'Physics', strength: 25, maximumallowed: 50, expiryDate: new Date(2024, 6, 15) },
-  { id: '3', name: 'Chemistry', strength: 28, maximumallowed: 50, expiryDate: new Date(2024, 7, 1) },
-];
-
-const ClassPage = () => {
-  const [classes, setClasses] = useState(initialClasses);
-  const [archivedClasses, setArchivedClasses] = useState([]);
-  const [trashedClasses, setTrashedClasses] = useState([]);
+const ClassPage = ({ classes, handleRename, handleSettings, handleArchive, handleTrash }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [newClassName, setNewClassName] = useState('');
-  const [currentClassId, setCurrentClassId] = useState('');
+  const [newClassName, setNewClassName] = useState("");
+  const [editingClassId, setEditingClassId] = useState(null);
 
-  const handleSettings = (id) => {
-    console.log(`Settings for class ${id}`);
-  };
-
-  const handleRename = (id) => {
-    setCurrentClassId(id);
-    setIsModalOpen(true);
+  const handleOpenRenameModal = (classId) => {
+    const classToRename = classes.find((cls) => cls.id === classId);
+    if (classToRename) {
+      setNewClassName(classToRename.name);
+      setEditingClassId(classId);
+      setIsModalOpen(true);
+    }
   };
 
   const handleInputChange = (e) => {
@@ -35,86 +26,62 @@ const ClassPage = () => {
   };
 
   const handleRenameSubmit = () => {
-    if (newClassName) {
-      setClasses(classes.map((c) => (c.id === currentClassId ? { ...c, name: newClassName } : c)));
+    if (newClassName.trim()) {
+      handleRename(editingClassId, newClassName);
       setIsModalOpen(false);
-      setNewClassName('');
     }
   };
-
-  const handleArchive = (id) => {
-    const classToArchive = classes.find((c) => c.id === id);
-    if (classToArchive) {
-      setClasses(classes.filter((c) => c.id !== id));
-      setArchivedClasses([...archivedClasses, classToArchive]);
-    }
-  };
-
-  const handleDelete = (id) => {
-    const classToDelete = classes.find((c) => c.id === id);
-    if (classToDelete) {
-      setClasses(classes.filter((c) => c.id !== id));
-      setTrashedClasses([...trashedClasses, classToDelete]);
-    }
-  };
-
-  const handleUnarchive = (id) => {
-    const classToUnarchive = archivedClasses.find((c) => c.id === id);
-    if (classToUnarchive) {
-      setArchivedClasses(archivedClasses.filter((c) => c.id !== id));
-      setClasses([...classes, classToUnarchive]);
-    }
-  };
-
-  const handleArchiveDelete = (id) => {
-    setArchivedClasses(archivedClasses.filter((c) => c.id !== id));
-  };
+  
 
   return (
-    <div className="d-flex">
-      <ClassSideMenu archivedCount={archivedClasses.length} trashedCount={trashedClasses.length} />
+    <div className="container py-5" style={{ marginLeft: '220px', width: 'calc(100% - 220px)' }}>
+      <table className="table">
+        <thead>
+          <tr>
+            <th>Class Name</th>
+            <th>Strength</th>
+            <th>Maximum Allowed</th>
+            <th>Expiry Date</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          {classes.map((cls) => (
+            <tr key={cls.id}>
+               <td>
+                {/* Use Link component to navigate to ClassDetailsPage */}
+                <Link to={`/class/classdetailpage/${cls.id}/${cls.name}`} className="text-decoration-none">
+  {cls.name}
+</Link>
 
-      <div className="container py-5" style={{ marginLeft: '250px', width: 'calc(100% - 250px)' }}>
-        <table className="table">
-          <thead>
-            <tr>
-              <th>Class Name</th>
-              <th>Strength</th>
-              <th>Maximum Allowed</th>
-              <th>Expiry Date</th>
-              <th>Actions</th>
+              </td>
+              <td>{cls.strength}</td>
+              <td>{cls.maximumallowed}</td>
+              <td>{format(cls.expiryDate, "PP")}</td>
+              <td>
+                <div className="d-flex">
+                  <Button variant="outline-secondary" size="sm" onClick={() => handleSettings(cls.id)} className="me-2">
+                    <FontAwesomeIcon icon={faCog} className="h-4 w-4" />
+                  </Button>
+
+                  <Button variant="outline-secondary" size="sm" onClick={() => handleOpenRenameModal(cls.id)} className="me-2">
+                    <FontAwesomeIcon icon={faEdit} className="h-4 w-4" />
+                  </Button>
+
+                  <Button variant="outline-secondary" size="sm" onClick={() => handleArchive(cls.id)} className="me-2">
+                    <MdOutlineArchive className="h-4 w-4" style={{ fontSize: '21px' }} />
+                  </Button>
+
+                  <Button variant="outline-secondary" size="sm" onClick={() => handleTrash(cls.id)} className="me-2">
+                    <FontAwesomeIcon icon={faTrashAlt} className="h-4 w-4" />
+                  </Button>
+                </div>
+              </td>
             </tr>
-          </thead>
-          <tbody>
-            {classes.map((cls) => (
-              <tr key={cls.id}>
-                <td>{cls.name}</td>
-                <td>{cls.strength}</td>
-                <td>{cls.maximumallowed}</td>
-                <td>{format(cls.expiryDate, 'PP')}</td>
-                <td>
-                  <div className="d-flex">
-                    <Button variant="outline-secondary" size="sm" onClick={() => handleSettings(cls.id)} className="me-2">
-                      <FontAwesomeIcon icon={faCog} className="h-4 w-4" />
-                    </Button>
-                    <Button variant="outline-secondary" size="sm" onClick={() => handleRename(cls.id)} className="me-2">
-                      <FontAwesomeIcon icon={faEdit} className="h-4 w-4" />
-                    </Button>
-                    <Button variant="outline-secondary" size="sm" onClick={() => handleArchive(cls.id)} className="me-2">
-                      <MdOutlineArchive className="h-4 w-4" style={{ fontSize: '21px' }} />
-                    </Button>
-                    <Button variant="outline-secondary" size="sm" onClick={() => handleDelete(cls.id)} className="me-2">
-                      <FontAwesomeIcon icon={faTrashAlt} className="h-4 w-4" />
-                    </Button>
-                  </div>
-                </td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      </div>
+          ))}
+        </tbody>
+      </table>
 
-      {/* Modal for renaming class */}
       {isModalOpen && (
         <div className="modal-overlay">
           <div className="modal-container">
@@ -133,8 +100,12 @@ const ClassPage = () => {
           </div>
         </div>
       )}
-      
-      {/* Render nested routes here */}
+
+      <div className="classpage-button-container">
+        <Link to="/class/addclass" className="class-page-add-class-btn">
+          Add Class
+        </Link>
+      </div>
     </div>
   );
 };

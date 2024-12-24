@@ -3,11 +3,12 @@ import { Button } from "react-bootstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUndo, faTrashAlt } from "@fortawesome/free-solid-svg-icons";
 import { format } from "date-fns";
-import './archivepage.css';
-const ArchivePage = ({ archivedClasses, handleUnarchive, handleArchiveDelete }) => {
+import './trashpage.css';
+
+const TrashPage = ({ trashedClasses, handleRestore, handleTrashDelete }) => {
   return (
     <div className="container py-5" style={{ marginLeft: '220px', width: 'calc(100% - 220px)' }}>
-      {archivedClasses.length > 0 ? (
+      {trashedClasses.length > 0 ? (
         <table className="table">
           <thead>
             <tr>
@@ -19,7 +20,7 @@ const ArchivePage = ({ archivedClasses, handleUnarchive, handleArchiveDelete }) 
             </tr>
           </thead>
           <tbody>
-            {archivedClasses.map((cls) => (
+            {trashedClasses.map((cls) => (
               <tr key={cls.id}>
                 <td>{cls.name}</td>
                 <td>{cls.strength}</td>
@@ -27,12 +28,12 @@ const ArchivePage = ({ archivedClasses, handleUnarchive, handleArchiveDelete }) 
                 <td>{format(cls.expiryDate, "PP")}</td>
                 <td>
                   <div className="d-flex">
-                    {/* Unarchive Button with FontAwesome Icon */}
-                    <Button variant="outline-secondary" size="sm" onClick={() => handleUnarchive(cls.id)} className="me-2">
+                    {/* Restore Button */}
+                    <Button variant="outline-secondary" size="sm" onClick={() => handleRestore(cls.id)} className="me-2">
                       <FontAwesomeIcon icon={faUndo} className="h-4 w-4" />
                     </Button>
-                    {/* Delete Button with FontAwesome Icon */}
-                    <Button variant="outline-secondary" size="sm" onClick={() => handleArchiveDelete(cls.id)} className="me-2">
+                    {/* Permanently Delete Button */}
+                    <Button variant="outline-secondary" size="sm" onClick={() => handleTrashDelete(cls.id)} className="me-2">
                       <FontAwesomeIcon icon={faTrashAlt} className="h-4 w-4" />
                     </Button>
                   </div>
@@ -42,13 +43,12 @@ const ArchivePage = ({ archivedClasses, handleUnarchive, handleArchiveDelete }) 
           </tbody>
         </table>
       ) : (
-        <div className="No-archive">
-          <p>No archived classes available.</p>
+        <div className="No-trash">
+          <p>No trashed classes available.</p>
         </div>
-
       )}
     </div>
   );
 };
 
-export default ArchivePage;
+export default TrashPage;
