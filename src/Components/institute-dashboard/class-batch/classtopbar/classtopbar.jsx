@@ -22,7 +22,7 @@ const TopBar = () => {
   const location = useLocation(); // Get current route path
 
   return (
-    <header className="top-bar">
+    <header className="top-bar" style={{ marginLeft: '220px', width: 'calc(100% - 220px)' }}>
       <div className="top-bar-container">
         <div className="top-bar-content">
           <nav className="nav-menu">

@@ -15,7 +15,7 @@ const ClassSideMenu = ({ archivedCount, trashedCount }) => {
         </li>
         <li>
           <Link
-            to="/class/new-class"  // Ensure this matches the route defined
+            to="/class/addclass"  
             className={`menu-item ${location.pathname === "/class/new-class" ? "active" : ""}`}
           >
             <FontAwesomeIcon icon={faPlus} />
@@ -24,7 +24,7 @@ const ClassSideMenu = ({ archivedCount, trashedCount }) => {
         </li>
         <li>
           <Link
-            to="/class/archivepage" // Ensure the path is correct
+            to="/class/archivepage" 
             className={`menu-item ${location.pathname === "/class/archivepage" ? "active" : ""}`}
           > 
             <FontAwesomeIcon icon={faArchive} />
@@ -36,8 +36,8 @@ const ClassSideMenu = ({ archivedCount, trashedCount }) => {
         </li>
         <li>
           <Link
-            to="/class/trashed" // Ensure the path is correct
-            className={`menu-item ${location.pathname === "/class/trashed" ? "active" : ""}`}
+            to="/class/trashPage" 
+            className={`menu-item ${location.pathname === "/class/trashPage" ? "active" : ""}`}
           >
             <FontAwesomeIcon icon={faTrash} />
             <span className="menu-text">
@@ -48,7 +48,6 @@ const ClassSideMenu = ({ archivedCount, trashedCount }) => {
         </li>
       </ul>
 
-      {/* <Outlet /> */}
     </div>
   );
 };

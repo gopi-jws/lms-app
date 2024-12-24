@@ -1,9 +1,8 @@
 .top-bar {
     position: fixed;
-    top: 86px;
-    margin-left: 5px;
- 
-    /* z-index: 1000; */
+    top: 80px;
+    margin-left: 4px;
+    z-index: 1000;
     width: 79%;
     background: linear-gradient(to right, #3b82f6, #4f46e5, #7c3aed);
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
@@ -42,7 +41,6 @@
   padding: 0.5rem 0.75rem;
   color: rgba(255, 255, 255, 0.8);
   text-decoration: none;
-  /* font-size: 0.875rem; */
   font-weight: 500;
   transition: background-color 0.2s, color 0.2s;
   border-radius: 0.25rem;
