@@ -10,6 +10,8 @@ import Modal from "../QuestionBanks/NewQBModal/Modal";
 import ConfirmationModal from "../QuestionBanks/NewQBModal/ConfirmationModal"; // Import confirmation modal
 import Header from "../../header/header";
 import TopBar from "../class-batch/classtopbar/classtopbar";
+import QuestionsAdd from "./QuestionsAdd/QuestionsAdd";
+import { useParams, useNavigate } from "react-router-dom";
 
 const QuestionBank = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -17,76 +19,25 @@ const QuestionBank = () => {
   const [rows, setRows] = useState([]);
   const [editRow, setEditRow] = useState(null); // To track the row being edited
 
-  const handleAddOrUpdateRow = (data) => {
-    if (editRow !== null) {
-      // Update existing row
-      setRows((prevRows) =>
-        prevRows.map((row, index) => (index === editRow ? data : row))
-      );
-    } else {
-      // Add new row
-      setRows((prevRows) => [...prevRows, data]);
-    }
-    setIsModalOpen(false);
-    setEditRow(null);
-  };
-
-  const handleDeleteRow = (index) => {
-    setRows((prevRows) => prevRows.filter((_, i) => i !== index));
-    setIsConfirmModalOpen(false);
-  };
-
   return (
     <>
-    
       <div className="question-bank-layout">
-        <Sidebar openModal={() => setIsModalOpen(true)} />
         <div className="content-area">
-        
+          {/* Nested Routes */}
           <Routes>
             {/* Define the parent route with Layout */}
             <Route path="/" element={<Layout />}>
               {/* Child routes */}
-              <Route
-                index
-                element={
-                  <Questionindex
-                    rows={rows}
-                    onEdit={(index) => {
-                      setEditRow(index);
-                      setIsModalOpen(true);
-                    }}
-                    onDelete={(index) => {
-                      setEditRow(index);
-                      setIsConfirmModalOpen(true);
-                    }}
-                  />
-                }
-              />
+              <Route index element={<Questionindex />} />
               <Route path="Trashed" element={<Trashed />} />
               <Route path="Archived" element={<Archived />} />
               <Route path="All" element={<All />} />
+              <Route path=":id/add" element={<QuestionsAdd />} />{" "}
+              {/* Dynamic route for adding question */}
             </Route>
           </Routes>
         </div>
       </div>
-
-      {isModalOpen && (
-        <Modal
-          onClose={() => {
-            setIsModalOpen(false);
-            setEditRow(null);
-          }}
-          onSubmit={handleAddOrUpdateRow}
-          initialData={editRow !== null ? rows[editRow] : null}
-        />
-      )}
-      {isConfirmModalOpen && (
-        <ConfirmationModal
-          onClose={() => setIsConfirmModalOpen(false)}
-          onConfirm={() => handleDeleteRow(editRow)}
-        />
-      )}
     </>
   );
 };

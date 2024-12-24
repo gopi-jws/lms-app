@@ -53,10 +53,10 @@ const SidebarMenu = () => {
         </li>
 
         <li>
-          <a href="/test" className="waves-effect">
+          <Link to="Test" className="waves-effect">
             <FontAwesomeIcon icon={faFolderOpen} />
             <span key="t-chat">Tests</span>
-          </a>
+          </Link>
         </li>
 
         <li>

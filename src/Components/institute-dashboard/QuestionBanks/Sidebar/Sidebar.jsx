@@ -1,15 +1,18 @@
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { FaDatabase } from "react-icons/fa"; // Import the database icon
+
 import {
   faUserCircle,
-  faUser,
   faFolderPlus,
   faEdit,
   faTrash,
   faFolderOpen,
   faArchive,
   faCheck,
+  faChevronDown,
+  faChevronUp,
 } from "@fortawesome/free-solid-svg-icons";
 import "./Sidebar.css";
 
@@ -21,6 +24,10 @@ const Sidebar = ({ openModal }) => {
 
   const [editingFolderId, setEditingFolderId] = useState(null);
   const [editedFolderName, setEditedFolderName] = useState("");
+  const [isCollapsed, setIsCollapsed] = useState(false);
+  const [activeSection, setActiveSection] = useState("questionBank");
+
+  const location = useLocation();
 
   useEffect(() => {
     localStorage.setItem("folders", JSON.stringify(folders));
@@ -52,102 +59,163 @@ const Sidebar = ({ openModal }) => {
     setFolders(folders.filter((folder) => folder.id !== id));
   };
 
+  const toggleCollapse = () => {
+    setIsCollapsed(!isCollapsed);
+  };
+
+  const toggleSection = (section) => {
+    setActiveSection(activeSection === section ? null : section);
+  };
+
+  const isActive = (path) => location.pathname === path;
+
   return (
-    <div className="sidebar">
-      <div className="sidebar-section">
-        <h2 className="sidebar-heading">Question Bank</h2>
-        <button onClick={openModal} className="sidebar-button">
-          <FontAwesomeIcon icon={faFolderPlus} />
-          <span>New QB</span>
-        </button>
+    <div className={`sidebar ${isCollapsed ? "collapsed" : ""}`}>
+      <div className="questionbank-sidebar-header">
+        <h1 className="sidebar-title">
+          <FaDatabase className="db-icon" /> {/* Add the database icon */}
+          QB Manager
+        </h1>
+        {/* <button onClick={toggleCollapse} className="collapse-button">
+          <FontAwesomeIcon icon={isCollapsed ? faChevronDown : faChevronUp} />
+        </button> */}
       </div>
 
-      <nav className="sidebar-nav">
-        <Link to="/Questionbank" className="sidebar-link">
-          <FontAwesomeIcon icon={faFolderOpen} className="sidebar-icon" />
-          <span>All</span>
-        </Link>
-        <Link to="/Questionbank/archived" className="sidebar-link">
-          <FontAwesomeIcon icon={faArchive} className="sidebar-icon" />
-          <span>Archived</span>
-        </Link>
-        <Link to="/Questionbank/Trashed" className="sidebar-link">
-          <FontAwesomeIcon icon={faTrash} className="sidebar-icon" />
-          <span>Trashed</span>
-        </Link>
-      </nav>
+      <div className="sidebar-content">
+        {/* Unique Design Section */}
+        <div className="unique-design">
+          <FontAwesomeIcon icon={faUserCircle} className="unique-icon" />
+          <p className="unique-text d-flex">
+            Manage your Question Bank efficiently!
+          </p>
+        </div>
 
-      <div className="sidebar-divider"></div>
+        <div
+          className={`sidebar-section ${
+            activeSection === "questionBank" ? "active" : ""
+          }`}
+        >
+          <h2
+            className="sidebar-heading"
+            onClick={() => toggleSection("questionBank")}
+          >
+            Question Bank
+            <FontAwesomeIcon icon={faChevronDown} className="section-icon" />
+          </h2>
+          <div className="section-content">
+            <button onClick={openModal} className="sidebar-button ripple">
+              <span className="sidebar-title2">
+                <FontAwesomeIcon icon={faFolderPlus} className="newqbicon" />
+                New QB
+              </span>
+            </button>
 
-      <div className="sidebar-section">
-        <h2 className="sidebar-heading">Folders</h2>
-        <button onClick={addNewFolder} className="sidebar-button">
-          <FontAwesomeIcon icon={faFolderPlus} />
-          <span>New Folder</span>
-        </button>
+            <nav className="sidebar-nav">
+              <Link
+                to="/Questionbank"
+                className={`sidebar-link ${
+                  isActive("/Questionbank") ? "active" : ""
+                }`}
+              >
+                <FontAwesomeIcon icon={faFolderOpen} className="sidebar-icon" />
+                <span>All</span>
+              </Link>
+              <Link
+                to="/Questionbank/archived"
+                className={`sidebar-link ${
+                  isActive("/Questionbank/archived") ? "active" : ""
+                }`}
+              >
+                <FontAwesomeIcon icon={faArchive} className="sidebar-icon" />
+                <span>Archived</span>
+              </Link>
+              <Link
+                to="/Questionbank/Trashed"
+                className={`sidebar-link ${
+                  isActive("/Questionbank/Trashed") ? "active" : ""
+                }`}
+              >
+                <FontAwesomeIcon icon={faTrash} className="sidebar-icon" />
+                <span>Trashed</span>
+              </Link>
+            </nav>
+          </div>
+        </div>
+
+        <div className="sidebar-divider"></div>
+
+        <div
+          className={`sidebar-section ${
+            activeSection === "folders" ? "active" : ""
+          }`}
+        >
+          <h2
+            className="sidebar-heading"
+            onClick={() => toggleSection("folders")}
+          >
+            Folders
+            <FontAwesomeIcon icon={faChevronDown} className="section-icon" />
+          </h2>
+          <div className="section-content">
+            <button onClick={addNewFolder} className="sidebar-button ripple">
+              <FontAwesomeIcon icon={faFolderPlus} />
+              <span>New Folder</span>
+            </button>
+
+            <ul className="folder-list">
+              {folders.map((folder) => (
+                <li key={folder.id} className="folder-item">
+                  {editingFolderId === folder.id ? (
+                    <input
+                      type="text"
+                      value={editedFolderName}
+                      onChange={(e) => setEditedFolderName(e.target.value)}
+                      onBlur={() => saveFolderName(folder.id)}
+                      onKeyPress={(e) =>
+                        e.key === "Enter" && saveFolderName(folder.id)
+                      }
+                      className="folder-edit-input"
+                      autoFocus
+                    />
+                  ) : (
+                    <span className="folder-name">{folder.name}</span>
+                  )}
+                  <div className="folder-actions">
+                    {editingFolderId === folder.id ? (
+                      <button
+                        onClick={() => saveFolderName(folder.id)}
+                        className="folder-action-button"
+                        aria-label="Save folder name"
+                      >
+                        <FontAwesomeIcon icon={faCheck} />
+                      </button>
+                    ) : (
+                      <>
+                        <button
+                          onClick={() =>
+                            startEditingFolder(folder.id, folder.name)
+                          }
+                          className="folder-action-button"
+                          aria-label="Edit folder name"
+                        >
+                          <FontAwesomeIcon icon={faEdit} />
+                        </button>
+                        <button
+                          onClick={() => deleteFolder(folder.id)}
+                          className="folder-action-button"
+                          aria-label="Delete folder"
+                        >
+                          <FontAwesomeIcon icon={faTrash} />
+                        </button>
+                      </>
+                    )}
+                  </div>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
       </div>
-
-      <ul className="folder-list">
-        {folders.map((folder) => (
-          <li key={folder.id} className="folder-item">
-            {editingFolderId === folder.id ? (
-              <input
-                type="text"
-                value={editedFolderName}
-                onChange={(e) => setEditedFolderName(e.target.value)}
-                className="folder-edit-input"
-                autoFocus
-              />
-            ) : (
-              <span className="folder-name">{folder.name}</span>
-            )}
-            <div className="folder-actions">
-              {editingFolderId === folder.id ? (
-                <button
-                  onClick={() => saveFolderName(folder.id)}
-                  className="folder-action-button"
-                  aria-label="Save folder name"
-                >
-                  <FontAwesomeIcon icon={faCheck} />
-                </button>
-              ) : (
-                <>
-                  <button
-                    onClick={() => startEditingFolder(folder.id, folder.name)}
-                    className="folder-action-button"
-                    aria-label="Edit folder name"
-                  >
-                    <FontAwesomeIcon icon={faEdit} />
-                  </button>
-                  <button
-                    onClick={() => deleteFolder(folder.id)}
-                    className="folder-action-button"
-                    aria-label="Delete folder"
-                  >
-                    <FontAwesomeIcon icon={faTrash} />
-                  </button>
-                </>
-              )}
-            </div>
-          </li>
-        ))}
-      </ul>
-
-      <div className="sidebar-divider"></div>
-
-      {/* <div className="sidebar-section">
-        <h2 className="sidebar-heading">Profile Info</h2>
-        <nav className="sidebar-nav">
-          <Link to="/profile" className="sidebar-link">
-            <FontAwesomeIcon icon={faUserCircle} className="sidebar-icon" />
-            <span>Profile</span>
-          </Link>
-          <Link to="/info" className="sidebar-link">
-            <FontAwesomeIcon icon={faUser} className="sidebar-icon" />
-            <span>Info</span>
-          </Link>
-        </nav>
-      </div> */}
     </div>
   );
 };

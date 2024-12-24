@@ -12,7 +12,7 @@ import {
 // Navigation items with their respective paths and icons
 const navItems = [
   { name: "Dashboard", href: "/", icon: LayoutDashboard },
-  { name: "Tests", href: "/tests", icon: BookOpen },
+  { name: "Tests", href: "/test", icon: BookOpen },
   { name: "Question Banks", href: "/QuestionBank", icon: Database },
   { name: "Classes", href: "/class", icon: GraduationCap },
   { name: "Teachers", href: "/teachers", icon: Users },

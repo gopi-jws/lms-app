@@ -2,6 +2,8 @@ import React from "react";
 import DataTable from "react-data-table-component";
 import { FaUndo } from "react-icons/fa";
 import "./Trashed.css";
+import TopBar from "../../../class-batch/classtopbar/classtopbar";
+
 
 const Trashed = () => {
   const trashedData = [
@@ -40,6 +42,7 @@ const Trashed = () => {
 
   return (
     <div className="archived-page">
+  <TopBar />
       <div className="archived-title-container">
         <h2 className="archived-title">Trashed Contents</h2>
       </div>

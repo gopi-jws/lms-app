@@ -1,8 +1,7 @@
 .archived-page {
 
   /* width: calc(100% - 250px); */
-  padding: 2rem;
-  padding-top: 8rem;
+ 
   background-color: #f8f9fa;
       height: 100vh;
 }
