@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import "./sidemenu.css";
 import { Link } from 'react-router-dom';
 
@@ -14,9 +14,21 @@ import {
   faPen,
   faUser,
   faPowerOff,
+  faChevronDown,
+  faChevronUp,
+  faHome,
+  faInfoCircle,
+  faBookOpen,
+  faBlog,
 } from "@fortawesome/free-solid-svg-icons";
 
 const SidebarMenu = () => {
+  const [isManageHomeVisible, setManageHomeVisible] = useState(false);
+
+  const toggleManageHomeVisibility = () => {
+    setManageHomeVisible(!isManageHomeVisible);
+  };
+
   return (
     <div id="sidebar-menu" className="mm-active">
       {/* Left Menu Start */}
@@ -39,7 +51,7 @@ const SidebarMenu = () => {
           </Link>
         </li>
         <li>
-          <Link to="/Test" className="waves-effect">
+          <Link to="Teachers" className="waves-effect">
             <FontAwesomeIcon icon={faUserGroup} />
             <span key="t-chat">Teachers</span>
           </Link>
@@ -60,10 +72,10 @@ const SidebarMenu = () => {
         </li>
 
         <li>
-          <a href="#" className="waves-effect">
+           <Link to="subscription" className="waves-effect">
             <FontAwesomeIcon icon={faDollarSign} />
-            <span key="t-chat">Subcription</span>
-          </a>
+            <span key="t-chat">Subscription</span>
+         </Link>
         </li>
 
         <li>
@@ -72,6 +84,47 @@ const SidebarMenu = () => {
             <span key="t-chat">Blog</span>
           </a>
         </li>
+
+        {/* Manage Home Section */}
+        <li className="menu-title" key="t-manage-home">
+          <span onClick={toggleManageHomeVisibility} style={{ cursor: "pointer" }}>
+            Manage Home{" "}
+            {isManageHomeVisible ? (
+              <FontAwesomeIcon icon={faChevronUp} />
+            ) : (
+              <FontAwesomeIcon icon={faChevronDown} />
+            )}
+          </span>
+        </li>
+
+        {isManageHomeVisible && (
+          <ul className="manage-home-menu">
+            <li>
+              <Link to="/home" className="waves-effect">
+                <FontAwesomeIcon icon={faHome} />
+                <span>Home</span>
+              </Link>
+            </li>
+            <li>
+              <Link to="/about" className="waves-effect">
+                <FontAwesomeIcon icon={faInfoCircle} />
+                <span>About</span>
+              </Link>
+            </li>
+            <li>
+              <Link to="/courses" className="waves-effect">
+                <FontAwesomeIcon icon={faBookOpen} />
+                <span>Courses</span>
+              </Link>
+            </li>
+            <li>
+              <Link to="/blog" className="waves-effect">
+                <FontAwesomeIcon icon={faBlog} />
+                <span>Blog</span>
+              </Link>
+            </li>
+          </ul>
+        )}
 
         <li className="menu-title" key="t-apps">
           Profile Info

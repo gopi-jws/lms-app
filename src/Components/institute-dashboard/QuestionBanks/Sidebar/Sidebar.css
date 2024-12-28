@@ -84,7 +84,7 @@ border-radius: 4px;
 }
 
 .sidebar-content {
-  padding: 20px;
+  padding: 8px;
 }
 
 .search-container {
@@ -243,7 +243,7 @@ border-radius: 4px;
 
 .sidebar-link:hover,
 .sidebar-link.active {
-  background-color: var(--hover-color);
+  background:#e0e6e9;
 }
 
 .sidebar-icon {
@@ -273,7 +273,7 @@ border-radius: 4px;
 }
 
 .folder-item:hover {
-  background-color: var(--hover-color);
+  background:#e0e6e9;
 }
 
 .folder-name {
@@ -376,3 +376,54 @@ border-radius: 4px;
   animation: fadeIn 0.3s ease;
 }
 
+.folder-tag-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px; /* Adjust space between tags */
+  padding: 0;
+  list-style-type: none;
+}
+
+.folder-tag-item {
+  display: inline-flex;
+  align-items: center;
+  background-color: #f1f1f1; /* Tag background */
+  border-radius: 15px;
+  padding: 5px 10px;
+  font-size: 14px;
+  margin: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.folder-tag-name {
+  color: #333;
+  margin-right: 8px;
+}
+
+.folder-actions {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.folder-action-button {
+  background: none;
+  border: none;
+  color: #333;
+  cursor: pointer;
+  padding: 0;
+  font-size: 16px;
+}
+
+.folder-action-button:hover {
+  color: #007bff; /* Highlight color */
+}
+
+.folder-edit-input {
+  border: none;
+  padding: 5px;
+  font-size: 14px;
+  border-radius: 5px;
+  background-color: #f1f1f1;
+  outline: none;
+}

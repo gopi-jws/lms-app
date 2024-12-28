@@ -12,6 +12,7 @@ import Header from "../../header/header";
 import TopBar from "../class-batch/classtopbar/classtopbar";
 import QuestionsAdd from "./QuestionsAdd/QuestionsAdd";
 import { useParams, useNavigate } from "react-router-dom";
+import QuestionDetail from "./QuestionDetail/QuestionDetail";
 
 const QuestionBank = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -33,8 +34,12 @@ const QuestionBank = () => {
               <Route path="Archived" element={<Archived />} />
               <Route path="All" element={<All />} />
               <Route path=":id/add" element={<QuestionsAdd />} />{" "}
+              <Route path="question-bank/:id/question/:questionId" element={<QuestionDetail />} />
+
+           
               {/* Dynamic route for adding question */}
             </Route>
+
           </Routes>
         </div>
       </div>

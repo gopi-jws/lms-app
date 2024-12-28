@@ -6,6 +6,8 @@ import Institute from './Components/institute-dashboard/dashboard/institute/inst
 import QuestionBank from './Components/institute-dashboard/QuestionBanks/QuestionBank';
 import Trashed from './Components/institute-dashboard/QuestionBanks/Sidebar/Trashed/Trashed';
 import Test from './Components/institute-dashboard/Test/Test';
+import Teachers from './Components/institute-dashboard/Teachers/Teachers';
+import Subscription from './Components/institute-dashboard/Subscription/Subscription';
 
 function App() {
   return (
@@ -17,6 +19,9 @@ function App() {
         <Route path="/class/*" element={<Class />} />
         <Route path="/QuestionBank/*" element={<QuestionBank />} />
         <Route path="/Test/*" element={<Test />} />
+         <Route path="/teachers/*" element={<Teachers/>} />
+          <Route path="/subscription/*" element={ <Subscription />} />
+     
       </Routes>
     </Router>
   );
