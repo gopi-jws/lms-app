@@ -1,10 +1,12 @@
 import "./Questionindex.css";
 import DataTable from "react-data-table-component";
-import React from "react";
+import React, { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faFilePdf,
   faFolder,
+  faFolderOpen,
+  faFolderPlus,
   faArchive,
   faTrash,
   faEdit,
@@ -15,38 +17,72 @@ import { Link } from "react-router-dom"; // Import Link for navigation
 const Questionindex = () => {
   // Static rows for the table with IDs
   const rows = [
-    {
-      id: 1, // Adding an ID for each question bank
-      name: "Test 1",
-      questions: 10,
-      lastModified: "2024-12-23T14:00:00",
-    },
-    {
-      id: 2, // Adding an ID for each question bank
-      name: "Test 2",
-      questions: 0, // This one has no questions
-      lastModified: "2024-12-22T12:00:00",
-    },
-    {
-      id: 3, // Adding an ID for each question bank
-      name: "Test 3",
-      questions: 15,
-      lastModified: "2024-12-20T10:30:00",
-    },
+    { id: 1, name: "Test 1", questions: 10, lastModified: "2024-12-23T14:00:00" },
+    { id: 2, name: "Test 2", questions: 0, lastModified: "2024-12-22T12:00:00" },
+    { id: 3, name: "Test 3", questions: 15, lastModified: "2024-12-20T10:30:00" },
+    { id: 4, name: "Test 4", questions: 15, lastModified: "2024-12-20T10:30:00" },
   ];
+
+  // State for selected rows
+  const [selectedRows, setSelectedRows] = useState([]);
+  
+  // State for search query
+  const [searchQuery, setSearchQuery] = useState("");
+
+  // Filter rows based on the search query
+  const filteredRows = rows.filter(
+    (row) =>
+      row.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      row.questions.toString().includes(searchQuery) ||
+      row.lastModified.toLowerCase().includes(searchQuery.toLowerCase())
+  );
+
+  // Handle row selection
+  const handleRowSelection = (rowId) => {
+    if (selectedRows.includes(rowId)) {
+      setSelectedRows(selectedRows.filter((id) => id !== rowId)); // Deselect the row
+    } else {
+      setSelectedRows([...selectedRows, rowId]); // Select the row
+    }
+  };
+
+  // Handle Select All checkbox
+  const handleSelectAll = (e) => {
+    if (e.target.checked) {
+      setSelectedRows(filteredRows.map((row) => row.id)); // Select all filtered rows
+    } else {
+      setSelectedRows([]); // Deselect all
+    }
+  };
+
+  // Check if all rows are selected
+  const isSelectAllChecked = filteredRows.length > 0 && selectedRows.length === filteredRows.length;
 
   // Define columns for the DataTable
   const columns = [
+    {
+      name: (
+        <input
+          type="checkbox"
+          checked={isSelectAllChecked}
+          onChange={handleSelectAll}
+        />
+      ), // "Select All" checkbox in the header
+      selector: (row) => row.id,
+      cell: (row) => (
+        <input
+          type="checkbox"
+          checked={selectedRows.includes(row.id)} // Check if this row is selected
+          onChange={() => handleRowSelection(row.id)} // Handle row selection
+        />
+      ),
+      width: "80px",
+    },
     {
       name: "Name",
       selector: (row) => row.name,
       sortable: true,
       width: "200px",
-      cell: (row) => (
-        <Link to={`/QuestionBank/${row.id}/add`}>
-          <button className="qb-button">{row.name}</button>
-        </Link>
-      ),
     },
     {
       name: "Questions",
@@ -68,12 +104,18 @@ const Questionindex = () => {
             })
           : "23-12-2024"; // Return a fallback in case the date is invalid
       },
-      width: "200px", // Custom width for Last Modified column
+      width: "200px",
     },
     {
       name: "Actions",
       cell: (row) => (
         <div className="action-buttons">
+          {/* Add Button */}
+          <Link to={`/QuestionBank/${row.id}/add`}>
+            <button className="action-button add">
+              <FontAwesomeIcon icon={faFolderPlus} />
+            </button>
+          </Link>
           <button
             className="action-button pdf"
             onClick={() => console.log("PDF", row.id)}
@@ -100,7 +142,7 @@ const Questionindex = () => {
           </button>
         </div>
       ),
-      width: "350px",
+      width: "300px",
       ignoreRowClick: true,
       allowOverflow: true,
       button: true,
@@ -108,19 +150,30 @@ const Questionindex = () => {
   ];
 
   return (
-    <div className="Questionindex-container py-5">
+    <div className="Questionindex-container">
       <TopBar />
       <div className="qs-content">
         <div className="header-section">
           <h2 className="qs-title">Question Bank List</h2>
         </div>
+        <div className="search-section pb-3">
+          <input
+            type="text"
+            placeholder="Search..."
+            className="search-input"
+            value={searchQuery}
+            onChange={(e) => setSearchQuery(e.target.value)}
+          />
+        </div>
         <div className="table-container">
           <DataTable
             columns={columns}
-            data={rows} // Static rows
+            data={filteredRows} // Use filtered rows based on search query
             pagination
             highlightOnHover
             striped
+            onSelectedRowsChange={handleRowSelection} // Handle row selection
+            selectableRows={false} // Disable the automatic checkbox rendering
           />
         </div>
       </div>

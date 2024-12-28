@@ -1,6 +1,12 @@
 .test-index-container {
   padding: 20px;
 }
+.header-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
 
 .test-index-title {
   font-size: 2rem;

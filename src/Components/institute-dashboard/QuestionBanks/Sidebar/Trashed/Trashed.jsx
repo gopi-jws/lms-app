@@ -44,10 +44,10 @@ const Trashed = () => {
     <div className="archived-page">
   <TopBar />
       <div className="archived-title-container">
-        <h2 className="archived-title">Trashed Contents</h2>
+        <h2 className="archived-title py-3">Trashed Contents</h2>
       </div>
 
-      <div className="archived-table-container">
+      <div className="archived-table-container m-2">
         <DataTable
           columns={columns}
           data={trashedData}

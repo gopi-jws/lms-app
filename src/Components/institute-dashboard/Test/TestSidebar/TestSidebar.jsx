@@ -81,7 +81,7 @@ const TestSidebar = () => {
                 onClick={handleCreateTest}
                 className="newtest-modal-button create"
               >
-                Create
+                Add
               </button>
               <button
                 onClick={handleCloseModal}

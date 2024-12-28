@@ -1,6 +1,6 @@
 /* Container styling */
 .container {
-  font-family: "Poppins", sans-serif;
+ 
   
   padding: 20px;
   border-radius: 5px;
@@ -13,7 +13,7 @@
 
     border-radius: 4px;
  
-    font-family: 'Poppins', sans-serif;
+  
 }
 
 .header-section {
@@ -150,8 +150,8 @@
 }
 
 .action-button.archive {
-  background: #3b82f6;
-  color: #ffffff;
+ 
+  color: #333;;
 }
 
 .action-button.edit {
@@ -172,7 +172,7 @@
   }
 }
 
-.qb-button {
+.add {
   padding: 10px 20px;
   background-color: #007bff; /* Blue background */
   color: white; /* Text color */
@@ -181,9 +181,12 @@
   font-size: 16px; /* Font size */
   cursor: pointer; /* Pointer cursor on hover */
   transition: background-color 0.3s, transform 0.2s; /* Smooth transition on hover */
+     justify-content: center;
+    align-items: center;
+    margin-right: 0 !important;
 }
 
-.qb-button:hover {
+.add:hover {
   background-color: #0056b3; /* Darker blue on hover */
   transform: scale(1.05); /* Slightly larger on hover */
 }
