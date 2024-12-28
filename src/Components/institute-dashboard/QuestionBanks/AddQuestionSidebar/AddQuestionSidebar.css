@@ -36,19 +36,20 @@
   margin-top: 30px;
 }
 
-.sidebar-section h3 {
+.add-sidebar-section h3 {
   font-size: 18px;
   font-weight: bold;
   margin-bottom: 15px;
   color: #3498db;
+     
 }
 
-.sidebar-section ul {
+.add-sidebar-section ul {
   list-style-type: none;
   padding: 0;
 }
 
-.sidebar-section li {
+.add-sidebar-section li {
   display: flex;
   align-items: center;
   padding: 10px;
@@ -57,16 +58,16 @@
   transition: background-color 0.3s ease;
 }
 
-.sidebar-section li:hover {
+.add-sidebar-section li:hover {
   background-color: #34495e;
 }
 
-.sidebar-section li.active {
+.add-sidebar-section li.active {
   background-color: #3498db;
   color: white;
 }
 
-.sidebar-section li svg {
+.add-sidebar-section li svg {
   margin-right: 10px;
   font-size: 18px;
 }
@@ -117,3 +118,310 @@
   }
 }
 
+.add-question-sidebar {
+  position: relative;
+}
+
+
+.popup-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  transition: opacity 0.3s ease;
+}
+
+.popup {
+  background-color: #fff;
+  border-radius: 12px;
+  padding: 30px;
+  width: 80%;
+  max-width: 900px;
+  max-height: 90vh;
+  overflow-y: auto;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease-in-out;
+}
+
+.popup-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  background-color: #2980b9;
+  color: #fff;
+  padding: 20px;
+}
+
+.close-btn {
+  background: none;
+  border: none;
+  font-size: 26px;
+  color: #333;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.close-btn:hover {
+  transform: rotate(90deg);
+}
+
+.popup-content {
+  display: flex;
+  gap: 25px;
+}
+
+.form-section {
+  flex: 1;
+  padding-right: 15px;
+}
+
+.preview-section {
+  flex: 1;
+  padding-left: 15px;
+  background-color: #f7f7f7;
+  color: #333;
+  border-radius: 8px;
+}
+
+.form-group {
+  margin-bottom: 25px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: bold;
+  color: #444;
+}
+.answer-img{
+  margin-top: 10px;
+  height: 150px;
+  width: 100%;
+  object-fit: cover;
+}
+.preview-img{
+  width: 100%;
+  height: 200px;
+    object-fit: cover;
+}
+.form-group input[type="text"],
+.form-group select {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 16px;
+  transition: border-color 0.3s ease;
+}
+
+.form-group input[type="text"]:focus,
+.form-group select:focus {
+  border-color: #4CAF50;
+  outline: none;
+}
+
+.editor-type-toggle {
+  display: flex;
+  gap: 15px;
+  margin-bottom: 15px;
+}
+
+.toggle-btn {
+  padding: 10px 18px;
+  background-color: #f0f0f0;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  transition: background-color 0.2s ease;
+}
+
+.toggle-btn.active {
+  background-color: #4CAF50;
+  color: white;
+}
+
+.toggle-btn svg {
+  font-size: 18px;
+}
+
+.form-group textarea.code-editor,
+.form-group textarea.latex-editor {
+  width: 100%;
+  padding: 15px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 16px;
+  line-height: 1.5;
+  resize: vertical;
+  background-color: #f8f8f8;
+  transition: background-color 0.3s ease;
+}
+
+.form-group textarea.code-editor:hover,
+.form-group textarea.latex-editor:hover {
+  background-color: #f1f1f1;
+}
+
+.latex-symbols {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(45px, 1fr));
+  gap: 10px;
+  margin-bottom: 12px;
+}
+
+.latex-symbol-btn {
+  width: 45px;
+  height: 45px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: white;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 18px;
+  transition: all 0.3s ease;
+}
+
+.latex-symbol-btn:hover {
+  background-color: #f0f0f0;
+  border-color: #888;
+}
+
+.file-input-wrapper {
+  position: relative;
+  overflow: hidden;
+  display: inline-block;
+  margin-top: 12px;
+}
+
+.file-input-button {
+  border: 1px solid #ccc;
+  color: #555;
+  background-color: #f8f8f8;
+  padding: 10px 15px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.file-input-wrapper input[type="file"] {
+  font-size: 120px;
+  position: absolute;
+  left: 0;
+  top: 0;
+  opacity: 0;
+}
+
+.file-input-button:hover {
+  background-color: #f0f0f0;
+}
+
+.submit-btn {
+  background-color: #4CAF50;
+  color: white;
+  padding: 12px 25px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 18px;
+  transition: background-color 0.2s ease;
+}
+
+.submit-btn:hover {
+  background-color: #45a049;
+}
+
+.preview-content {
+  background-color: #f7f7f7;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+}
+
+.preview-code pre,
+.preview-latex pre {
+  background-color: #f8f8f8;
+  padding: 15px;
+  border-radius: 6px;
+  overflow-x: auto;
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 16px;
+  line-height: 1.5;
+  margin: 0;
+}
+
+.preview-code h5,
+.preview-latex h5 {
+  margin-top: 0;
+  margin-bottom: 12px;
+  font-size: 18px;
+  color: #333;
+}
+
+
+.correct-answer{
+ background-color: #4CAF50;
+  color: #fff;
+  padding: 10px;
+  margin-top: 10px;
+}
+.answer{
+  font-size: 18px;
+  font-weight: 700;
+  
+}
+.newqbicon2{
+  margin-left:6px ;
+  font-size: 25px;
+}
+.add-sidebar-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px;
+    background: linear-gradient(to right, #3b82f6, #4f46e5, #4f46e5);
+    border-radius: 4px;
+    color: #fff !important;
+}
+.add-sidebar-title {
+    font-size: 24px;
+    font-weight: bold;
+    color: rgba(255, 255, 255, 0.8);
+    font-family: var(--font-family);
+    font-size: 16px;
+    font-weight: 700;
+    margin: 0 auto;
+    transition: opacity var(--transition-speed) ease;
+}
+@media (max-width: 768px) {
+  .popup-content {
+    flex-direction: column;
+  }
+
+  .preview-section {
+    margin-top: 20px;
+  }
+
+  .latex-symbols {
+    grid-template-columns: repeat(auto-fill, minmax(40px, 1fr));
+  }
+
+  .latex-symbol-btn {
+    width: 40px;
+    height: 40px;
+    font-size: 16px;
+  }
+}

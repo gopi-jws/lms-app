@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { FaDatabase } from "react-icons/fa"; // Import the database icon
+import { FaTag } from "react-icons/fa"; // Import the tag icon
 
 import {
   faUserCircle,
@@ -36,7 +37,7 @@ const Sidebar = ({ openModal }) => {
   const addNewFolder = () => {
     const newFolder = {
       id: Date.now(),
-      name: `New Folder ${folders.length + 1}`,
+      name: `New Tag ${folders.length + 1}`,
     };
     setFolders([...folders, newFolder]);
   };
@@ -153,69 +154,74 @@ const Sidebar = ({ openModal }) => {
             className="sidebar-heading"
             onClick={() => toggleSection("folders")}
           >
-            Folders
+           Tags
             <FontAwesomeIcon icon={faChevronDown} className="section-icon" />
           </h2>
           <div className="section-content">
             <button onClick={addNewFolder} className="sidebar-button ripple">
               <FontAwesomeIcon icon={faFolderPlus} />
-              <span>New Folder</span>
+              <span>New Tag</span>
             </button>
+<ul className="folder-list">
+  {folders.map((folder) => (
+    <li key={folder.id} className="folder-item">
+      {/* Add the tag icon inside the list item */}
+      <FaTag className="icon" style={{ color: folder.tagColor }} />
+      
+      {editingFolderId === folder.id ? (
+        <input
+          type="text"
+          value={editedFolderName}
+          onChange={(e) => setEditedFolderName(e.target.value)}
+          onBlur={() => saveFolderName(folder.id)}
+          onKeyPress={(e) =>
+            e.key === "Enter" && saveFolderName(folder.id)
+          }
+          className="folder-edit-input"
+          autoFocus
+        />
+      ) : (
+        <span className="folder-name">{folder.name}</span>
+      )}
+      
+      <div className="folder-actions">
+        {editingFolderId === folder.id ? (
+          <button
+            onClick={() => saveFolderName(folder.id)}
+            className="folder-action-button"
+            aria-label="Save folder name"
+          >
+            <FontAwesomeIcon icon={faCheck} />
+          </button>
+        ) : (
+          <>
+            <button
+              onClick={() =>
+                startEditingFolder(folder.id, folder.name)
+              }
+              className="folder-action-button"
+              aria-label="Edit folder name"
+            >
+              <FontAwesomeIcon icon={faEdit} />
+            </button>
+            <button
+              onClick={() => deleteFolder(folder.id)}
+              className="folder-action-button"
+              aria-label="Delete folder"
+            >
+              <FontAwesomeIcon icon={faTrash} />
+            </button>
+          </>
+        )}
+      </div>
+    </li>
+  ))}
+</ul>
 
-            <ul className="folder-list">
-              {folders.map((folder) => (
-                <li key={folder.id} className="folder-item">
-                  {editingFolderId === folder.id ? (
-                    <input
-                      type="text"
-                      value={editedFolderName}
-                      onChange={(e) => setEditedFolderName(e.target.value)}
-                      onBlur={() => saveFolderName(folder.id)}
-                      onKeyPress={(e) =>
-                        e.key === "Enter" && saveFolderName(folder.id)
-                      }
-                      className="folder-edit-input"
-                      autoFocus
-                    />
-                  ) : (
-                    <span className="folder-name">{folder.name}</span>
-                  )}
-                  <div className="folder-actions">
-                    {editingFolderId === folder.id ? (
-                      <button
-                        onClick={() => saveFolderName(folder.id)}
-                        className="folder-action-button"
-                        aria-label="Save folder name"
-                      >
-                        <FontAwesomeIcon icon={faCheck} />
-                      </button>
-                    ) : (
-                      <>
-                        <button
-                          onClick={() =>
-                            startEditingFolder(folder.id, folder.name)
-                          }
-                          className="folder-action-button"
-                          aria-label="Edit folder name"
-                        >
-                          <FontAwesomeIcon icon={faEdit} />
-                        </button>
-                        <button
-                          onClick={() => deleteFolder(folder.id)}
-                          className="folder-action-button"
-                          aria-label="Delete folder"
-                        >
-                          <FontAwesomeIcon icon={faTrash} />
-                        </button>
-                      </>
-                    )}
-                  </div>
-                </li>
-              ))}
-            </ul>
           </div>
         </div>
       </div>
+      
     </div>
   );
 };

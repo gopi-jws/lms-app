@@ -39,57 +39,58 @@ const TestIndex = () => {
     setFilteredData(filtered);
   };
 
-  const columns = [
-    {
-      name: "Test",
-      selector: (row) => row.test,
-      sortable: true,
-    },
-    {
-      name: "Owner",
-      selector: (row) => row.owner,
-      sortable: true,
-    },
-    {
-      name: "Last Modified",
-      selector: (row) => row.lastModified,
-      sortable: true,
-    },
-    {
-      name: "Actions",
-      cell: (row) => (
-        <div className="test-action-buttons">
-          <button
-            className="test-action-button dispatch"
-            aria-label="Dispatch"
-            onClick={() => setIsModalOpen(true)}
-          >
-            <FaPaperPlane />
-          </button>
-          <button className="test-action-button copy" aria-label="Copy">
-            <FaCopy />
-          </button>
-          <button className="test-action-button pdf" aria-label="Download PDF">
-            <FaFilePdf />
-          </button>
-          <button
-            className="test-action-button share"
-            aria-label="Share"
-            onClick={() => setIsShareModalOpen(true)}
-          >
-            <FaShare />
-          </button>
-          <button className="test-action-button archive" aria-label="Archive">
-            <FaArchive />
-          </button>
-          <button className="test-action-button delete" aria-label="Delete">
-            <FaTrashAlt />
-          </button>
-        </div>
-      ),
-      width: "350px",
-    },
-  ];
+const columns = [
+  {
+    name: "Test",
+    selector: (row) => row.test,
+    sortable: true,
+  },
+  {
+    name: "Owner",
+    selector: (row) => row.owner,
+    sortable: true,
+  },
+  {
+    name: "Last Modified",
+    selector: (row) => row.lastModified,
+    sortable: true,
+    width: "150px",  // Adjust this width value as necessary
+  },
+  {
+    name: "Actions",
+    cell: (row) => (
+      <div className="test-action-buttons">
+        <button
+          className="test-action-button dispatch"
+          aria-label="Dispatch"
+          onClick={() => setIsModalOpen(true)}
+        >
+          <FaPaperPlane />
+        </button>
+        <button className="test-action-button copy" aria-label="Copy">
+          <FaCopy />
+        </button>
+        <button className="test-action-button pdf" aria-label="Download PDF">
+          <FaFilePdf />
+        </button>
+        <button
+          className="test-action-button share"
+          aria-label="Share"
+          onClick={() => setIsShareModalOpen(true)}
+        >
+          <FaShare />
+        </button>
+        <button className="test-action-button archive" aria-label="Archive">
+          <FaArchive />
+        </button>
+        <button className="test-action-button delete" aria-label="Delete">
+          <FaTrashAlt />
+        </button>
+      </div>
+    ),
+    width: "350px",
+  },
+];
 
   return (
     <div className="test-index-wrapper">

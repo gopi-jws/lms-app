@@ -44,10 +44,10 @@ const Archived = () => {
     <div className="archived-page">
       <TopBar />
       <div className="archived-title-container">
-        <h2 className="archived-title">Archived Contents</h2>
+        <h2 className="archived-title py-3">Archived Contents</h2>
       </div>
 
-      <div className="archived-table-container">
+      <div className="archived-table-container py-3 m-2">
         <DataTable
           columns={columns}
           data={archivedData}

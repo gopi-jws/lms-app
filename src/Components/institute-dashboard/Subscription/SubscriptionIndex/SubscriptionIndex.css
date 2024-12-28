@@ -1,0 +1,144 @@
+
+*{
+  font-family: 'Inter', sans-serif;
+}
+
+.subscription-page {
+  background-color: #f0f4f8;
+  min-height: 100vh;
+ 
+}
+
+.subscription-container {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.subscription-card {
+  background-color: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  padding: 2rem;
+  margin-top: 2rem;
+}
+
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+}
+
+.subscription-title {
+
+  color: #333333;
+  margin: 0;
+  font-weight: 500;
+}
+
+.subscription-badge {
+  background-color: #4CAF50;
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: 10px;
+  font-weight: bold;
+}
+
+.subscription-details {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.detail-item {
+  display: flex;
+  align-items: center;
+}
+
+.detail-item i {
+  font-size: 1.2rem;
+  margin-right: 0.5rem;
+  color: #3498db;
+}
+
+.features-list {
+  margin-bottom: 1.5rem;
+}
+
+.features-list h3 {
+  font-size: 1.2rem;
+  margin-bottom: 0.5rem;
+}
+
+.features-list ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.features-list li {
+  margin-bottom: 0.5rem;
+}
+
+.features-list i {
+  color: #4CAF50;
+  margin-right: 0.5rem;
+}
+
+.package-stats {
+  background-color: #f8f9fa;
+  border-radius: 8px;
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.package-stats h3 {
+  font-size: 1.2rem;
+  margin-bottom: 1rem;
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1rem;
+}
+
+.stat-item {
+  text-align: center;
+ background-color: #f8f9fa;
+ padding: 15px;
+ border-radius: 10px;
+ box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
+}
+
+.stat-value {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #3498db;
+  display: block;
+}
+
+.stat-label {
+  font-size: 0.9rem;
+  color: #333333;
+  font-weight: 500;
+  font-size: 16px;
+}
+
+.upgrade-button {
+  background-color: #3498db;
+  color: white;
+  border: none;
+  padding: 0.8rem 1.5rem;
+  font-size: 1rem;
+  font-weight: bold;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  width: 100%;
+}
+
+.upgrade-button:hover {
+  background-color: #2980b9;
+}
+

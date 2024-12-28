@@ -63,7 +63,7 @@
   /* Icon customization */
   #sidebar-menu ul li a svg {
     font-size: 16px;
-    color: #a5b3c4;
+    /* color: #a5b3c4; */
   }
   
   #sidebar-menu ul li a.active svg,
