@@ -18,6 +18,7 @@ const Class = () => {
   const [classes, setClasses] = useState(initialClasses);
   const [archivedClasses, setArchivedClasses] = useState([]);
   const [trashedClasses, setTrashedClasses] = useState([]);
+  // const navigate = useNavigate();
 
   const handleAddClass = (newClass) => {
     setClasses([...classes, newClass]);
@@ -69,6 +70,12 @@ const Class = () => {
   const handleArchiveDelete = (id) => {
     setArchivedClasses(archivedClasses.filter((c) => c.id !== id));
   };
+
+  // const handleClassClick = (classId) => {
+  //   navigate(`/class/${classId}/classdetailpage`, {
+  //     state: { id: classId },  
+  //   });
+  // };
   return (
     <Routes>
       <Route path="/" element={<Layout />}>
@@ -80,11 +87,10 @@ const Class = () => {
               handleRename={handleRename}
               handleArchive={handleArchive}
               handleTrash={handleTrash}
+              // handleClassClick={handleClassClick}
             />
           }
         />
-        {/* Route for ClassDetailsPage with dynamic :id */}
-        <Route path="/class/classdetailpage/:id" element={<ClassDetailsPage />} />
         <Route
           path="AddClass"
           element={<AddClass handleAddClass={handleAddClass} />}
@@ -110,6 +116,8 @@ const Class = () => {
           }
         />
       </Route>
+       {/* Route for ClassDetailsPage with dynamic :id */}
+       <Route path=":id/classdetailpage" element={<ClassDetailsPage />} />
     </Routes>
   );
 };

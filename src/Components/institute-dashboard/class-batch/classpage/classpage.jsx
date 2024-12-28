@@ -7,7 +7,7 @@ import { format } from "date-fns";
 import { Link } from 'react-router-dom';
 import './classpage.css';
 
-const ClassPage = ({ classes, handleRename, handleSettings, handleArchive, handleTrash }) => {
+const ClassPage = ({ classes, handleRename, handleSettings, handleArchive, handleTrash,  }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [newClassName, setNewClassName] = useState("");
   const [editingClassId, setEditingClassId] = useState(null);
@@ -31,7 +31,6 @@ const ClassPage = ({ classes, handleRename, handleSettings, handleArchive, handl
       setIsModalOpen(false);
     }
   };
-  
 
   return (
     <div className="container py-5" style={{ marginLeft: '220px', width: 'calc(100% - 220px)' }}>
@@ -48,12 +47,14 @@ const ClassPage = ({ classes, handleRename, handleSettings, handleArchive, handl
         <tbody>
           {classes.map((cls) => (
             <tr key={cls.id}>
-               <td>
-                {/* Use Link component to navigate to ClassDetailsPage */}
-                <Link to={`/class/classdetailpage/${cls.id}/${cls.name}`} className="text-decoration-none">
-  {cls.name}
-</Link>
-
+              <td>
+                {/* Use Link to navigate to details page */}
+                <Link
+                  to={`/class/${cls.id}/classdetailpage`}
+                  state={{ id: cls.id }}
+                >
+                  {cls.name}
+                </Link>
               </td>
               <td>{cls.strength}</td>
               <td>{cls.maximumallowed}</td>
@@ -83,17 +84,17 @@ const ClassPage = ({ classes, handleRename, handleSettings, handleArchive, handl
       </table>
 
       {isModalOpen && (
-        <div className="modal-overlay">
-          <div className="modal-container">
+        <div className="classpage-modal-overlay">
+          <div className="classpage-modal-container">
             <h3>Rename Class</h3>
             <input
               type="text"
               value={newClassName}
               onChange={handleInputChange}
               placeholder="Enter new class name"
-              className="input-field"
+              className="class-overlay-input-field"
             />
-            <div className="modal-actions">
+            <div className="class-overlay-modal-actions">
               <Button variant="outline-primary" onClick={handleRenameSubmit}>Submit</Button>
               <Button variant="outline-secondary" onClick={() => setIsModalOpen(false)}>Cancel</Button>
             </div>

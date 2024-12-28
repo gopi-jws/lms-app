@@ -121,7 +121,7 @@
     }
   }
   /* Modal overlay */
-.modal-overlay {
+.classpage-modal-overlay {
     position: fixed;
     top: 0;
     left: 0;
@@ -135,7 +135,7 @@
   }
   
   /* Modal container */
-  .modal-container {
+  .classpage-modal-container {
     background-color: white;
     padding: 20px;
     border-radius: 8px;
@@ -144,12 +144,12 @@
     text-align: center;
   }
   
-  .modal-container h3 {
+  .classpage-modal-container h3 {
     margin-bottom: 20px;
     font-size: 18px;
   }
   
-  .input-field {
+  .class-overlay-input-field{
     width: 100%;
     padding: 8px;
     margin-bottom: 20px;
@@ -157,17 +157,17 @@
     border: 1px solid #ccc;
   }
   
-  .input-field:focus {
+  .class-overlay-input-field:focus {
     border-color: #6c63ff;
     outline: none;
   }
   
-  .modal-actions {
+  .class-overlay-modal-actions {
     display: flex;
     justify-content: space-between;
   }
   
-  .modal-actions .btn {
+  .class-overlay-modal-actions .btn {
     width: 45%;
   }
   .class-page-add-class-btn {
