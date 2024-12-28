@@ -1,0 +1,148 @@
+/* Side menu styles */
+.classdetailspage-sidemenu {
+    background-color: #2c3e50;
+    color: #ecf0f1;
+    width: 220px;
+    height: 100vh;
+    position: fixed;
+    top: 92px;
+    left: 0;
+    padding-top: 60px;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Main content styles */
+  .classdetailspage-content {
+    margin-left: 220px;
+    padding-top: 120px;
+    min-height: calc(100vh - 120px);
+  }
+  
+  .classdetailspage-container {
+    padding: 2rem;
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .classdetailspage-container h1 {
+    font-size: 2rem;
+    color: #2c3e50;
+    margin-bottom: 1.5rem;
+    border-bottom: 2px solid #4a90e2;
+    padding-bottom: 0.5rem;
+  }
+  
+  .classdetailspage-container h2 {
+    font-size: 1.5rem;
+    color: #4a90e2;
+    margin-bottom: 1rem;
+  }
+  
+  .classdetailspage-container p {
+    margin-bottom: 0.75rem;
+    line-height: 1.6;
+  }
+  
+  .classdetailspage-container strong {
+    font-weight: 600;
+    color: #2c3e50;
+  }
+  
+  /* Loading state */
+  .classdetailspage-container p:last-child {
+    text-align: center;
+    color: #7f8c8d;
+    font-style: italic;
+  }
+  
+  /* Responsive design */
+  @media (max-width: 768px) {
+    .classdetailspage-sidemenu {
+      width: 100%;
+      height: auto;
+      position: static;
+      padding-top: 0;
+    }
+  
+    .classdetailspage-content,
+    .container {
+      margin-left: 0;
+      width: 100%;
+    }
+  
+    .topbar {
+      left: 0;
+    }
+  }
+  /* Background overlay with blur effect */
+.classdetailpage-addstudent-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5); /* Dimmed background */
+    backdrop-filter: blur(5px); /* Background blur */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1050; /* Ensures modal is on top */
+  }
+  
+  /* Modal dialog */
+  .classdetailpage-addstudent-dialog {
+    width: 100%;
+    max-width: 500px; /* Modal width */
+    margin: 0 15px;
+  }
+  
+  /* Modal content */
+  .classdetailpage-addstudent-content {
+    background-color: white;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    position:relative;
+    top: 50px;
+  }
+  
+  /* Modal header */
+  .classdetailpage-addstudent-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 10px;
+  }
+  
+  /* Modal title */
+  .classdetailpage-addstudent-title {
+    font-size: 1.25rem;
+    margin: 0;
+  }
+  
+  /* Close button */
+  .classdetailpage-addstudent-header .close {
+    font-size: 1.5rem;
+    cursor: pointer;
+    border: none;
+    background: none;
+  }
+  
+  /* Modal body */
+  .classdetailpage-addstudent-body {
+    padding: 20px 0;
+  }
+  
+  /* Modal footer */
+  .classdetailpage-addstudent-footer {
+    display: flex;
+    justify-content: flex-end;
+    padding-top: 10px;
+  }
+  
+  .classdetailpage-addstudent-footer .btn {
+    margin-left: 10px;
+  }
+  

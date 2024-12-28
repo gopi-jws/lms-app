@@ -1,12 +1,11 @@
 .top-bar {
     position: fixed;
-    top: 80px;
+    top: 93px;
     margin-left: 4px;
     z-index: 1000;
     width: 79%;
     background: linear-gradient(to right, #3b82f6, #4f46e5, #7c3aed);
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    border-radius: 4px;
 }
 .container {
   max-width: 1200px;
