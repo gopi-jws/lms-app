@@ -8,6 +8,8 @@ import Dispatched from "./Dispatched/Dispatched";
 import Undispatched from "./Undispatched/Undispatched";
 import Archived from "./Archived/Archived";
 import Trashed from "./Trashed/Trashed";
+import TestAdd from "./TestAdd/TestAdd";
+import TestDetail from "./TestDetail/TestDetail";
 
 const Test = () => {
   return (
@@ -23,9 +25,11 @@ const Test = () => {
         <Route path="/undispatched" element={<Undispatched />} />
         <Route path="/archived" element={<Archived />} />
         <Route path="/trashed" element={<Trashed />} />
+        <Route path=":id/movetest" element={<TestAdd />} />{" "}
+       <Route path="test/:id/test/:testId" element={<TestDetail />} />
         {/* <Route path="/tag/:tagName" element={<TagPage />} /> */}
       </Route>
-  
+ 
     </Routes>
   );
 };

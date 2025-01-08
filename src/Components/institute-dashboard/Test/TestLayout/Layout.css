@@ -28,7 +28,7 @@
   flex: 1;
   padding: 20px;
   overflow-y: auto;
-  background-color: #fff;
+  background-color: #F3F3F3;
   box-shadow: inset -2px 0 10px rgba(0, 0, 0, 0.05);
 }
 /* Media Query for smaller screens */

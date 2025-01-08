@@ -77,7 +77,7 @@ const Dispatched = () => {
     
   return (
     <div className="test-index-wrapper">
-      <TopBar />
+      {/* <TopBar /> */}
       <div className="test-index-container">
         <div className="test-index-header">
           <h1>Dispatched List</h1>

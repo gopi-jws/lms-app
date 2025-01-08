@@ -1,15 +1,8 @@
 import React from "react";
 import { Link, useLocation } from "react-router-dom";
 import "./classtopbar.css";
-import {
-  LayoutDashboard,
-  BookOpen,
-  Database,
-  GraduationCap,
-  Users,
-} from "lucide-react";
+import { LayoutDashboard, BookOpen, Database, GraduationCap, Users } from 'lucide-react';
 
-// Navigation items with their respective paths and icons
 const navItems = [
   { name: "Dashboard", href: "/", icon: LayoutDashboard },
   { name: "Tests", href: "/test", icon: BookOpen },
@@ -19,28 +12,31 @@ const navItems = [
 ];
 
 const TopBar = () => {
-  const location = useLocation(); // Get current route path
+  const location = useLocation();
+
+  const isActive = (href) => {
+    const currentPath = location.pathname.replace(/\/$/, "");
+    const itemPath = href.replace(/\/$/, "");
+    return currentPath.toLowerCase() === itemPath.toLowerCase();
+  };
 
   return (
     <header className="top-bar">
       <div className="top-bar-container">
-        <div className="top-bar-content">
-          <nav className="nav-menu">
-            {navItems.map((item) => (
-              <Link
-                key={item.href}
-                to={item.href} // Use `to` for `Link` navigation
-                className={`nav-item ${
-                  location.pathname === item.href ? "active" : "" // Add `active` class if current route matches
-                }`}
-              >
-                <item.icon className="nav-icon" /> {/* Display icon */}
-                <span className="nav-text">{item.name}</span>{" "}
-                {/* Display name */}
-              </Link>
-            ))}
-          </nav>
-        </div>
+        <nav className="nav-menu">
+          {navItems.map((item) => (
+            <Link
+              key={item.href}
+              to={item.href}
+              className={`nav-item ${isActive(item.href) ? "active" : ""}`}
+            >
+              <div className="nav-item-content">
+                <item.icon className="nav-icon" />
+                <span className="nav-text">{item.name}</span>
+              </div>
+            </Link>
+          ))}
+        </nav>
       </div>
     </header>
   );

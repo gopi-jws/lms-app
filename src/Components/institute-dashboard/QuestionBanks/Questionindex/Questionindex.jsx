@@ -1,6 +1,7 @@
 import "./Questionindex.css";
 import DataTable from "react-data-table-component";
 import React, { useState } from "react";
+import { MdOutlineArchive } from "react-icons/md";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faFilePdf,
@@ -10,17 +11,20 @@ import {
   faArchive,
   faTrash,
   faEdit,
+  
+    FaSearch
 } from "@fortawesome/free-solid-svg-icons";
+import { FaArrowLeft, FaPlus, FaEdit, FaTrash, FaCopy } from "react-icons/fa";
 import TopBar from "../../class-batch/classtopbar/classtopbar";
 import { Link } from "react-router-dom"; // Import Link for navigation
 
 const Questionindex = () => {
   // Static rows for the table with IDs
   const rows = [
-    { id: 1, name: "Test 1", questions: 10, lastModified: "2024-12-23T14:00:00" },
-    { id: 2, name: "Test 2", questions: 0, lastModified: "2024-12-22T12:00:00" },
-    { id: 3, name: "Test 3", questions: 15, lastModified: "2024-12-20T10:30:00" },
-    { id: 4, name: "Test 4", questions: 15, lastModified: "2024-12-20T10:30:00" },
+    { id: 1, name: "QB 1", questions: 10, lastModified: "2024-12-23T14:00:00" },
+    { id: 2, name: "QB 2", questions: 0, lastModified: "2024-12-22T12:00:00" },
+    { id: 3, name: "QB 3", questions: 15, lastModified: "2024-12-20T10:30:00" },
+    { id: 4, name: "QB 4", questions: 15, lastModified: "2024-12-20T10:30:00" },
   ];
 
   // State for selected rows
@@ -78,10 +82,15 @@ const Questionindex = () => {
       ),
       width: "80px",
     },
-    {
+     {
       name: "Name",
       selector: (row) => row.name,
       sortable: true,
+      cell: (row) => (
+        <Link to={`/QuestionBank/${row.id}/add`}>
+          <span className="row-link">{row.name}</span>
+        </Link>
+      ),
       width: "200px",
     },
     {
@@ -132,7 +141,8 @@ const Questionindex = () => {
             className="action-button archive"
             onClick={() => console.log("Archive", row.id)}
           >
-            <FontAwesomeIcon icon={faArchive} />
+              <MdOutlineArchive  icon={faArchive} />
+           
           </button>
           <button
             className="action-button delete"
@@ -151,7 +161,7 @@ const Questionindex = () => {
 
   return (
     <div className="Questionindex-container">
-      <TopBar />
+      {/* <TopBar /> */}
       <div className="qs-content">
         <div className="header-section">
           <h2 className="qs-title">Question Bank List</h2>
@@ -176,6 +186,15 @@ const Questionindex = () => {
             selectableRows={false} // Disable the automatic checkbox rendering
           />
         </div>
+         <div className="bulk-actions">
+                    <button  className="bulk-action-button bulk-delete-button">
+                      <FaTrash /> Delete Selected
+                    </button>
+                    <button  className="bulk-action-button bulk-copy-button">
+                      <FaCopy /> Copy Selected
+                    </button>
+                    
+                  </div>
       </div>
     </div>
   );

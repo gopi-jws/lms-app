@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import DataTable from 'react-data-table-component';
 import './TeachersIndex.css';
-import TopBar from '../../class-batch/classtopbar/classtopbar';
 import {
   FaPaperPlane,
   FaCopy,
@@ -10,18 +9,19 @@ import {
   FaTrashAlt,
   FaSearch,
   FaShare,
-  FaCheckCircle, 
-  FaTimesCircle ,
-  FaUserPlus 
+   FaTrash,
+  FaCheckCircle,
+  FaTimesCircle,
+  FaUserPlus,
 } from "react-icons/fa";
 
 const TeachersIndex = () => {
   const [teachersData, setTeachersData] = useState([
-    { id: 1, email: 'teacher1@example.com', date: '26-12-2024' },
-    { id: 2, email: 'teacher2@example.com', date: '27-12-2024' },
-    { id: 3, email: 'teacher3@example.com', date: '27-12-2024' },
+    { id: 1, email: 'teacher1@example.com', date: '26-12-2024', status: 'Inactive' },
+    { id: 2, email: 'teacher2@example.com', date: '27-12-2024', status: 'Active' },
+    { id: 3, email: 'teacher3@example.com', date: '27-12-2024', status: 'Active' },
   ]);
-  
+
   const [searchTerm, setSearchTerm] = useState(''); // New state for search term
 
   // Action Handlers
@@ -53,50 +53,50 @@ const TeachersIndex = () => {
 
   // Define Table Columns
   const columns = [
-    {
-      name: 'Teachers Emails',
-      selector: (row) => row.email,
-      sortable: true,
-      cell: (row) => <div className="email-cell">{row.email}</div>,
-    },
-    {
-      name: 'Added Date',
-      selector: (row) => row.date,
-      sortable: true,
-      cell: (row) => (
-        <div className={"status-badge "}>
-          {row.date}
-        </div>
-      ),
-    },
-    {
-      name: 'Actions',
-      cell: (row) => (
-        <div className="action-buttons">
-          <button
-            className={`btn btn-activate ${row.status === 'Active' ? 'disabled' : ''}`}
-            onClick={() => handleActivate(row.id)}
-            disabled={row.status === 'Active'}
-          >
-            <FaCheckCircle />
-          </button>
-          <button
-            className={`btn btn-deactivate ${row.status === 'Inactive' ? 'disabled' : ''}`}
-            onClick={() => handleDeactivate(row.id)}
-            disabled={row.status === 'Inactive'}
-          >
-            <FaTimesCircle />
-          </button>
-          <button
-            className="btn btn-delete"
-            onClick={() => handleDelete(row.id)}
-          >
-            <FaTrashAlt />
-          </button>
-        </div>
-      ),
-    },
-  ];
+  {
+    name: 'Teachers Emails',
+    selector: (row) => row.email,
+    sortable: true,
+    cell: (row) => <div className="email-cell">{row.email}</div>,
+  },
+  {
+    name: 'Added Date',
+    selector: (row) => row.date,
+    sortable: true,
+    cell: (row) => (
+      <div className={"status-badge "}>
+        {row.date}
+      </div>
+    ),
+  },
+  {
+    name: 'Actions',
+    cell: (row) => (
+      <div className="action-buttons">
+        <button
+          className={`btn btn-activate ${row.status === 'Active' ? 'active' : 'inactive'}`}
+          onClick={() => handleActivate(row.id)}
+          disabled={row.status === 'Active'}
+        >
+          <FaCheckCircle />
+        </button>
+        <button
+          className={`btn btn-deactivate ${row.status === 'Inactive' ? 'active' : 'inactive'}`}
+          onClick={() => handleDeactivate(row.id)}
+          disabled={row.status === 'Inactive'}
+        >
+          <FaTimesCircle />
+        </button>
+        <button
+          className="btn btn-delete"
+          onClick={() => handleDelete(row.id)}
+        >
+          <FaTrashAlt />
+        </button>
+      </div>
+    ),
+  },
+];
 
   const customStyles = {
     headRow: {
@@ -119,15 +119,12 @@ const TeachersIndex = () => {
 
   return (
     <div className="teachers-index">
-      <TopBar />
       <div className="content-wrapper">
         <div className="header-container">
           <h1>Teachers List</h1>
-          <button
-            className="btn btn-add-teachers"
-          >
+          {/* <button className="btn btn-add-teachers">
             <FaUserPlus /> Add Teachers
-          </button>
+          </button> */}
         </div>
         <div className="search-container">
           <input
@@ -137,7 +134,7 @@ const TeachersIndex = () => {
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)} // Update searchTerm on input change
           />
-          <FaSearch className="search-icon " />
+          {/* <FaSearch className="search-icon " /> */}
         </div>
         <DataTable
           columns={columns}
@@ -148,6 +145,16 @@ const TeachersIndex = () => {
           customStyles={customStyles}
           className="teachers-table"
         />
+
+        <div className="bulk-actions">
+                            <button  className="bulk-action-button bulk-delete-button">
+                              <FaTrash /> Delete Selected
+                            </button>
+                            <button  className="bulk-action-button bulk-copy-button">
+                              <FaCopy /> Copy Selected
+                            </button>
+                            
+                          </div>
       </div>
     </div>
   );

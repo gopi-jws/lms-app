@@ -1,19 +1,21 @@
 /* Basic Dashboard Section */
 .dashboard-content {
-    padding-top: 80px; 
-    padding-left: 20px; 
-    padding-right: 20px; 
+    padding-top: 20px; 
+    
 }
 .dashboard-content-title {
     font-size: 24px;
     font-weight: 600;
     margin-bottom: 30px;
+    text-align: center;
     color: #333;
 }
-
+.fa-2x {
+    font-size: 20px !important;
+}
 /* Card Styling */
 .mini-stats-wid {
-    border: 1px solid #ddd;
+  border: 0px;
     border-radius: 8px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     background-color: #fff;
@@ -41,7 +43,7 @@
 
 .mini-stats-wid h4 {
     font-size: 18px;
-    font-weight: 600;
+    /* font-weight: 600; */
     color: #333;
 }
 
@@ -57,7 +59,7 @@
     align-items: center;
     width: 50px;
     height: 50px;
-    background-color: #007bff;
+    background-color: #037DE2!important;
     color: #fff;
     border-radius: 50%;
 }

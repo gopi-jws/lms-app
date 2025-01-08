@@ -177,14 +177,17 @@ const QuestionsAdd = () => {
 
   return (
     <div className="questions-add-page">
-      <TopBar />
+      {/* <TopBar /> */}
       <div className="page-layout">
         <div className="questions-content-area">
           <div className="addquestion-title">
-            <h1>Questions in Question Bank {id}</h1>
-            <button className="add-button" onClick={handleAddQuestion}>
+            <h1>Questions in QB {id}</h1>
+            {/* <button className="add-button" onClick={handleAddQuestion}>
               <FaPlus /> Add Question
-            </button>
+            </button> */}
+              <button onClick={() => navigate("/Questionbank")} className="back-button">
+            <FaArrowLeft /> Back to all QB Page
+          </button>
           </div>
 
           {/* Search bar and filter options */}
@@ -275,9 +278,7 @@ const QuestionsAdd = () => {
             </button>
           </div>
 
-          <button onClick={() => navigate("/questionbank")} className="back-button">
-            <FaArrowLeft /> Back to Question Banks
-          </button>
+        
         </div>
       </div>
     </div>

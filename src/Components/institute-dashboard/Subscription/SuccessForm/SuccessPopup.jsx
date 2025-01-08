@@ -9,13 +9,13 @@ const SuccessPopup = ({ onClose }) => {
         <div className="success-icon">
           <i className="fas fa-check-circle"></i>
         </div>
-        <h2 className="success-title">Request Sent Successfullyy!</h2>
+        <h2 className="success-title">Request Sent Successfully!</h2>
         <p className="success-message">
           Thank you for customizing your subscription. We'll review your request and get back to you shortly.
         </p>
       </DialogContent>
-      <DialogActions className="success-actions">
-        <Button onClick={onClose} variant="contained" color="primary" className="success-button">
+      <DialogActions className="success-actions" >
+        <Button onClick={onClose} variant="contained" color="primary" className="success-button" style={{justifyContent:"center"}}>
           Close
         </Button>
       </DialogActions>

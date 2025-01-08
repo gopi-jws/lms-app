@@ -1,0 +1,318 @@
+.test-details-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+     font-family:  'Inter', sans-serif; 
+}
+
+.test-details-title {
+  text-align: center;
+  color: #333;
+  margin-bottom: 2rem;
+}
+
+.top-cards-container {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 2rem;
+  gap: 1rem;
+}
+
+.top-card {
+  background-color: #ffffff;
+  border-radius: 6px;
+  padding: 1.5rem;
+  width: calc(33.333% - 0.67rem);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  display: flex;
+  align-items: center;
+}
+
+.top-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.card-icon {
+  background-color: #e6f2ff;
+  border-radius: 50%;
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 1rem;
+}
+
+.card-icon svg {
+  color: #007bff;
+}
+
+.card-content {
+  flex-grow: 1;
+}
+
+.top-card h3 {
+  margin: 0;
+  color: #555;
+  font-size: 0.9rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.top-card p {
+  margin: 0.25rem 0 0;
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #007bff;
+}
+
+.top-card .total {
+  font-size: 1rem;
+  color: #6c757d;
+  margin-left: 0.25rem;
+}
+
+.main-card {
+  background-color: #ffffff;
+  border-radius: 10px;
+  padding: 2rem;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.main-card h2 {
+  color: #333;
+  margin-top: 0;
+  margin-bottom: 1.5rem;
+  border-bottom: 2px solid #f0f0f0;
+  padding-bottom: 0.5rem;
+  font-size: 20px;
+}
+
+.test2-info {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.info-item {
+  background-color: #fff;
+  padding: 1rem;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+   transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.info-item:hover{
+ transform: translateY(-5px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+.info-icon {
+  background-color: #e6f2ff;
+  border-radius: 50%;
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 1rem;
+}
+
+.info-icon svg {
+  color: #007bff;
+}
+
+.info-content {
+  flex-grow: 1;
+}
+
+.info-item strong {
+  display: block;
+  color: #555;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 0.25rem;
+}
+
+.info-item span {
+  font-size: 1.1rem;
+  color: #333;
+  font-weight: 500;
+}
+
+.accordion {
+  margin-top: 2rem;
+}
+
+.accordion-item {
+  border: 1px solid #e0e0e0;
+  border-radius: 5px;
+  margin-bottom: 1rem;
+  overflow: hidden;
+}
+
+.accordion-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  padding: 1rem;
+  background-color: #f8f9fa;
+  border: none;
+  text-align: left;
+  font-size: 1rem;
+  font-weight: bold;
+  color: #333;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.accordion-header:hover {
+  background-color: #e9ecef;
+}
+
+.accordion-header.active {
+  background-color: #007BFF ;
+  color: white;
+}
+
+.accordion-icon {
+  font-size: 1.5rem;
+  line-height: 1;
+}
+
+.accordion-content {
+  padding: 1rem;
+  background-color: white;
+  border-top: 1px solid #e0e0e0;
+  animation: fadeIn 0.5s ease;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.accordion-content p {
+  margin: 0;
+  color: #555;
+  line-height: 1.6;
+}
+
+.candidate-details-card {
+  margin-top: 2rem;
+  background-color: #f8f9fa;
+  border-radius: 10px;
+  padding: 1.5rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.candidate-details-card h3 {
+  color: #333;
+  margin-top: 0;
+  margin-bottom: 1rem;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.table-container {
+  overflow-x: auto;
+}
+
+.candidate-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.9rem;
+}
+
+.candidate-table th,
+.candidate-table td {
+  padding: 0.75rem;
+  text-align: left;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.candidate-table th {
+  background-color: #e6f2ff;
+   color: #007bff;
+  font-weight: bold;
+}
+
+.candidate-table tr:nth-child(even) {
+  background-color: #f1f3f5;
+}
+
+.candidate-table tr:hover {
+  background-color: #e9ecef;
+}
+
+.score-legend {
+  margin-top: 1.5rem;
+  padding: 1rem;
+  background-color: #e9ecef;
+  border-radius: 5px;
+}
+
+.score-legend h4 {
+  color: #333;
+  color: #333;
+  margin-top: 0;
+  margin-bottom: 0.5rem;
+      font-size: 20px;
+}
+
+.score-legend ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.score-legend li {
+  color: #555;
+  font-size: 0.9rem;
+}
+
+.score-legend strong {
+  color: #007bff;
+}
+
+.clock-img {
+  display: flex;
+  align-items: center;
+  gap: 10px; /* Adds space between the image and the title */
+
+  padding: 20px; /* Adds padding around the content */
+  border-radius: 8px; /* Optional border radius for rounded corners */
+
+ 
+}
+
+.clock-img img {
+  width: 50px; /* Set the width of the clock image */
+  height: 50px; /* Set the height of the clock image */
+  object-fit: contain; /* Ensures the image scales without distorting */
+ 
+}
+
+.test-details-title {
+
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: green;
+    margin: 0;
+  
+}

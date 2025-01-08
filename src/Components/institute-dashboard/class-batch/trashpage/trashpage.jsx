@@ -7,7 +7,9 @@ import './trashpage.css';
 
 const TrashPage = ({ trashedClasses, handleRestore, handleTrashDelete }) => {
   return (
-    <div className="container py-5" style={{ marginLeft: '220px', width: 'calc(100% - 220px)' }}>
+     <div className="container p-5" style={{ marginLeft: '220px', width: 'calc(100% - 220px)' }}>
+    <div className="class-trashpage py-5"    >
+      <h3 className="class-trash-heading">Trashed Contents</h3>
       {trashedClasses.length > 0 ? (
         <table className="table">
           <thead>
@@ -47,7 +49,9 @@ const TrashPage = ({ trashedClasses, handleRestore, handleTrashDelete }) => {
           <p>No trashed classes available.</p>
         </div>
       )}
+      </div>
     </div>
+    
   );
 };
 

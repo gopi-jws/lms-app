@@ -14,7 +14,7 @@ const Layout = () => {
 
         {/* Main Content Area */}
         <div className="class-content">
-          <TopBar />
+        
           <Outlet /> 
         </div>
       </div>

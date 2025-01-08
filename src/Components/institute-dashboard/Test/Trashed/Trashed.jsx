@@ -80,7 +80,7 @@ const Trashed = () => {
     
   return (
    <div className="test-index-wrapper">
-      <TopBar />
+      {/* <TopBar /> */}
       <div className="test-index-container">
         <div className="test-index-header">
           <h1>Trashed List</h1>

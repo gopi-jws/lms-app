@@ -1,20 +1,27 @@
 .add-class-container {
-  padding: 20px;
-  margin: 20px auto;
-  max-width: 600px;
+ 
+  
   position: relative;
   top: 125px;
-  box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+  
 }
 .add-class-container h2{
   font-size: 25px;
   margin-bottom: 20px;
+  
 }
-
+.addnewclass-title{
+margin: 0 auto;
+text-align: center;
+}
 .add-class-form {
   display: flex;
   flex-direction: column;
   gap: 20px;
+   padding: 20px;
+  margin: 20px auto;
+  max-width: 600px;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
   
 }
 
@@ -100,4 +107,13 @@
 }
 .form-date{
   margin-right: 1rem;
+}
+.generate-link-button{
+  background: #007bff;
+  color: #fff !important;
+  width: 150px;
+  padding: 10px;
+  text-align: center;
+  place-items: center;
+  justify-content: center;
 }
