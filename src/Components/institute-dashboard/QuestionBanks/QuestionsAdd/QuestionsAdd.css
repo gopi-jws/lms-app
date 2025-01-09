@@ -214,48 +214,9 @@ h1 {
   margin-top: 1rem;
 }
 
-.deleteButton,
-.copyButton,
-.addToTestButton,
-.editButton {
-  padding: 0.5rem 1rem;
-  border: none;
- gap: 2px;
-  border-radius: 4px;
-  cursor: pointer;
-  transition: background-color 0.3s;
-  background-color: transparent;
-  color: #037DE2;
 
-}
-.bulk-actions {
-  display: flex;
-  gap: 10px;
-  margin-top: 20px;
-}
 
-.bulk-action-button {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 10px 15px;
-  border: none;
-  border-radius: 5px;
-  font-size: 14px;
-  font-weight: 600;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  color: #ffffff;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-}
 
-.bulk-action-button svg {
-  margin-right: 8px;
-}
-
-.bulk-delete-button {
-  background-color: #e74c3c;
-}
 
 
 
