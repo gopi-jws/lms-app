@@ -29,7 +29,7 @@ const ClassSideMenu = ({ archivedCount, trashedCount }) => {
         <li>
           <Link
             to="/class/addclass"
-            className={`menu-item  menu-item2 ${location.pathname === "/class/new-class" ? "active" : ""}`}
+            className={`class-menu-item  menu-item2 ${location.pathname === "/class/new-class" ? "active" : ""}`}
           >
              <FontAwesomeIcon icon={faFolderPlus} className="class-newqbicon" />
             <span className="menu-text">New Class</span>
@@ -38,7 +38,7 @@ const ClassSideMenu = ({ archivedCount, trashedCount }) => {
          <li>
           <Link
             to="/class"
-            className={`menu-item ${location.pathname === "/class" ? "active" : ""}`}
+            className={`class-menu-item ${location.pathname === "/class" ? "active" : ""}`}
           >
             <FontAwesomeIcon icon={faChalkboardTeacher} className="menu-icon" />
             <span className="menu-text">
@@ -50,7 +50,7 @@ const ClassSideMenu = ({ archivedCount, trashedCount }) => {
         <li>
           <Link
             to="/class/archivepage"
-            className={`menu-item ${location.pathname === "/class/archivepage" ? "active" : ""}`}
+            className={`class-menu-item ${location.pathname === "/class/archivepage" ? "active" : ""}`}
           >
             <FontAwesomeIcon icon={faArchive} className="menu-icon" />
             <span className="menu-text">
@@ -62,7 +62,7 @@ const ClassSideMenu = ({ archivedCount, trashedCount }) => {
         <li>
           <Link
             to="/class/trashPage"
-            className={`menu-item ${location.pathname === "/class/trashPage" ? "active" : ""}`}
+            className={`class-menu-item ${location.pathname === "/class/trashPage" ? "active" : ""}`}
           >
             <FontAwesomeIcon icon={faTrash} className="menu-icon" />
             <span className="menu-text">

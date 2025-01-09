@@ -107,8 +107,6 @@ const ClassDetailsPage = () => {
       {/* Header */}
       <Header />
 
-    
-
       {/* Class details page side Menu */}
       <div className="classdetailspage-sidemenu">
         <ClassDetailPageSideMenu
@@ -272,7 +270,6 @@ const ClassDetailsPage = () => {
           </div>
         </div>
       )}
-
     </>
   );
 };

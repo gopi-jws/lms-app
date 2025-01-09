@@ -83,11 +83,8 @@ const ClassPage = ({ classes, handleRename, handleSettings, handleArchive, handl
     Add Class
   </Link>
 
- 
 </div>
-
-
-        <table className="table">
+    <table className="table">
           <thead>
             <tr>
               <th>

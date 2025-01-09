@@ -78,7 +78,7 @@ border-radius: 4px;
 
 
 
-.menu-item {
+.class-menu-item {
   display: flex;
   align-items: center;
   padding: 15px 20px;
@@ -88,27 +88,27 @@ border-radius: 4px;
   position: relative;
 }
 
-.menu-item:hover {
+.class-menu-item:hover {
   background-color: #F2F9FF;
   color: #037DE2;
 }
 
-.menu-item.active {
+.class-menu-item.active {
    background-color: #F2F9FF;
   color: #037DE2;
 }
 
 
-.menu-item:hover {
+.class-menu-item:hover {
   background-color: #F2F9FF;
 }
 
-.menu-item:hover a {
+.class-menu-item:hover a {
   color: #037DE2;
   transform: translateX(5px);
 }
 
-.menu-item::before {
+.class-menu-item::before {
   content: '';
   position: absolute;
   left: 0;
@@ -120,11 +120,11 @@ border-radius: 4px;
   transition: transform 0.3s ease;
 }
 
-.menu-item:hover::before {
+.class-menu-item:hover::before {
   transform: scaleY(1);
 }
 
-.menu-item::after {
+.class-menu-item::after {
   content: '→';
   position: absolute;
   right: 15px;

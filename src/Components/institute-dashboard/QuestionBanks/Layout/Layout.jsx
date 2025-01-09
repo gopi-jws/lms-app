@@ -1,7 +1,9 @@
 import React from 'react';
-import { Outlet } from 'react-router-dom';
+import { Outlet,useLocation } from 'react-router-dom';
 import TopBar from '../../class-batch/classtopbar/classtopbar';
 import Header from '../../../header/header';
+import AddQuestionSidebar from '../AddQuestionSidebar/AddQuestionSidebar'
+import Sidebar from '../Sidebar/Sidebar'
 import './Layout.css'
 const Layout = () => {
   
