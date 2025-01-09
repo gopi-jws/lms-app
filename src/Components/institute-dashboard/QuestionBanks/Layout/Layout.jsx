@@ -1,8 +1,11 @@
 import React from 'react';
-import { Outlet } from 'react-router-dom';
+import { Outlet,useLocation } from 'react-router-dom';
 import TopBar from '../../class-batch/classtopbar/classtopbar';
 import Header from '../../../header/header';
 import './Layout.css'
+import AddQuestionSidebar from '../AddQuestionSidebar/AddQuestionSidebar'
+import  Sidebar  from '../Sidebar/Sidebar';
+
 const Layout = () => {
   const location = useLocation(); // Get current location/path
 
@@ -19,11 +22,10 @@ const Layout = () => {
       {/* Main Content Area with Sidebar */}
       <div className="layout-main">
         {isQuestionsAdd ? (
-          <AddQuestionSidebar /> // Only show this sidebar on the 'Add Question' page
+          <AddQuestionSidebar /> 
         ) : (
-          <Sidebar /> // Show normal sidebar for other pages
+          <Sidebar/>
         )}
-
         {/* Page Content */}
         <main className="layout-content">
           <Outlet /> {/* Render nested routes here */}
