@@ -27,7 +27,7 @@
 .layout-content {
   flex: 1;
   padding: 20px;
-  overflow-y: auto;
+  /* overflow-y: auto; */
   background-color: #fff;
   box-shadow: inset -2px 0 10px rgba(0, 0, 0, 0.05);
 }

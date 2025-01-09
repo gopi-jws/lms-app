@@ -9,9 +9,10 @@ import ClassDetailsPage from "./classdetailspage/classdetailspage";
 
 // Initial class data
 const initialClasses = [
-  { id: "1", name: "Mathematics", strength: 30, maximumallowed: 50, expiryDate: new Date(2024, 5, 30) },
-  { id: "2", name: "Physics", strength: 25, maximumallowed: 100, expiryDate: new Date(2024, 6, 15) },
-  { id: "3", name: "Chemistry", strength: 28, maximumallowed: 70, expiryDate: new Date(2024, 7, 1) },
+  { id: "1", name: "class 1", strength: 30, maximumallowed: 50, expiryDate: new Date(2024, 5, 30) },
+  { id: "2", name: "Class 2", strength: 25, maximumallowed: 100, expiryDate: new Date(2024, 6, 15) },
+  { id: "3", name: "Class 3", strength: 28, maximumallowed: 70, expiryDate: new Date(2024, 7, 1) },
+   { id: "4", name: "Class 4", strength: 28, maximumallowed: 70, expiryDate: new Date(2024, 7, 1) },
 ];
 
 const Class = () => {

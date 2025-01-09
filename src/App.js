@@ -8,14 +8,18 @@ import Trashed from './Components/institute-dashboard/QuestionBanks/Sidebar/Tras
 import Test from './Components/institute-dashboard/Test/Test';
 import Teachers from './Components/institute-dashboard/Teachers/Teachers';
 import Subscription from './Components/institute-dashboard/Subscription/Subscription';
+import General from './Components/institute-dashboard/General/General';
+import MainDashboard from './Components/institute-dashboard/MainDashboard/MainDashboard';
 
 function App() {
   return (
-    <Router>
+    <Router basename='/lmsinstitute1'>
       <Routes>
         {/* Define routes for the components */}
-        <Route path="/" element={<Institute />} />
-        <Route path="/institute" element={<Institute />} />
+        <Route path="/" element={ <MainDashboard />} />
+        <Route path="/MainDashboard/*" element={   <MainDashboard />} />
+      
+
         <Route path="/class/*" element={<Class />} />
         <Route path="/QuestionBank/*" element={<QuestionBank />} />
         <Route path="/Test/*" element={<Test />} />

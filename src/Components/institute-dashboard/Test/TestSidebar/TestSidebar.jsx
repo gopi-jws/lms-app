@@ -52,11 +52,11 @@ const TestSidebar = () => {
   }, [isModalOpen]);
 
   return (
-    <nav className="sidebar-container" aria-label="Main Navigation">
+    <nav className="test-sidebar-container" aria-label="Main Navigation">
       <div className="test-sidebar-header">
         <button
           onClick={handleOpenModal}
-          className="test-sidebar-button new-test-button"
+          className="test-sidebar-button new-test-button test-sidebar-button2"
           aria-label="Create New Test"
         >
           <FaPlus className="icon" />
@@ -94,9 +94,9 @@ const TestSidebar = () => {
         </div>
       )}
 
-      <div className="sidebar-section">
+      <div className="test-sidebar-section">
         <h3
-          className="sidebar-section-title"
+          className="test-sidebar-section-title"
           onClick={toggleTestsVisibility}
           style={{ cursor: "pointer" }}
         >
@@ -108,7 +108,7 @@ const TestSidebar = () => {
           )}
         </h3>
         {isTestsVisible && (
-          <ul className="sidebar-menu">
+          <ul className="test-sidebar-menu">
             <li>
               <Link
                 to="Alltest"
@@ -190,13 +190,13 @@ const TestSidebar = () => {
       <div className="sidebar-section">
         <button
           // onClick={handleOpenModal}
-          className="test-sidebar-button new-test-button"
+          className="test-sidebar-button new-test-button test-sidebar-button2"
           aria-label="Create New Test"
         >
           <FaPlus className="icon" />
           <span className="sidespan">New Tags</span>
         </button>
-        <ul className="sidebar-menu tags">
+        <ul className="test-sidebar-menu tags">
           {tags.map((tag, index) => (
             <li key={index}>
               <Link

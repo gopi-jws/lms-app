@@ -8,15 +8,20 @@
     overflow: hidden;
   }
   
-  .teststatus-card-header {
-    padding: 1rem;
-    background-color: #f3f4f6;
-    border-bottom: 1px solid #e5e7eb;
-  }
+ 
+  .teststatus-card-header-content {
+  display: flex;
+  justify-content: space-between; /* Ensures both elements are spaced apart */
+  align-items: center; /* Aligns items vertically in the center */
+  padding: 10px; /* Optional padding for spacing */
+
+ 
+  border-radius: 5px; /* Optional rounded corners */
+}
   
   .teststatus-card-title {
-    font-size: 1.5rem;
-    font-weight: bold;
+    font-size: 1.1rem;
+  
     margin: 0;
   }
   
@@ -124,6 +129,6 @@
   }
   .teststatus-total{
     text-align: center;
-    margin-top: 1rem;
+   
   }
  

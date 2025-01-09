@@ -34,7 +34,7 @@ const SubscriptionIndex = () => {
 
   return (
     <div className="subscription-page">
-      <TopBar />
+      {/* <TopBar /> */}
       <div className="subscription-container">
         <div className="subscription-card">
           <div className="card-header">

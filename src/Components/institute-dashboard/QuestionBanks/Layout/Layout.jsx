@@ -1,12 +1,10 @@
 import React from 'react';
-import { Outlet,useLocation } from 'react-router-dom';
+import { Outlet } from 'react-router-dom';
 import TopBar from '../../class-batch/classtopbar/classtopbar';
 import Header from '../../../header/header';
 import './Layout.css'
-import AddQuestionSidebar from '../AddQuestionSidebar/AddQuestionSidebar'
-import  Sidebar  from '../Sidebar/Sidebar';
-
 const Layout = () => {
+  
   const location = useLocation(); // Get current location/path
 
   // Check if the current route is for the 'Add Question' page

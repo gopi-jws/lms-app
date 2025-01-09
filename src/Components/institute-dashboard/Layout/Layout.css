@@ -1,0 +1,50 @@
+/* Container for the entire layout */
+.layout-container {
+  display: flex;
+  flex-direction: column;
+  height: 100vh; /* Full viewport height */
+}
+
+/* Header styles */
+.layout-container header {
+
+  color: white;
+
+  text-align: center;
+  position: sticky;
+  top: 0;
+  width: 100%;
+  z-index: 10;
+}
+
+/* Main content area with sidebar */
+.layout-main {
+  display: flex;
+  height: calc(100vh - 60px); /* Subtracting header height */
+  overflow: hidden;
+}
+/* Main content area (on the right side of the sidebar) */
+.main-layout-content {
+  flex: 1;
+  padding: 40px;
+  overflow-y: auto;
+  background-color: #F3F3F3;
+  box-shadow: inset -2px 0 10px rgba(0, 0, 0, 0.05);
+  margin-left: 240px;
+     
+}
+/* Media Query for smaller screens */
+@media (max-width: 768px) {
+  .layout-main {
+    flex-direction: column;
+  }
+
+  .test-sidebar {
+    width: 100%;
+    height: auto;
+  }
+
+  .layout-content {
+    margin-top: 20px;
+  }
+}

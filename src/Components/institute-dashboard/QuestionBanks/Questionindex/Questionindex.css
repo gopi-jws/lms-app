@@ -123,7 +123,7 @@
   width: 40px;
   height: 40px;
   border-radius: 20%;
-  background-color: #f0f0f0;
+  /* background-color: #f0f0f0; */
   color: #333;
   font-size: 1.2rem;
   border: 1px solid #ddd;
@@ -140,8 +140,8 @@
 
 /* Specific colors for each action */
 .action-button.pdf {
-  background: linear-gradient(45deg, #d32f2fe8, #f44336);
-  color: #ffffff;
+  /* background: linear-gradient(45deg, #d32f2fe8, #f44336); */
+  color: #333;
 }
 
 .action-button.folder {
@@ -160,8 +160,8 @@
 }
 
 .action-button.delete {
- 
-  color: #333;
+ background-color: rgb(194, 14, 14);
+  color: #fff;
 }
 
 /* Responsive alignment for smaller screens */
@@ -173,15 +173,15 @@
 }
 
 .add {
-  padding: 10px 20px;
-  background-color: #007bff; /* Blue background */
-  color: white; /* Text color */
-  border: none; /* No border */
-  border-radius: 5px; /* Rounded corners */
-  font-size: 16px; /* Font size */
-  cursor: pointer; /* Pointer cursor on hover */
-  transition: background-color 0.3s, transform 0.2s; /* Smooth transition on hover */
-     justify-content: center;
+    padding: 10px 20px;
+    /* background-color: #007bff; */
+    color: #007bff;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+    justify-content: center;
     align-items: center;
     margin-right: 0 !important;
 }
