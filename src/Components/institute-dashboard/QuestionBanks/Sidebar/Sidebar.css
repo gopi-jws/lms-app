@@ -1,6 +1,7 @@
 :root {
   --primary-color: #3498db;
   --secondary-color: #2c3e50;
+   --background :#fff;
   --background-color: #ecf0f1;
   --text-color: #34495e;
   --border-color: #bdc3c7;
@@ -11,9 +12,9 @@
 }
 
 .sidebar {
-  width: 280px;
+  width: 259px;
   height: 100vh;
-  background-color: var(--background-color);
+  background-color: var(--background);
   color: var(--text-color);
    font-family: var(--font-family);
   transition: width var(--transition-speed) ease;
@@ -33,7 +34,7 @@
   justify-content: space-between;
   align-items: center;
   padding: 17px;
-background: linear-gradient(to right, #3b82f6, #4f46e5, #4f46e5);
+background:#037DE2;
  
 border-radius: 4px;
   color: #fff !important;
@@ -50,7 +51,7 @@ border-radius: 4px;
   font-size: 24px;
   font-weight: bold;
 
-    color: rgba(255, 255, 255, 0.8);
+    color: #fff;
   font-family: var(--font-family);
  font-size: 16px;
  font-weight: 700;
@@ -89,7 +90,7 @@ border-radius: 4px;
 
 .search-container {
   position: relative;
-  margin-bottom: 20px;
+  
 }
 
 .search-input {
@@ -107,12 +108,12 @@ border-radius: 4px;
 }
 
 .search-icon {
-  position: absolute;
-  right: 10px;
-  top: 50%;
-  transform: translateY(-50%);
-  color: var(--text-color);
-  pointer-events: none;
+    position: absolute;
+    right: 26px;
+    top: 33%;
+    transform: translateY(-50%);
+    color: var(--text-color);
+    pointer-events: none;
 }
 
 .clear-search {
@@ -175,13 +176,13 @@ border-radius: 4px;
   display: flex;
   align-items: center;
   width: 100%;
-  padding: 15px;
+  padding: 11px;
   background: #34495E !important;
   color: white;
   border: none;
   border-radius: 5px;
   cursor: pointer;
-  font-size: 14px;
+  font-size: 13px;
   font-weight: 500;
   transition: background-color var(--transition-speed) ease;
   overflow: hidden;
@@ -239,12 +240,142 @@ border-radius: 4px;
   border-radius: 5px;
   transition: background-color var(--transition-speed) ease;
   margin-bottom: 5px;
+  position: relative;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 .sidebar-link:hover,
 .sidebar-link.active {
   background:#e0e6e9;
 }
+
+.sidebar-link:hover {
+  background-color: #F2F9FF;
+}
+
+.sidebar-link:hover a {
+  color: #037DE2;
+  transform: translateX(5px);
+}
+
+.sidebar-link::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 3px;
+  background-color: #037DE2;
+  transform: scaleY(0);
+  transform-origin: top; /* Ensures animation starts from the top */
+  transition: transform 0.3s ease;
+}
+.sidebar-link:hover::before {
+  transform: scaleY(1); /* Expands the bar vertically on hover */
+}
+
+.sidebar-link::after {
+  content: '→';
+  position: absolute;
+  right: 15px;
+  top: 50%;
+  transform: translateY(-50%);
+  opacity: 0;
+  transition: all 0.3s ease;
+}
+
+.sidebar-link:hover::after {
+  opacity: 1;
+  transform: translate(5px, -50%);
+}
+
+.sidebar-link:hover {
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.sidebar-link.active,
+.sidebar-link.active:hover {
+  background-color: #F2F9FF;
+}
+
+.sidebar-link.active a,
+.sidebar-link.active:hover a {
+  color: #037DE2;
+  transform: translateX(5px);
+}
+
+.sidebar-link.active::before {
+  transform: scaleY(1);
+}
+
+.sidebar-link.active::after {
+  content: '→';
+  opacity: 1 !important;
+  transform: translate(5px, -50%);
+}
+
+.sidebar-link.active {
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  /* animation: pulse 1.5s infinite; */
+}
+
+@keyframes pulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(3, 125, 226, 0.4);
+  }
+  70% {
+    box-shadow: 0 0 0 10px rgba(3, 125, 226, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(3, 125, 226, 0);
+  }
+}
+
+.teachers-sidebar-nav li:hover {
+  /* animation: pulse 1.5s infinite; */
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 .sidebar-icon {
   margin-right: 10px;
@@ -354,7 +485,7 @@ border-radius: 4px;
 }
 
 .unique-text {
-  font-size: 16px; /* Adjust the font size of the text */
+  font-size: 13px; /* Adjust the font size of the text */
   color: var(--text-color); /* Customize the text color */
   margin: 0; /* Remove default paragraph margins */
 }

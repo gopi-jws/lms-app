@@ -6,7 +6,11 @@ import {
   DialogTitle, 
   DialogContent, 
   DialogActions, 
-  Grid 
+  Grid,
+  FormControl,
+  InputLabel,
+  Select,
+  MenuItem
 } from '@mui/material';
 import SuccessPopup from '../SuccessForm/SuccessPopup'
 import './Subscriptionform.css';
@@ -20,7 +24,10 @@ const Subscriptionform = ({ onClose, defaultValues }) => {
     totalTestHours: '',
     questionBanks: '',
     totalQuestions: '',
-    message: ''
+    message: '',
+    withTeam: '',
+    guestUsers: '',
+    validTillDays: ''
   });
   const [showSuccessPopup, setShowSuccessPopup] = useState(false);
 
@@ -34,7 +41,10 @@ const Subscriptionform = ({ onClose, defaultValues }) => {
         totalTestHours: defaultValues.TotalTestHours || '',
         questionBanks: defaultValues.QuestionBanks || '',
         totalQuestions: defaultValues.TotalQuestions || '',
-        message: ''
+        message: '',
+        withTeam: defaultValues.WithTeam || '',
+        guestUsers: defaultValues.GuestUsers || '',
+        validTillDays: defaultValues.ValidTillDays || ''
       });
     }
   }, [defaultValues]);
@@ -134,6 +144,55 @@ const Subscriptionform = ({ onClose, defaultValues }) => {
                   value={formData.totalQuestions}
                   onChange={handleChange}
                   margin="normal"
+                />
+
+               
+                <FormControl fullWidth margin="normal">
+                  <InputLabel id="guest-users-label">Guest Users</InputLabel>
+                  <Select
+                    labelId="guest-users-label"
+                    id="guestUsers"
+                    name="guestUsers"
+                    value={formData.guestUsers}
+                    onChange={handleChange}
+                    label="Guest Users"
+                  >
+                    <MenuItem value="yes">Yes</MenuItem>
+                    <MenuItem value="no">No</MenuItem>
+                  </Select>
+                </FormControl>
+            
+              </Grid>
+              <Grid item xs={12} sm={6}>
+                <FormControl fullWidth margin="normal">
+                  <InputLabel id="with-team-label">With or Without Team</InputLabel>
+                  <Select
+                    labelId="with-team-label"
+                    id="withTeam"
+                    name="withTeam"
+                    value={formData.withTeam}
+                    onChange={handleChange}
+                    label="With or Without Team"
+                  >
+                    <MenuItem value="with">With Team</MenuItem>
+                    <MenuItem value="without">Without Team</MenuItem>
+                  </Select>
+                </FormControl>
+              </Grid>
+            
+             
+              <Grid item xs={12} sm={6}>
+                <TextField
+                  id="validTillDays"
+                  name="validTillDays"
+                  label="Valid Till (Days)"
+                  type="number"
+                  fullWidth
+                  value={formData.validTillDays}
+                  onChange={handleChange}
+                  margin="normal"
+                  InputProps={{ inputProps: { min: 1 } }}
+                  helperText="Number of days from subscription payment date"
                 />
               </Grid>
               <Grid item xs={12}>

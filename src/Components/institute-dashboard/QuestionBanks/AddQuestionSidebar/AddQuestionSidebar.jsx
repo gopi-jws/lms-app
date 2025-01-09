@@ -1,4 +1,4 @@
- import React, { useState } from "react";
+import React, { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { FaFolderPlus } from "react-icons/fa"; // Correct import for FaFolderPlus
 
@@ -11,7 +11,7 @@ import {
   FaTimes,
   FaTrash,
   FaTags,
- // Add this line
+  FaPlus
 } from "react-icons/fa";
 
 import "./AddQuestionSidebar.css";
@@ -20,35 +20,49 @@ const AddQuestionSidebar = () => {
   const [activeItem, setActiveItem] = useState(null);
   const [showPopup, setShowPopup] = useState(false);
   const [question, setQuestion] = useState("");
-  const [answer1, setAnswer1] = useState("");
-  const [answer2, setAnswer2] = useState("");
+  const [answers, setAnswers] = useState([{ text: "", image: null }]); // Dynamic answer fields
   const [correctAnswer, setCorrectAnswer] = useState(null);
-  const [img1, setImg1] = useState(null);
-  const [img2, setImg2] = useState(null);
   const [questionType, setQuestionType] = useState(null); // Store selected question type
+  const [questionImage, setQuestionImage] = useState(null); // Store question image
+  const [isLatex, setIsLatex] = useState(false); // State for toggling between Latex and Code
 
-  const handleFileChange = (e, setImg) => {
+  const handleFileChange = (e, index) => {
     const file = e.target.files[0];
     if (file) {
-      setImg(URL.createObjectURL(file));
+      const newAnswers = [...answers];
+      newAnswers[index].image = URL.createObjectURL(file); // Set the image URL
+      setAnswers(newAnswers);
     }
   };
 
-  const handleChange = (e, setter) => {
-    const value =
-      e.target.type === "number" ? parseFloat(e.target.value) : e.target.value;
-    setter(value);
+  const handleQuestionImageChange = (e) => {
+    const file = e.target.files[0];
+    if (file) {
+      setQuestionImage(URL.createObjectURL(file)); // Set the question image URL
+    }
+  };
+
+  const handleAnswerChange = (e, index) => {
+    const newAnswers = [...answers];
+    newAnswers[index].text = e.target.value;
+    setAnswers(newAnswers);
+  };
+
+  const addAnswerField = () => {
+    setAnswers([...answers, { text: "", image: null }]);
+  };
+
+  const removeAnswerField = (indexToRemove) => {
+    setAnswers((prevAnswers) => prevAnswers.filter((_, index) => index !== indexToRemove));
   };
 
   // Reset state when switching between question types
   const resetStateForNewQuestionType = (type) => {
     setQuestionType(type);
     setQuestion("");
-    setAnswer1("");
-    setAnswer2("");
+    setAnswers([{ text: "", image: null }]);
     setCorrectAnswer(null);
-    setImg1(null);
-    setImg2(null);
+    setQuestionImage(null); // Reset question image when changing type
   };
 
   const questionTypes = [
@@ -73,47 +87,43 @@ const AddQuestionSidebar = () => {
       case "MCQ-2":
         return (
           <>
-            <div className="form-group">
-              <label htmlFor="answer1">Answer 1:</label>
-              <input
-                type="text"
-                id="answer1"
-                value={answer1}
-                onChange={(e) => handleChange(e, setAnswer1)}
-                placeholder="Enter answer 1"
-                required
-              />
-              <div className="file-input-wrapper">
-                <button className="file-input-button">Choose Image</button>
+            {answers.map((answer, index) => (
+              <div key={index} className="form-group">
+                <label htmlFor={`answer${index + 1}`}>Answer {index + 1}:</label>
                 <input
-                  type="file"
-                  onChange={(e) => handleFileChange(e, setImg1)}
-                  accept="image/*"
+                  type="text"
+                  id={`answer${index + 1}`}
+                  value={answer.text}
+                  onChange={(e) => handleAnswerChange(e, index)}
+                  placeholder={`Enter answer ${index + 1}`}
+                  required
                 />
-              </div>
-              {img1 && <img src={img1} alt="Answer 1" className="answer-img" />}
-            </div>
+                <div className="file-input-wrapper">
+                  <button className="file-input-button">Choose Image</button>
+                  <input
+                    type="file"
+                    onChange={(e) => handleFileChange(e, index)} // Use handleFileChange here
+                    accept="image/*"
+                  />
+                </div>
 
-            <div className="form-group">
-              <label htmlFor="answer2">Answer 2:</label>
-              <input
-                type="text"
-                id="answer2"
-                value={answer2}
-                onChange={(e) => handleChange(e, setAnswer2)}
-                placeholder="Enter answer 2"
-                required
-              />
-              <div className="file-input-wrapper">
-                <button className="file-input-button">Choose Image</button>
-                <input
-                  type="file"
-                  onChange={(e) => handleFileChange(e, setImg2)}
-                  accept="image/*"
-                />
+                {answer.image && (
+                  <img src={answer.image} alt={`Answer ${index + 1}`} className="answer-img" />
+                )}
+
+                {answers.length > 2 && (
+                  <button
+                    className="remove-answer-btn"
+                    onClick={() => removeAnswerField(index)}
+                  >
+                    Remove
+                  </button>
+                )}
               </div>
-              {img2 && <img src={img2} alt="Answer 2" className="answer-img" />}
-            </div>
+            ))}
+            <button className="add-answer-btn" onClick={addAnswerField}>
+              <FaPlus className="add-icon" />
+            </button>
 
             <div className="form-group">
               <label htmlFor="correctAnswer">Correct Answer:</label>
@@ -123,8 +133,11 @@ const AddQuestionSidebar = () => {
                 value={correctAnswer || ""}
               >
                 <option value="">Select Answer</option>
-                <option value="Answer 1">Answer 1</option>
-                <option value="Answer 2">Answer 2</option>
+                {answers.map((_, index) => (
+                  <option key={index} value={`Answer ${index + 1}`}>
+                    Answer {index + 1}
+                  </option>
+                ))}
               </select>
             </div>
           </>
@@ -191,6 +204,16 @@ const AddQuestionSidebar = () => {
                 <FaTimes />
               </button>
             </div>
+              {/* Toggle Button for Latex / Code */}
+               <div className="toggle-switch-container">
+      <span className={`toggle-text ${isLatex ? "active" : ""}`}>Latex Mode</span>
+      <label className="switch">
+        <input type="checkbox" checked={isLatex} onChange={() => setIsLatex(!isLatex)} />
+        <span className="slider"></span>
+      </label>
+      <span className={`toggle-text ${!isLatex ? "active" : ""}`}>Code Mode</span>
+    </div>
+
             <div className="popup-content">
               <div className="form-section">
                 <div className="form-group">
@@ -199,11 +222,25 @@ const AddQuestionSidebar = () => {
                     type="text"
                     id="question"
                     value={question}
-                    onChange={(e) => handleChange(e, setQuestion)}
+                    onChange={(e) => setQuestion(e.target.value)}
                     placeholder="Enter your question"
                     required
                   />
+                  <div className="file-input-wrapper">
+                    <button className="file-input-button">Choose Image</button>
+                    <input
+                      type="file"
+                      onChange={handleQuestionImageChange} // Handle image for question
+                      accept="image/*"
+                    />
+                  </div>
+
+                  {questionImage && (
+                    <img src={questionImage} alt="Question" className="question-img-preview" />
+                  )}
                 </div>
+
+          
 
                 {renderPopupContent()}
 
@@ -219,29 +256,28 @@ const AddQuestionSidebar = () => {
                 <h3>Preview</h3>
                 <div className="preview-content">
                   <h4>{question || "Your question will appear here"}</h4>
+                  {questionImage && (
+                    <img
+                      src={questionImage}
+                      alt="Preview of question"
+                      className="preview-img"
+                    />
+                  )}
                   {questionType === "MCQ-1" || questionType === "MCQ-2" ? (
-                    <>
-                      <p className="answer">
-                        Answer 1: {answer1 || "Not provided"}
-                      </p>
-                      {img1 && (
-                        <img
-                          src={img1}
-                          alt="Answer 1"
-                          className="preview-img"
-                        />
-                      )}
-                      <p className="answer">
-                        Answer 2: {answer2 || "Not provided"}
-                      </p>
-                      {img2 && (
-                        <img
-                          src={img2}
-                          alt="Answer 2"
-                          className="preview-img"
-                        />
-                      )}
-                    </>
+                    answers.map((answer, index) => (
+                      <div key={index}>
+                        <p className="answer">
+                          Answer {index + 1}: {answer.text || "Not provided"}
+                        </p>
+                        {answer.image && (
+                          <img
+                            src={answer.image}
+                            alt={`Answer ${index + 1}`}
+                            className="preview-img"
+                          />
+                        )}
+                      </div>
+                    ))
                   ) : null}
                   <p className="correct-answer">
                     Correct Answer: {correctAnswer || "Not selected"}

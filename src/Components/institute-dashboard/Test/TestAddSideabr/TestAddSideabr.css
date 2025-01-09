@@ -1,0 +1,204 @@
+:root {
+  --sidebar-bg: #f8fafc;
+  --sidebar-text: #334155;
+  --sidebar-hover: #e2e8f0;
+  --sidebar-active: #3b82f6;
+  --sidebar-button: #037DE2;
+  --sidebar-button-text: #ffffff;
+  --sidebar-border: #e2e8f0;
+  --sidebar-tag: #f1f5f9;
+  --sidebar-item-background :#F2F9FF;
+   --sidebar-item-color :#037DE2 ;
+}
+ 
+.test-add-sidebar {
+  width: 280px;
+  height: 100vh;
+  background-color: var(--sidebar-bg);
+  color: var(--sidebar-text);
+  padding: 24px;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  overflow-y: auto;
+   /* Hide the scrollbar by default */
+  scrollbar-width: none; /* For Firefox */
+}
+.test-add-sidebar::-webkit-scrollbar {
+  display: none; /* For Chrome, Safari, and Edge */
+}
+
+/* When hovering, show the scrollbar */
+.test-add-sidebar:hover {
+  scrollbar-width: thin; /* For Firefox */
+}
+
+.test-add-sidebar:hover::-webkit-scrollbar {
+  display: block; /* For Chrome, Safari, and Edge */
+}
+
+.test-add-sidebar::-webkit-scrollbar {
+  width: 6px;
+}
+
+.test-add-sidebar::-webkit-scrollbar-track {
+  background: var(--sidebar-button)
+}
+
+.test-add-sidebar::-webkit-scrollbar-thumb {
+  background-color:var(--sidebar-button);
+  border-radius: 3px;
+}
+
+.test-add-sidebar::-webkit-scrollbar-thumb:hover {
+  background-color: var(--sidebar-button);
+}
+
+.test-add-sidebar-button {
+    width: 100%;
+    padding: 12px;
+    background-color: var(--sidebar-button);
+    color: var(--sidebar-button-text);
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 600;
+    margin-bottom: 24px;
+    transition: all 0.3s;
+    display: flex;
+    align-items: center;
+    font-size: 14px;
+    justify-content: center;
+    gap: 8px;
+}
+
+.test-add-sidebar-button:hover {
+  background-color: #1d4ed8;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+.test-add-sidebar-section {
+  margin-bottom: 24px;
+}
+
+.test-add-sidebar-title {
+  font-weight: 600;
+  margin-bottom: 12px;
+  font-size: 14px;
+  text-transform: uppercase;
+  color: #64748b;
+  letter-spacing: 0.05em;
+}
+
+.test-add-sidebar-list {
+  list-style-type: none;
+  padding: 0;
+}
+
+.test-add-sidebar-item {
+    padding: 10px 12px;
+    cursor: pointer;
+    border-radius: 8px;
+    transition: all 0.3s;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 15px;
+    margin-bottom: 4px;
+    position: relative;
+}
+.test-add-sidebar-item:hover {
+  background-color: var( --sidebar-item-background );
+  color: var(--sidebar-item-color);
+}
+
+.test-add-sidebar-item.active {
+  background-color: var( --sidebar-item-background );
+  color: var(--sidebar-item-color);
+}
+
+.test-add-sidebar-item:hover a {
+  color: #037DE2;
+  transform: translateX(5px);
+}
+
+.test-add-sidebar-item::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 3px;
+  background-color: #037DE2;
+  transform: scaleY(0);
+  transition: transform 0.3s ease;
+}
+.test-add-sidebar-item:hover::before {
+  transform: scaleY(1);
+}
+
+.test-add-sidebar-item::after {
+  content: '→';
+  position: absolute;
+  right: 15px;
+  top: 50%;
+  transform: translateY(-50%);
+  opacity: 0 !important; 
+  transition: all 0.3s ease;
+}
+
+.test-add-sidebar-item:hover::after {
+  content: '→';
+  opacity: 1 !important;
+  transform: translate(5px, -50%);
+}
+.test-add-sidebar-item:hover {
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.test-add-sidebar-item.active,
+.test-add-sidebar-item.active:hover {
+  background-color: #F2F9FF;
+}
+
+.test-add-sidebar-item.active a,
+.test-add-sidebar-item.active:hover a {
+  color: #037DE2;
+  transform: translateX(5px);
+}
+
+.test-add-sidebar-item.active::before {
+  transform: scaleY(1);
+}
+
+.test-add-sidebar-item.active::after {
+  content: '→';
+  opacity: 1 !important;
+  transform: translate(5px, -50%);
+}
+
+.test-add-sidebar-tag {
+  display: inline-block;
+  background-color: var(--sidebar-tag);
+  padding: 2px 8px;
+  border-radius: 16px;
+  font-size: 12px;
+  margin-left: auto;
+}
+
+.test-add-sidebar-info {
+  display: flex;
+  justify-content: space-between;
+  font-size: 13px;
+  color: #64748b;
+  margin-top: 12px;
+  background-color: var(--sidebar-tag);
+  padding: 12px;
+  border-radius: 8px;
+}
+
+.test-add-sidebar-info-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+

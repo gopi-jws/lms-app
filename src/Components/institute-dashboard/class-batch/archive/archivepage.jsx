@@ -6,7 +6,9 @@ import { format } from "date-fns";
 import './archivepage.css';
 const ArchivePage = ({ archivedClasses, handleUnarchive, handleArchiveDelete }) => {
   return (
-    <div className="container py-5" style={{ marginLeft: '220px', width: 'calc(100% - 220px)' }}>
+    <div className="container p-5" style={{ marginLeft: '220px', width: 'calc(100% - 220px)' }}>
+      <div className="class-archiveapge py-5">
+        <h3 className="class-archivepage-title">Archive Contents</h3>
       {archivedClasses.length > 0 ? (
         <table className="table">
           <thead>
@@ -47,6 +49,7 @@ const ArchivePage = ({ archivedClasses, handleUnarchive, handleArchiveDelete }) 
         </div>
 
       )}
+      </div>
     </div>
   );
 };

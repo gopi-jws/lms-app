@@ -19,9 +19,13 @@ export default function TestStatusBar() {
 
   return (
     <div className="teststatus-card">
-      <div className="teststatus-card-header">
-        <h3 className="teststatus-card-title">Test Hours</h3>
-      </div>
+     <div className="teststatus-card-header">
+  <div className="teststatus-card-header-content">
+    <h3 className="teststatus-card-title">Test Hours</h3>
+    <h3 className="teststatus-total teststatus-card-title">Total Hours: {totalHours}</h3>
+  </div>
+</div>
+
       <div className="teststatus-card-body">
         {/* Progress Bar */}
         <div className="teststatus-bar">
@@ -57,18 +61,18 @@ export default function TestStatusBar() {
           />
           <StatusItem
             icon={<Clock className="teststatus-icon-yellow" />}
-            label="During"
+            label="During Test"
             value={testHours.inProcess}
             color="inprocess"
           />
           <StatusItem
             icon={<HourglassIcon className="teststatus-icon-gray" />}
-            label="Pending"
+            label="Un Used"
             value={pendingHours}
             color="pending"
           />
         </div>
-        <div className="teststatus-total">Total Hours: {totalHours}</div>
+        
       </div>
     </div>
   );

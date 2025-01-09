@@ -9,13 +9,12 @@
     padding: 20px;
     top: 0;
   }
-  .content {
-    margin-left: 250px;
+.content {
+    margin-left: 229px;
+    /* margin-right: 20px; */
+    /* margin-top: 90px; */
     padding: 20px;
     width: 100%;
     overflow-y: auto;
-    background-color: #fff; 
-   
-  }
-  
-  
+    background-color: #F4F4F4;
+}

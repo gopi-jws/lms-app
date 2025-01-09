@@ -26,9 +26,10 @@ const ClassDetailsPage = () => {
 
 
   const initialClasses = [
-    { id: "1", name: "Mathematics", strength: 30, maximumallowed: 50, expiryDate: "2024-06-30" },
-    { id: "2", name: "Physics", strength: 25, maximumallowed: 100, expiryDate: "2024-07-15" },
-    { id: "3", name: "Chemistry", strength: 28, maximumallowed: 70, expiryDate: "2024-08-01" },
+    { id: "1", name: "Class 1", strength: 30, maximumallowed: 50, expiryDate: "2024-06-30" },
+    { id: "2", name: "Class 2", strength: 25, maximumallowed: 100, expiryDate: "2024-07-15" },
+    { id: "3", name: "Class 3", strength: 28, maximumallowed: 70, expiryDate: "2024-08-01" },
+    { id: "4", name: "Class 4", strength: 28, maximumallowed: 70, expiryDate: "2024-08-01" },
   ];
 
   const classId = location.state?.id || id;
@@ -106,8 +107,7 @@ const ClassDetailsPage = () => {
       {/* Header */}
       <Header />
 
-      {/* Topbar */}
-      <TopBar />
+    
 
       {/* Class details page side Menu */}
       <div className="classdetailspage-sidemenu">
@@ -119,8 +119,11 @@ const ClassDetailsPage = () => {
           />
       </div>
 
-      <div className="classdetailspage-content">
+      <div className="classdetailspage-content " style={{ marginLeft: '220px', width: 'calc(100% - 220px)' }}>
+          {/* Topbar */}
+     
         <div className="classdetailspage-container">
+           <TopBar  style={{width:'100%'}}/>
           {classDetails ? (
             <div>
               <h2 className="text-center my-4">{classDetails.name}</h2>
@@ -255,12 +258,12 @@ const ClassDetailsPage = () => {
                 <div className="classdetailpage-addstudent-footer">
                   <button
                     type="button"
-                    className="btn btn-secondary"
+                    className="btn btn-secondary Add-close"
                     onClick={() => setShowAddStudentForm(false)}
                   >
                     Close
                   </button>
-                  <button type="submit" className="btn btn-primary">
+                  <button type="submit" className="btn btn-primary mb-4   Add-Student">
                     Add Student
                   </button>
                 </div>

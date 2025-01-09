@@ -38,89 +38,102 @@
 }
 
 .test-action-buttons {
-  display: flex;
-  gap: 10px; /* Add spacing between buttons */
+    display: flex;
+    gap: 1px;
 }
 
 .test-action-button {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 35px;
-  height: 35px;
-  border: none;
-  border-radius: 50%;
-  background-color: #f1f3f5; /* Light gray background */
-  color: #495057; /* Neutral icon color */
-  font-size: 16px;
-  cursor: pointer;
-  transition: background-color 0.3s, transform 0.2s;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 43px;
+    height: 43px;
+    border: none;
+    border-radius: 50%;
+    color: #495057;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
 }
 
 .test-action-button:hover {
   background-color: #e9ecef; /* Slightly darker gray on hover */
   transform: translateY(-2px); /* Lift effect */
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15); /* Elevated shadow */
 }
 
 .test-action-button:active {
   transform: translateY(0); /* Reset lift on click */
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Reset shadow */
+  
 }
 
 /* Individual Button Colors */
 .test-action-button.dispatch {
-  background-color: #eaf7ff; /* Soft sky blue */
-  color: #2196f3; /* Vibrant blue icon */
+  background-color: transparent; 
+  color: #037DE2; /* Vibrant blue icon */
 }
 
-.test-action-button.dispatch:hover {
-  background-color: #d5efff; /* Slightly darker blue */
-}
+
 
 .test-action-button.copy {
-  background-color: #fff7e6; /* Light pastel peach */
-  color: #ff9800; /* Orange icon */
+ background-color: transparent;
+  color: #037DE2;
 }
 
-.test-action-button.copy:hover {
-  background-color: #ffebcc; /* Darker peach */
-}
+
 
 .test-action-button.pdf {
-  background-color: #ffe6e9; /* Light blush pink */
-  color: #e53935; /* Deep red icon */
+background-color: transparent;
+  color: #037DE2
 }
 
-.test-action-button.pdf:hover {
-  background-color: #ffccd3; /* Darker blush */
-}
 
 .test-action-button.share {
-  background-color: #e6f9f3; /* Soft mint green */
-  color: #43a047; /* Green icon */
+  background-color: transparent; /* Soft mint green */
+ color: #037DE2
 }
 
-.test-action-button.share:hover {
-  background-color: #ccf3e6; /* Darker mint */
-}
+
 
 .test-action-button.archive {
-  background-color: #f3e6ff; /* Light lavender */
-  color: #8e44ad; /* Purple icon */
+  background-color: transparent; /* Light lavender */
+  color: #037DE2;
 }
 
-.test-action-button.archive:hover {
-  background-color: #e6ccff; /* Darker lavender */
-}
+
 
 .test-action-button.delete {
-  background-color: #ffeae6; /* Soft salmon pink */
-  color: #d84315; /* Deep orange icon */
+  background-color: transparent; /* Soft salmon pink */
+color: #037DE2;
 }
 
-.test-action-button.delete:hover {
-  background-color: #ffc9bb; /* Darker salmon */
+
+.test-action-button {
+  position: relative;
+  border: none;
+  cursor: pointer;
+}
+
+.test-action-button::after {
+  content: attr(aria-label); /* Tooltip text from aria-label */
+  position: absolute;
+  bottom: 125%; /* Position above the button */
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #333;
+  color: #fff;
+  padding: 5px 8px;
+  border-radius: 4px;
+  font-size: 12px;
+  white-space: nowrap;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease-in-out;
+  z-index: 10;
+}
+
+.test-action-button:hover::after {
+  opacity: 1;
+  visibility: visible;
 }
 
 .load-more-container {
