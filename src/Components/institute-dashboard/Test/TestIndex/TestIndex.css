@@ -1,194 +1,298 @@
-.test-index-container {
-  padding: 20px;
+.test-index-wrapper {
+  padding: 2rem;
+  background-color: #f5f7fa;
 }
-.header-container {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 20px;
+
+.test-index-container {
+  background-color: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  padding: 2rem;
+}
+
+.test-index-header {
+ 
+
+ 
+  margin-bottom: 2rem;
 }
 
 .test-index-title {
-  font-size: 2rem;
+  text-align: left;
+  font-size: 1.25rem;
+      font-weight: 700;
+    color: #495365;
 }
 
-.test-index-description {
-  font-size: 1.2rem;
-  margin-bottom: 20px;
-}
-
-.test-index-cards {
-  display: flex;
-  gap: 20px;
-}
-
-.test-card {
-  border: 1px solid #ddd;
-  padding: 15px;
-  width: 250px;
-}
-
-.test-card-title {
-  font-size: 1.5rem;
-  margin-bottom: 10px;
-}
-
-.test-card-description {
-  font-size: 1rem;
-}
-
-.test-action-buttons {
-    display: flex;
-    gap: 1px;
-}
-
-.test-action-button {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 43px;
-    height: 43px;
-    border: none;
-    border-radius: 50%;
-    color: #495057;
-    font-size: 16px;
-    cursor: pointer;
-    transition: background-color 0.3s, transform 0.2s;
-}
-
-.test-action-button:hover {
-  background-color: #e9ecef; /* Slightly darker gray on hover */
-  transform: translateY(-2px); /* Lift effect */
-}
-
-.test-action-button:active {
-  transform: translateY(0); /* Reset lift on click */
-  
-}
-
-/* Individual Button Colors */
-.test-action-button.dispatch {
-  background-color: transparent; 
-  color: #037DE2; /* Vibrant blue icon */
-}
-
-
-
-.test-action-button.copy {
- background-color: transparent;
-  color: #037DE2;
-}
-
-
-
-.test-action-button.pdf {
-background-color: transparent;
-  color: #037DE2
-}
-
-
-.test-action-button.share {
-  background-color: transparent; /* Soft mint green */
- color: #037DE2
-}
-
-
-
-.test-action-button.archive {
-  background-color: transparent; /* Light lavender */
-  color: #037DE2;
-}
-
-
-
-.test-action-button.delete {
-  background-color: transparent; /* Soft salmon pink */
-color: #037DE2;
-}
-
-
-.test-action-button {
-  position: relative;
-  border: none;
-  cursor: pointer;
-}
-
-.test-action-button::after {
-  content: attr(aria-label); /* Tooltip text from aria-label */
-  position: absolute;
-  bottom: 125%; /* Position above the button */
-  left: 50%;
-  transform: translateX(-50%);
-  background-color: #333;
-  color: #fff;
-  padding: 5px 8px;
-  border-radius: 4px;
-  font-size: 12px;
-  white-space: nowrap;
-  opacity: 0;
-  visibility: hidden;
-  transition: opacity 0.3s ease-in-out;
-  z-index: 10;
-}
-
-.test-action-button:hover::after {
-  opacity: 1;
-  visibility: visible;
-}
-
-.load-more-container {
-  text-align: center;
-  margin-top: 20px;
-}
-
-.load-more-button {
-  padding: 10px 20px;
-  font-size: 1rem;
-  background-color: #007bff;
-  color: white;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-}
-
-.load-more-button:hover {
- 
-}
 .test-search-container {
-  display: flex;
-  align-items: center;
-  background-color: #f1f1f1; /* Light gray background */
-  border: 1px solid #ccc; /* Subtle border */
-  border-radius: 5px; /* Rounded corners */
-  padding: 8px 12px; /* Spacing inside the box */
-  width: 100%; /* Full width */
-  max-width: 400px; /* Optional: Limit max width */
-  margin: 10px auto; /* Center align in the parent container */
-  position: relative; /* For positioning the icon */
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Soft shadow */
+  position: relative;
 }
 
 .test-search-input {
-  flex: 1; /* Take up available space */
-  border: none; /* Remove default border */
-  outline: none; /* Remove outline on focus */
-  background: transparent; /* Match the background */
-  font-size: 16px; /* Adjust font size */
-  color: #333; /* Dark text color */
-  padding-right: 30px; /* Space for the icon */
-}
-
-.test-search-input::placeholder {
-  color: #888; /* Subtle placeholder color */
+  padding: 0.5rem 9rem 0.5rem 2.5rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 1rem;
+  color: #1b222c;
 }
 
 .test-search-icon {
-  color: #555; /* Icon color */
-  font-size: 18px; /* Adjust icon size */
-  position: absolute; /* Position relative to the container */
-  right: 12px; /* Space from the right */
-  top: 50%; /* Center vertically */
-  transform: translateY(-50%); /* Center icon */
-  margin-right: 20px;
-  pointer-events: none; /* Icon is non-interactive */
+  position: absolute;
+  left: 0.75rem;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #666;
+}
+
+.bulk-actions {
+  display: flex;
+  align-items: center;
+  margin-bottom: 1rem;
+  /* background-color: #f0f8ff; */
+  border: 1px solid;
+    padding: 0 5px;
+  border-radius: 85px;
+  float: right;
+      margin-top: -68px;
+}
+
+.bulk-action-button {
+  background: none;
+  border: none;
+  cursor: pointer;
+ 
+  font-size: 1rem;
+  color: #333;
+  transition: color 0.3s ease;
+}
+
+/* .bulk-action-button:hover {
+  color: #007bff;
+} */
+
+.divider {
+  width: 1px;
+  height: 20px;
+  background-color: #495365;
+  margin: 0 0.5rem;
+
+}
+
+.tooltip-text {
+  margin-left: 0.5rem;
+}
+
+.tag-options,
+.more-options {
+  position: absolute;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  padding: 0.5rem;
+  z-index: 500;
+  width: 150px;
+  left: -30px;
+}
+
+.tag-options ul,
+.more-options ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.tag-options li,
+.more-options li {
+  padding: 0.25rem 0;
+  cursor: pointer;
+}
+
+.tag-options input {
+  margin-top: 0.5rem;
+  padding: 0.25rem;
+  width: 100%;
+}
+
+.tag-options button {
+  margin-top: 0.5rem;
+  padding: 0.25rem 0.5rem;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.test-action-buttons {
+  display: flex;
+  /* gap: 0.5rem; */
+}
+
+
+.test-action-button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0.25rem;
+  font-size: 1rem;
+  color: #076ad5 ;
+  transition: color 0.3s ease;
+}
+
+.test-action-button:hover {
+  color: #007bff;
+}
+
+.row-link {
+  color: #007bff;
+  text-decoration: none;
+}
+
+.row-link:hover {
+  text-decoration: underline;
+}
+.bulk-tag-button{
+  background-color: transparent;
+  border: none;
+}
+.more-button{
+  background-color: transparent;
+    border: none;
+}
+
+
+.bulk-action-button ,.bulk-icon:hover {
+ 
+  /* Slightly darker background on hover */
+  transform: translateY(-2px);
+  /* Lift effect on hover */
+}
+.bulk-icon{
+  font-size: 15px;
+}
+
+/* Tooltip Styles */
+.bulk-action-button .tooltip-text {
+  visibility: hidden;
+    width: max-content;
+    background-color: #000;
+    color: #fff;
+    text-align: center;
+    border-radius: 5px;
+    padding: 5px 8px;
+    position: absolute;
+    top: -25px;
+    /* Adjust as needed */
+    left: 30%;
+    transform: translateX(-50%);
+    opacity: 0;
+    transition: opacity 0.3s;
+    font-size: 12px;
+    z-index: 1;
+    white-space: nowrap;
+}
+
+.bulk-action-button .tooltip-text::after {
+  content: '';
+  position: absolute;
+  top: 100%;
+  /* Triangle at the bottom of the tooltip */
+  left: 50%;
+  transform: translateX(-50%);
+  border-width: 6px;
+  border-style: solid;
+  border-color: #333 transparent transparent transparent;
+  /* Triangle color matches tooltip */
+}
+
+/* Show Tooltip on Hover */
+.bulk-action-button:hover .tooltip-text {
+  visibility: visible;
+  opacity: 1;
+  transform: translateX(-50%) scale(1);
+  /* Smooth scaling effect */
+}
+
+/* Divider Lines */
+.divider {
+  width: 1px;
+  height: 30px;
+  background-color: #495365;
+  align-self: center;
+}
+
+.test-action-button {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 5px;
+  cursor: pointer;
+  background: none;
+  border: none;
+  padding: 5px;
+  font-size: 16px;
+}
+
+.test-action-button .tooltip-text {
+  visibility: hidden;
+  width: max-content;
+  background-color: #000;
+  color: #fff;
+  text-align: center;
+  border-radius: 5px;
+  padding: 5px 8px;
+  position: absolute;
+  top: -30px;
+  /* Adjust as needed */
+  left: 35%;
+  transform: translateX(-50%);
+  opacity: 0;
+  transition: opacity 0.3s;
+  font-size: 12px;
+  z-index: 1;
+  white-space: nowrap;
+}
+
+.test-action-button .tooltip-text::after {
+  content: '';
+  position: absolute;
+  bottom: -8px;
+  /* Adjust the distance from the tooltip */
+  left: 50%;
+  transform: translateX(-50%);
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  border-top: 8px solid #555;
+  /* Arrow color */
+}
+
+.test-action-button:hover .tooltip-text {
+  visibility: visible;
+  opacity: 1;
+}
+.load-more-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+  padding: 5px 20px;
+  font-size: 15px;
+  font-weight: 700;
+  color: #495365;
+  border: 1px solid ;
+  border-radius: 30px;
+  text-align: center;
+  background-color: white;
+}
+.load-more-button:hover{
+  border: 1px solid #007bff;
+  background-color: white;
+}
+.pagination-info{
+  margin-top:20px ;
+  margin-bottom: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
