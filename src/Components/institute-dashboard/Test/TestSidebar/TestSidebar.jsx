@@ -16,12 +16,15 @@ import "./TestSidebar.css";
 const TestSidebar = () => {
   const [isModalOpen, setIsModalOpen] = useState(false); // Modal state
   const [testName, setTestName] = useState(""); // Test name input value
+   const [duration, setDuration] = useState("");
+  const [description, setDescription] = useState("");
+  const [instruction, setInstruction] = useState("");
   const [isTestsVisible, setIsTestsVisible] = useState(true); // State to toggle Tests section visibility
   const [tags, setTags] = useState(["Important", "Work", "Personal", "Study"]); // Tags state
   const location = useLocation();
-
+ const [isAddButtonEnabled, setIsAddButtonEnabled] = useState(false); // New state for enabling/disabling button
   const isActive = (path) => location.pathname === path; // Check if current path matches the link path
-
+const isFormValid = testName && duration && description && instruction; // Check if all fields are filled
   // Function to open the modal
   const handleOpenModal = () => {
     setIsModalOpen(true);
@@ -32,11 +35,19 @@ const TestSidebar = () => {
     setIsModalOpen(false);
     setTestName(""); // Reset input field
   };
+ // Check if all fields are filled and enable the button accordingly
+  useEffect(() => {
+    if (testName && duration && description && instruction) {
+      setIsAddButtonEnabled(true); // Enable button when all fields are filled
+    } else {
+      setIsAddButtonEnabled(false); // Disable button if any field is empty
+    }
+  }, [testName, duration, description, instruction]); // Run this check every time any of the fields change
 
   // Function to handle test creation
   const handleCreateTest = () => {
     if (testName.trim() !== "") {
-      console.log("New Test Created:", testName);
+      console.log("Test Created:", { testName, duration, description, instruction });
       // Add logic to save the test here
     }
     handleCloseModal();
@@ -50,7 +61,8 @@ const TestSidebar = () => {
   useEffect(() => {
     console.log("Modal Open State Changed:", isModalOpen);
   }, [isModalOpen]);
-
+ 
+ 
   return (
     <nav className="test-sidebar-container" aria-label="Main Navigation">
       <div className="test-sidebar-header">
@@ -65,23 +77,53 @@ const TestSidebar = () => {
       </div>
 
       {/* Modal for Creating New Test */}
-      {isModalOpen && (
+       {isModalOpen && (
         <div className="newtest-modal-overlay">
           <div className="newtest-modal">
             <h2>Create New Test</h2>
+
+            {/* Test Name */}
             <input
               type="text"
-              placeholder="Create New Test"
+              placeholder="Test Name"
               value={testName}
               onChange={(e) => setTestName(e.target.value)}
               className="newtest-modal-input"
             />
+
+            {/* Duration */}
+            <input
+              type="text"
+              placeholder="Duration"
+              value={duration}
+              onChange={(e) => setDuration(e.target.value)}
+              className="newtest-modal-input"
+            />
+
+            {/* Description */}
+            <textarea
+              placeholder="Description"
+              value={description}
+              onChange={(e) => setDescription(e.target.value)}
+              className="newtest-modal-textarea"
+            />
+
+            {/* Instruction */}
+            <textarea
+              placeholder="Instructions"
+              value={instruction}
+              onChange={(e) => setInstruction(e.target.value)}
+              className="newtest-modal-textarea"
+            />
+
             <div className="newtest-modal-actions">
               <button
                 onClick={handleCreateTest}
                 className="newtest-modal-button create"
+                 disabled={!isAddButtonEnabled} // Disable button if not enabled
+                 data-tooltip={!isFormValid ? "Please fill out all fields." : ""}
               >
-                Add
+               Create
               </button>
               <button
                 onClick={handleCloseModal}
@@ -142,7 +184,7 @@ const TestSidebar = () => {
                 aria-label="Dispatched"
               >
                 <FaPaperPlane className="icon" />
-                <span className="sidespan">Dispatched</span>
+                <span className="sidespan">Published</span>
               </Link>
             </li>
             <li>

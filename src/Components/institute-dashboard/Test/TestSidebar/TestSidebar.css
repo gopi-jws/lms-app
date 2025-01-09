@@ -424,25 +424,32 @@
   background: white;
   padding: 20px;
   border-radius: 8px;
-  max-width: 400px;
+  max-width: 500px;
   width: 100%;
 }
 .newtest-modal h2{
-  background: #2980b9;
-  padding: 20px;
-  color: #fff;
+    font-weight: 700;
+  padding: 10px;
+  font-size: 18px;
+  color: #495365;
+  width: 100%;
 }
 .newtest-modal-input {
-  width: 95%;
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 20px;
+  
+}
+.newtest-modal-textarea{
+width: 100%;
   padding: 10px;
   margin-bottom: 20px;
 }
-
 .newtest-modal-actions {
   display: flex;
-  justify-content: space-between;
+  float: right;
+  gap: 10px;
 }
-
 .newtest-modal-button {
   padding: 10px 20px;
   cursor: pointer;
@@ -451,14 +458,62 @@
 }
 
 .newtest-modal-button.create {
-  background-color: #4caf50;
-  color: white;
+  border: 1px solid black;
+  color: black;
+  background-color: transparent;
+    border-radius: 26px;
+      padding: 6px 26px;
 }
 
 .newtest-modal-button.cancel {
-  background-color: #f44336;
-  color: white;
+  border: 1px solid black;
+  color: black;
+      border-radius: 26px;
+        padding: 6px 26px;
+  background-color: transparent;
 }
 .toggle-icon {
   transition: transform 0.3s ease !important;
+}
+.newtest-modal-button.create {
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+
+  cursor: pointer;
+  transition: background-color 0.3s;
+  position: relative;
+}
+
+.newtest-modal-button.create:disabled {
+  background-color: #ddd;
+  cursor: not-allowed;
+}
+
+.newtest-modal-button.create:hover:not(:disabled) {
+  background-color: #45a049;
+}
+
+/* Tooltip */
+.newtest-modal-button.create::after {
+  content: attr(data-tooltip);
+  /* Display the tooltip text */
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #333;
+  color: #fff;
+
+  width: 150px;
+  border-radius: 4px;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s;
+  font-size: 12px;
+}
+
+.newtest-modal-button.create:hover::after {
+  opacity: 1;
+  visibility: visible;
 }
