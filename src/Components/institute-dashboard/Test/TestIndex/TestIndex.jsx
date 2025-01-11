@@ -45,7 +45,7 @@ const TestIndex = () => {
   const [newTag, setNewTag] = useState("");
   const [showTagOptions, setShowTagOptions] = useState(false);
   const [showMoreOptions, setShowMoreOptions] = useState(false);
-const [rowsPerPage, setRowsPerPage] = useState(5);
+   const [rowsPerPage, setRowsPerPage] = useState(5);
   const [currentPage, setCurrentPage] = useState(1);
 
   const handleSearch = (event) => {
@@ -201,9 +201,7 @@ const [rowsPerPage, setRowsPerPage] = useState(5);
               <FaSearch className="test-search-icon" />
             </div>
           </div>
-        
-
-           {selectedRows.length > 0 && (
+          {selectedRows.length > 0 && (
           <div className="bulk-actions">
             <button className="bulk-action-button bulk-delete-button">
               <FaTrash  className="bulk-icon"/>

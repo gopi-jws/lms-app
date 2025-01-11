@@ -24,7 +24,7 @@ const TestSidebar = () => {
   const location = useLocation();
  const [isAddButtonEnabled, setIsAddButtonEnabled] = useState(false); // New state for enabling/disabling button
   const isActive = (path) => location.pathname === path; // Check if current path matches the link path
-const isFormValid = testName && duration && description && instruction; // Check if all fields are filled
+const isFormValid = testName && duration && description && instruction; 
   // Function to open the modal
   const handleOpenModal = () => {
     setIsModalOpen(true);
@@ -61,7 +61,6 @@ const isFormValid = testName && duration && description && instruction; // Check
   useEffect(() => {
     console.log("Modal Open State Changed:", isModalOpen);
   }, [isModalOpen]);
- 
  
   return (
     <nav className="test-sidebar-container" aria-label="Main Navigation">

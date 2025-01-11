@@ -19,31 +19,27 @@ const QuestionBankPopup = ({ onClose, onAdd }) => {
   const sections = ['Section 1', 'Section 2', 'Section 3'];
 
   const handleQuestionToggle = (questionId) => {
-    setSelectedQuestions(prev => 
+    setSelectedQuestions((prev) =>
       prev.includes(questionId)
-        ? prev.filter(id => id !== questionId)
+        ? prev.filter((id) => id !== questionId)
         : [...prev, questionId]
     );
   };
-
   const handleAdd = () => {
     onAdd({
       questions: selectedQuestions,
       marks,
       negMarks,
-      section: selectedSection
+      section: selectedSection,
     });
     onClose();
   };
 
   return (
-    <div className="question-bank-popup-overlay">
-      <div className="question-bank-popup">
+    <div className="question-bank-popup-dropdown">
+      <div className="question-bank-popup-content">
         <div className="question-bank-popup-header">
           <h2 className="question-bank-popup-title">Add from Question Bank</h2>
-          <button onClick={onClose} className="question-bank-popup-close">
-            <X size={24} />
-          </button>
         </div>
 
         <div className="question-bank-popup-section">
@@ -54,8 +50,10 @@ const QuestionBankPopup = ({ onClose, onAdd }) => {
             onChange={(e) => setSelectedBank(e.target.value)}
           >
             <option value="">Select a bank</option>
-            {questionBanks.map(bank => (
-              <option key={bank} value={bank}>{bank}</option>
+            {questionBanks.map((bank) => (
+              <option key={bank} value={bank}>
+                {bank}
+              </option>
             ))}
           </select>
         </div>
@@ -63,7 +61,7 @@ const QuestionBankPopup = ({ onClose, onAdd }) => {
         {selectedBank && (
           <div className="question-bank-popup-section">
             <label className="question-bank-popup-label">Select Questions</label>
-            {questions.map(question => (
+            {questions.map((question) => (
               <div key={question.id} className="question-bank-popup-checkbox-group">
                 <input
                   type="checkbox"
@@ -108,16 +106,15 @@ const QuestionBankPopup = ({ onClose, onAdd }) => {
             onChange={(e) => setSelectedSection(e.target.value)}
           >
             <option value="">Select a section</option>
-            {sections.map(section => (
-              <option key={section} value={section}>{section}</option>
+            {sections.map((section) => (
+              <option key={section} value={section}>
+                {section}
+              </option>
             ))}
           </select>
         </div>
 
-        <button
-          onClick={handleAdd}
-          className="question-bank-popup-add-button"
-        >
+        <button onClick={handleAdd} className="question-bank-popup-add-button">
           Add
         </button>
       </div>
@@ -126,4 +123,3 @@ const QuestionBankPopup = ({ onClose, onAdd }) => {
 };
 
 export default QuestionBankPopup;
-
