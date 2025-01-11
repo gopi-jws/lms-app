@@ -80,7 +80,7 @@ const isFormValid = testName && duration && description && instruction; // Check
        {isModalOpen && (
         <div className="newtest-modal-overlay">
           <div className="newtest-modal">
-            <h2>Create New Test</h2>
+            <h2>Create New Tes</h2>
 
             {/* Test Name */}
             <input
