@@ -244,26 +244,15 @@ h1 {
 .bulk-action-button:active {
   transform: translateY(2px);
 }
-
-
-
-
-
-
 .copyButton {
 background-color: transparent;
   color: #037DE2
-}
-
-.copyButton:hover {
-  background-color: #1976d2;
 }
 
 .addToTestButton {
 background-color: transparent;
   color: #037DE2
 }
-
 
 /* Overlay styles */
 .modal-overlay {
@@ -423,12 +412,145 @@ background-color: transparent;
     transform: rotate(45deg);
     transition: transform 0.3s ease;
 }
-
 /* Hover effect on dropdown */
 .filter-select:hover {
   border-color: #0056b3;
 }
 
 .filter-select:focus + .filter-arrow {
-  transform: rotate(225deg); /* Rotate arrow on focus */
+  transform: rotate(225deg); 
+}
+.disabled-button {
+  background-color: #87888d;   
+  cursor: not-allowed;        
+  color: white;                        
+  border: 1px solid #d6d6d6;  
+  margin-top: 20px;           
+  padding: 10px 20px;         
+  text-align: center;        
+  transition: opacity 0.3s ease; 
+}
+.disabled-button:hover{
+  background-color: #87888d;   
+  cursor: not-allowed;        
+  color: white;                        
+  border: 1px solid #d6d6d6; 
+}
+.bulk-action-button.bulk-add-button {
+  background-color: #007bff; 
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px; 
+  margin-top: 20px;
+  cursor: pointer; 
+  transition: background-color 0.3s ease; 
+}
+
+.bulk-action-button.bulk-add-button .icon {
+  margin-right: 8px;
+}
+.qb-addtest-popup {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5); 
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000; 
+}
+
+.qb-addtest-popup-content {
+  background-color: #fff;
+  padding: 20px 30px;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  max-width: 400px;
+  text-align: center;
+}
+
+.qb-addtest-popup-content p {
+  font-size: 16px;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+.qb-addtest-popup-content .d-flex {
+  display: flex;
+  justify-content: center;
+  gap: 10px; 
+}
+
+.qb-addtest-close-popup-button {
+  background-color: #dc3545; /* Red for close button */
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.qb-addtest-close-popup-button:hover {
+  background-color: #b02a37;
+}
+
+.qb-addtest-back-button {
+  background-color: #007bff;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.qb-addtest-back-button:hover {
+  background-color: #0056b3;
+}
+.questionadd-action-btns button{
+  border: none;
+  background: none;
+  color: #076ad5;
+  font-size: 16px;
+  position: relative;
+  font-weight: bold;
+}
+.questionadd-tooltip {
+  visibility: hidden;
+  width: max-content;
+  background-color: #000;
+  color: #fff;
+  text-align: center;
+  border-radius: 5px;
+  padding: 5px 8px;
+  position: absolute;
+  top: -30px;
+  left: 50%;
+  transform: translateX(-50%);
+  opacity: 0;
+  transition: opacity 0.3s;
+  font-size: 12px;
+  z-index: 1;
+  white-space: nowrap;
+}
+.questionadd-tooltip::after{
+content: '';
+position: absolute;
+bottom: -8px;
+left: 50%;
+transform: translateX(-50%);
+border-left: 5px solid transparent;
+border-right: 5px solid transparent;
+border-top: 8px solid #000;
+}
+
+.questionadd-action-btns button:hover .questionadd-tooltip {
+visibility: visible;
+opacity: 1;
 }

@@ -1,8 +1,8 @@
 import React, { useState } from "react";
-import { Routes, Route, Outlet } from "react-router-dom"; // Added Outlet
+import { Routes, Route } from "react-router-dom"; // Added Outlet
 import Trashed from "./Sidebar/Trashed/Trashed";
 import Layout from "./Layout/Layout";
-import Questionindex from "./Questionindex/Questionindex";
+import Questionindex from "./Questionindex/Questionindex"; // Import the index route
 import Archived from "./Archived/Archived";
 import All from "../QuestionBanks/All/All";
 import Sidebar from "../QuestionBanks/Sidebar/Sidebar"; // Import Sidebar
@@ -21,29 +21,23 @@ const QuestionBank = () => {
   const [editRow, setEditRow] = useState(null); // To track the row being edited
 
   return (
-    <>
-      <div className="question-bank-layout">
-        <div className="content-area">
-          {/* Nested Routes */}
-          <Routes>
-            {/* Define the parent route with Layout */}
-            <Route path="/" element={<Layout />}>
-              {/* Child routes */}
-              <Route index element={<Questionindex />} />
-              <Route path="Trashed" element={<Trashed />} />
-              <Route path="Archived" element={<Archived />} />
-              <Route path="All" element={<All />} />
-              <Route path=":id/add" element={<QuestionsAdd />} />{" "}
-              <Route path="question-bank/:id/question/:questionId" element={<QuestionDetail />} />
-
-           
-              {/* Dynamic route for adding question */}
-            </Route>
-
-          </Routes>
-        </div>
+    <div className="question-bank-layout">
+      <div className="content-area">
+        {/* Nested Routes */}
+        <Routes>
+          {/* Define the parent route with Layout */}
+          <Route path="/" element={<Layout />}>
+            {/* Child routes */}
+            <Route index element={<Questionindex />} /> {/* Default route */}
+            <Route path="Trashed" element={<Trashed />} />
+            <Route path="Archived" element={<Archived />} />
+            <Route path="All" element={<All />} />
+            <Route path=":id/add" element={<QuestionsAdd />} />
+            <Route path="question-bank/:id/question/:questionId" element={<QuestionDetail />} />
+          </Route>
+        </Routes>
       </div>
-    </>
+    </div>
   );
 };
 

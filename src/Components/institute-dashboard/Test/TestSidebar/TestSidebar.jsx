@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation,useNavigate } from "react-router-dom";
 import {
   FaPlus,
   FaFileAlt,
@@ -25,6 +25,12 @@ const TestSidebar = () => {
  const [isAddButtonEnabled, setIsAddButtonEnabled] = useState(false); // New state for enabling/disabling button
   const isActive = (path) => location.pathname === path; // Check if current path matches the link path
 const isFormValid = testName && duration && description && instruction; 
+
+   const navigate = useNavigate();
+    
+  
+
+
   // Function to open the modal
   const handleOpenModal = () => {
     setIsModalOpen(true);
@@ -49,6 +55,8 @@ const isFormValid = testName && duration && description && instruction;
     if (testName.trim() !== "") {
       console.log("Test Created:", { testName, duration, description, instruction });
       // Add logic to save the test here
+
+    navigate("/QuestionBank");
     }
     handleCloseModal();
   };
@@ -79,7 +87,7 @@ const isFormValid = testName && duration && description && instruction;
        {isModalOpen && (
         <div className="newtest-modal-overlay">
           <div className="newtest-modal">
-            <h2>Create New Tes</h2>
+            <h2>Create New Test</h2>
 
             {/* Test Name */}
             <input
@@ -92,7 +100,7 @@ const isFormValid = testName && duration && description && instruction;
 
             {/* Duration */}
             <input
-              type="text"
+              type="number"
               placeholder="Duration"
               value={duration}
               onChange={(e) => setDuration(e.target.value)}

@@ -179,14 +179,13 @@ const Questionindex = () => {
           <DataTable
             columns={columns}
             data={filteredRows} // Use filtered rows based on search query
-            pagination
             highlightOnHover
             striped
             onSelectedRowsChange={handleRowSelection} // Handle row selection
             selectableRows={false} // Disable the automatic checkbox rendering
           />
         </div>
-         <div className="bulk-actions">
+         {/* <div className="bulk-actions">
                     <button  className="bulk-action-button bulk-delete-button">
                       <FaTrash /> Delete Selected
                     </button>
@@ -194,7 +193,7 @@ const Questionindex = () => {
                       <FaCopy /> Copy Selected
                     </button>
                     
-                  </div>
+                  </div> */}
       </div>
     </div>
   );

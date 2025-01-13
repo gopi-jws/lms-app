@@ -8,11 +8,13 @@ import DataTable from "react-data-table-component";
 import Modal from "react-modal"; // Importing Modal
 import './TestAdd.css'
 import { Pagination } from "@mui/material";
-const TestAdd = () => {
-  const { id } = useParams();
-  const navigate = useNavigate();
-  const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
+
+
+const TestAdd = () => {
+const { id } = useParams();
+const navigate = useNavigate();
+const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
 
   const TestQuestions = [

@@ -10,6 +10,8 @@ import Archived from "./Archived/Archived";
 import Trashed from "./Trashed/Trashed";
 import TestAdd from "./TestAdd/TestAdd";
 import TestDetail from "./TestDetail/TestDetail";
+import TestQuestionAdd from './TestQuestionAdd/TestQuestionAdd'
+import QuestionView from './QuestionsViewPage/QuestionsViewPage'
 
 const Test = () => {
   return (
@@ -26,12 +28,15 @@ const Test = () => {
         <Route path="/archived" element={<Archived />} />
         <Route path="/trashed" element={<Trashed />} />
         <Route path=":id/movetest" element={<TestAdd />} />{" "}
-       <Route path="test/:id/test/:testId" element={<TestDetail />} />
+        <Route path=":id/movetest/testquestionadd" element={<TestQuestionAdd  />} />{" "}
+        <Route path=":id/movetest/testquestionadd/:questionId" element={<QuestionView />} />
+        <Route path="test/:id/test/:testId" element={<TestDetail />} />
+       
         {/* <Route path="/tag/:tagName" element={<TagPage />} /> */}
       </Route>
  
     </Routes>
   );
 };
-
+ 
 export default Test;

@@ -5,6 +5,7 @@ import { FaArrowLeft, FaPlus, FaEdit, FaTrash, FaCopy, FaSearch } from "react-ic
 import DataTable from "react-data-table-component";
 import Modal from "react-modal"; // Importing Modal
 import "./QuestionsAdd.css";
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 const QuestionsAdd = () => {
   const { id } = useParams();
@@ -59,6 +60,9 @@ const QuestionsAdd = () => {
   const [isSelectAllChecked, setIsSelectAllChecked] = useState(false); // State for "select all"
   const [searchQuery, setSearchQuery] = useState(""); // State for search query
   const [filterType, setFilterType] = useState(""); // Filter for question type
+  const [isPopupVisible, setIsPopupVisible] = useState(false);  //popup visible
+  const [searchTerm, setSearchTerm] = useState("");
+  const [searchfilteredQuestions, setSearchFilteredQuestions] = useState([]);
 
   useEffect(() => {
     console.log("Fetching questions for Question Bank ID:", id);
@@ -81,7 +85,10 @@ const QuestionsAdd = () => {
   };
 
   const handleAddToTest = () => {
-    console.log("Add selected questions to test", selectedQuestionIds);
+    if (selectedQuestionIds.length > 0) {
+      console.log("Add selected questions to test", selectedQuestionIds);
+      setIsPopupVisible(true); // Show the popup after adding questions
+    }
   };
 
   const handleQuestionClick = (question) => {
@@ -103,7 +110,7 @@ const QuestionsAdd = () => {
     if (isSelectAllChecked) {
       setSelectedQuestionIds([]); // Deselect all
     } else {
-      setSelectedQuestionIds(questionsByBank[id].map((row) => row.id)); // Select all
+      setSelectedQuestionIds(currentQuestions.map((row) => row.id)); // Select all
     }
     setIsSelectAllChecked(!isSelectAllChecked); // Toggle the "select all" checkbox state
   };
@@ -128,6 +135,23 @@ const QuestionsAdd = () => {
     const newLimit = parseInt(event.target.value, 10);
     setQuestionsPerPage(newLimit);
     setCurrentPage(1);
+  };
+
+  const handleSearch = (event) => {
+    const value = event.target.value.toLowerCase();
+  
+    // Extract all questions from the question banks
+    const allQuestions = Object.values(questionsByBank).flat();
+  
+    // Filter questions based on the search term
+    const filtered = allQuestions.filter((question) =>
+      question.question.toLowerCase().includes(value) ||
+      question.answer.toLowerCase().includes(value) ||
+      (question.type && question.type.toLowerCase().includes(value))
+    );
+  
+    // Update the filteredQuestions state
+    setSearchFilteredQuestions(filtered);
   };
 
   const columns = [
@@ -164,11 +188,20 @@ const QuestionsAdd = () => {
       name: "Actions",
       button: true,
       cell: (row) => (
-        <div>
-          <button onClick={() => handleCopyQuestion(row.id)} className="copyButton"><FaCopy /></button>
-          <button onClick={() => handleEditQuestion(row.id)} className="editButton"><FaEdit /></button>
-          <button onClick={() => handleAddToTest(row.id)} className="addToTestButton">Add to Test</button>
-          <button onClick={() => handleDeleteQuestion(row.id)} className="deleteButton"><FaTrash /></button>
+        <div className="questionadd-action-btns">
+          <button onClick={() => handleCopyQuestion(row.id)} className="copyButton">
+            <FaCopy />
+            <span className="questionadd-tooltip">Copy</span></button>
+          <button onClick={() => handleEditQuestion(row.id)} className="editButton">
+            <FaEdit />
+            <span className="questionadd-tooltip">Edit</span></button>
+          <button onClick={() => handleAddToTest(row.id)} className="addToTestButton">
+            <span className="questionadd-tooltip">Add To Test</span>
+            T</button>
+          <button onClick={() => handleDeleteQuestion(row.id)} className="deleteButton">
+            <FaTrash />
+            <span className="questionadd-tooltip">Delete</span>
+          </button>
         </div>
       ),
       width: "250px",
@@ -185,43 +218,66 @@ const QuestionsAdd = () => {
             {/* <button className="add-button" onClick={handleAddQuestion}>
               <FaPlus /> Add Question
             </button> */}
-              <button onClick={() => navigate("/Questionbank")} className="back-button">
-            <FaArrowLeft /> Back to all QB Page
+
+        <div className="d-flex justify-content-end">
+          <button
+            onClick={handleAddToTest}
+            className={`disabled-button ${selectedQuestionIds.length === 0 ? '' : 'bulk-action-button bulk-add-button'}`}
+            disabled={selectedQuestionIds.length === 0}
+          >
+            <FaPlus /> Add to Test
           </button>
+
+          {isPopupVisible && (
+            <div className="qb-addtest-popup">
+              <div className="qb-addtest-popup-content">
+                <p>Questions added to the test successfully!</p>
+
+                <div className="d-flex">
+                  <button onClick={() => navigate("/Questionbank")} className="qb-addtest-back-button">
+                    <FaArrowLeft /> Back Question Bank
+                  </button>
+
+                  <button onClick={() => setIsPopupVisible(false)} className="qb-addtest-close-popup-button">Close</button>
+                </div>
+
+              </div>
+            </div>
+          )}
+        </div>
+
           </div>
 
           {/* Search bar and filter options */}
           <div className="search-bar">
-            <div className="search-container">
+            <div className="test-search-container">
               <input
                 type="text"
-                placeholder="Search questions..."
-                value={searchQuery}
-                onChange={(e) => setSearchQuery(e.target.value)}
-                className="search-input"
+                placeholder="Search tests..."
+                className="test-search-input"
+                value={searchTerm}
+                onChange={handleSearch}
               />
-              <FaSearch className="search-icon" />
+              <FaSearch className="testadd-search-icon" />
             </div>
-           <div className="filter-container">
-  <div className="filter-select-wrapper">
-    <select
-      value={filterType}
-      onChange={(e) => setFilterType(e.target.value)}
-      className="filter-select"
-    >
-      <option value="">All Types</option>
-      <option value="mcq">MCQ</option>
-      <option value="numerical">Numerical</option>
-      <option value="truefalse">True/False</option>
-      <option value="descriptive">Descriptive</option>
-    </select>
-    <span className="filter-arrow"></span>
-  </div>
-</div>
+            <div className="filter-container">
+              <div className="filter-select-wrapper">
+                <select
+                  value={filterType}
+                  onChange={(e) => setFilterType(e.target.value)}
+                  className="filter-select"
+                >
+                  <option value="">All Types</option>
+                  <option value="mcq">MCQ</option>
+                  <option value="numerical">Numerical</option>
+                  <option value="truefalse">True/False</option>
+                  <option value="descriptive">Descriptive</option>
+                </select>
+                <span className="filter-arrow"></span>
+              </div>
+            </div>
 
           </div>
-
-        
 
           {filteredQuestions.length === 0 ? (
             <div className="empty-state">
@@ -234,7 +290,6 @@ const QuestionsAdd = () => {
             <DataTable
               columns={columns}
               data={questionsToShow}
-              pagination
               paginationPerPage={questionsPerPage}
               onChangePage={paginate}
               highlightOnHover
@@ -266,20 +321,17 @@ const QuestionsAdd = () => {
               <button onClick={() => setModalIsOpen(false)} className="close-modal-button">Close</button>
             </div>
           </Modal>
-             <div className="bulk-actions">
-            <button onClick={handleDeleteQuestion} className="bulk-action-button bulk-delete-button">
+          <div className="bulk-actions">
+            {/* <button onClick={handleDeleteQuestion} className="bulk-action-button bulk-delete-button">
               <FaTrash /> Delete Selected
             </button>
             <button onClick={handleCopyQuestion} className="bulk-action-button bulk-copy-button">
               <FaCopy /> Copy Selected
-            </button>
-            <button onClick={handleAddToTest} className="bulk-action-button bulk-add-button">
-              <FaPlus /> Add Selected to Test
-            </button>
+            </button> */}
           </div>
-
-        
         </div>
+        
+
       </div>
     </div>
   );

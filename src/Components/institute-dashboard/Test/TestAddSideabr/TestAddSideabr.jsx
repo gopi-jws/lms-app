@@ -1,15 +1,21 @@
 import React, { useState } from "react";
 import "./TestAddSideabr.css";
-import {
-  PlusCircle,
-  Tag,
-  Award,
-  Hash,
-  Clock,
-} from "lucide-react";
-import QuestionBankPopup from "../QuestionBankPopup/QuestionBankPopup";
+import { PlusCircle, Tag, Award, Hash, Clock } from "lucide-react";
+import { useNavigate } from "react-router-dom";
+import { useParams } from "react-router-dom";
 
 const TestAddSidebar = () => {
+
+  const { id } = useParams(); 
+
+  const navigate=useNavigate()
+
+  const handleNewQuestionClick = () => {
+    const id = "1";  
+    navigate(`/test/${id}/movetest/testquestionadd`);
+  };
+
+
   const initialSections = [
     { name: "Physics", tag: "Physics", color: "#ff6b6b" },
     { name: "Chemistry", tag: "Chemistry", color: "#4caf50" },
@@ -19,33 +25,15 @@ const TestAddSidebar = () => {
   const [sections, setSections] = useState(initialSections); // State for sections
   const [newSection, setNewSection] = useState({ name: "", color: "#000000" }); // State for new section
   const [dropdownOpen, setDropdownOpen] = useState(false); // State for dropdown visibility
-  const [activeItem, setActiveItem] = useState("MCQ-1"); 
-  const [isPopupOpen, setIsPopupOpen] = useState(false); 
-  const [questionBankDropdownOpen, setQuestionBankDropdownOpen] = useState(false); // State for "Add from Question Bank" dropdown visibility
+  const [isPopupOpen, setIsPopupOpen] = useState(false); // State for popup visibility
 
-  const [testInfo, setTestInfo] = useState({
+  const [testInfo] = useState({
     marks: 100,
     noOfQuestions: 50,
     negativeMarks: -0.25,
     duration: "2h",
   });
 
- 
-
-  // Handle toggling active item
-  // const handleItemClick = (item) => {
-  //   setActiveItem(item);
-  // };
-
-  // Handle opening the popup for Question Bank
-  // const handleAddFromQuestionBank = () => {
-  //   setIsPopupOpen(true);
-  // };
-
-  // Handle closing the popup
-  const handleClosePopup = () => {
-    setIsPopupOpen(false);
-  };
 
   // Handle adding a new section
   const handleAddSection = () => {
@@ -68,33 +56,17 @@ const TestAddSidebar = () => {
     setDropdownOpen(false);
   };
 
-  // Toggle the visibility of the "Add from Question Bank" dropdown
-  // const toggleQuestionBankDropdown = () => {
-  //   setQuestionBankDropdownOpen(!questionBankDropdownOpen);
-  //   setDropdownOpen(false); // Close the New Section dropdown if open
-  // };
-
   return (
     <div className="test-add-sidebar">
       {/* Buttons */}
-      <button className="test-add-sidebar-button">New Question</button>
+      <button
+        className="test-add-sidebar-button"
+        onClick={handleNewQuestionClick} // Call navigation function
+      >
+        Add Question
+      </button>
 
       <button className="test-add-sidebar-button">Snap Shot</button>
-
-
-      {/* <button
-        className="test-add-sidebar-button"
-        onClick={toggleQuestionBankDropdown}
-      >
-        Add from Question Bank
-      </button> */}
-
-      {/* Dropdown for "Add from Question Bank" */}
-      {/* {questionBankDropdownOpen && (
-        <div className="question-bank-dropdown">
-          <QuestionBankPopup onClose={handleClosePopup} onAdd={handleAddFromQuestionBank} />
-        </div>
-      )} */}
 
       <hr />
 
@@ -193,11 +165,6 @@ const TestAddSidebar = () => {
           </div>
         </div>
       </div>
-
-      {/* Question Bank Popup */}
-      {/* {isPopupOpen && (
-        <QuestionBankPopup onClose={handleClosePopup} onAdd={handleAddFromQuestionBank} />
-      )} */}
     </div>
   );
 };
